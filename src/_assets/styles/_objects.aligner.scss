@@ -1,0 +1,22 @@
+.aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aligner-item {
+    flex: 1;
+}
+
+.aligner-item--top {
+    align-self: flex-start;
+}
+
+.aligner-item--bottom {
+    align-self: flex-end;
+}
+
+.aligner-item--fixed {
+    flex: none;
+    max-width: 50%;
+}

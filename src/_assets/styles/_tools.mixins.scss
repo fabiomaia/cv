@@ -1,0 +1,76 @@
+@mixin icon($name) {
+    &:before {
+        @extend .fa;
+        @extend .fa-#{$name};
+        padding-right: $spacing-unit--small;
+    }
+}
+
+// A link that looks and acts like the text it is contained within
+@mixin unstyled-link {
+    @include attention(self) {
+        color: inherit;
+        cursor: inherit;
+        outline: none;
+        text-decoration: inherit;
+    }
+}
+
+// Apply ‘attention’ styles in one go.
+@mixin attention($self: false) {
+
+    @if($self != false) {
+
+        &,
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+
+    }
+
+    @else {
+
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+
+    }
+
+}
+
+@mixin headings($from: 1, $to: 6) {
+
+    %base-heading {
+        @content;
+    }
+
+    @if $from >= 1 and $to <= 6{
+
+        @for $i from $from through $to{
+
+            h#{$i} {
+                @extend %base-heading;
+            }
+
+        }
+
+    }
+
+}
+
+// Generate Helvetica Neue’s numbered font-weights from their aliases.
+@mixin font-weight($font-weight) {
+
+    @if ($font-weight == "regular") {
+        font-weight: 300;
+    }
+
+    @if ($font-weight == "bold") {
+        font-weight: 600;
+    }
+
+}

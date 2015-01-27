@@ -1,0 +1,37 @@
+.post {
+
+}
+
+.post__title {
+    @include font-size(32px);
+}
+
+.post__body {
+    @include font-size(21px, 1.7);
+}
+
+.post__meta {
+    @include font-size(14px);
+    font-family: $fonts-headings;
+    color: $color-gray;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+@include media-query(lap-and-up) {
+    .post__body {
+        text-align: justify;
+    }
+}
+
+@include media-query(lap) {
+    .post__title {
+        @include font-size(36px);
+    }
+}
+
+@include media-query(desk) {
+    .post__title {
+        @include font-size(48px);
+    }
+}

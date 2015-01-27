@@ -1,0 +1,42 @@
+.posts-list {
+    @extend .unlist;
+    margin-top: 2 * $spacing-unit;
+}
+
+.posts-list__item {
+    margin-bottom: $spacing-unit;
+    @extend %clearfix;
+}
+
+.posts-list__title {
+    @include font-size(24px);
+    font-family: $fonts-headings;
+}
+
+.posts-list__meta {
+    @include font-size(14px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: $fonts-headings;
+    color: $color-gray;
+}
+
+.posts-list__timestamp {
+    float: none;
+    display: block;
+}
+
+@include media-query(lap-and-up) {
+    .posts-list__timestamp {
+        float: right;
+        margin-left: $spacing-unit;
+    }
+
+    .posts-list__title {
+        float: left;
+    }
+}
+
+@include media-query(desk) {
+
+}

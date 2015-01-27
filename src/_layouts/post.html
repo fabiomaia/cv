@@ -1,0 +1,38 @@
+---
+layout: master
+---
+
+<header class="header header--post" role="banner" style="background-image: url({{ page.image }})">
+    <div class="wrapper">
+        <a class="header__logo" href="{{ site.baseurl }}">
+            <span style="background-image: url({{ page.image }})">{{ site.name }}</span>
+        </a>
+    </div>
+</header>
+
+<main role="main">
+    <div class="wrapper">
+        <article class="post">
+            <header class="post__header">
+                <h1 class="post__title">{{ page.title }}</h1>
+
+                <span class="post__meta">
+                    <time class="post__timestamp" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+                </span>
+            </header>
+
+            <section class="post__body">
+                {{ content }}
+            </section>
+
+            <footer class="post__footer">
+            </footer>
+        </article>
+    </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+    <div class="wrapper">
+        <small class="footer__legal">Copyright &copy; Fábio Maia.</small>
+    </div>
+</footer>

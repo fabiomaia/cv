@@ -1,0 +1,106 @@
+/**
+ * Headings 1–6.
+ */
+@include headings() {
+    color: $color-headings;
+    font-family: $fonts-headings;
+}
+
+/**
+ * A generic heading style which can be applied to any headings.
+ */
+.heading {
+    @include font-size(22px);
+}
+
+.heading-sub {
+    @include font-size(16px);
+    @include font-weight(bold);
+    margin-bottom: 0;
+    color: $color-heading-sub;
+}
+
+/**
+ * Emboldened elements.
+ */
+a,
+strong, b,
+dt {
+    @include font-weight(bold);
+}
+
+/**
+ * Code-like elements.
+ */
+code, kbd, samp {
+    color: $color-code;
+    font-family: $fonts-code;
+}
+
+pre {
+    white-space: pre;
+    word-wrap: normal;
+    overflow: auto;
+    padding: $spacing-unit--small;
+    background-color: $color-pre-background;
+    border-radius: $base-round;
+
+    &,
+    code, kbd, samp {
+        color: $color-pre;
+    }
+
+}
+
+
+
+
+
+/**
+ * Figures.
+ *
+ * 1. Outdent figures by an arbitrary amount at the relevant viewport size.
+ * 2. Reindent figcaptions.
+ */
+figure {
+
+    @media screen and (min-width: 1380px) {
+        margin-left: -128px; /* [1] */
+    }
+
+    > img {
+        border-radius: $base-round;
+    }
+
+}
+
+    figcaption {
+        @include font-size(12px);
+
+        @media screen and (min-width: 1380px) {
+            margin-left: 128px; /* [2] */
+        }
+
+    }
+
+/**
+ * Horizontal rules.
+ */
+hr {
+    border: none;
+    border-bottom: 1px solid $color-gray--ui;
+    margin-bottom: $spacing-unit - 1px;
+}
+
+/**
+ * Highlighted text.
+ */
+mark {
+
+    pre & {
+        background: none;
+        border-bottom: 1px solid;
+        color: inherit;
+    }
+
+}

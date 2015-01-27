@@ -1,0 +1,34 @@
+{
+  "name": "faviouz.com",
+  "version": "0.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "beepbeep": "^1.2.0",
+    "del": "^0.1.2",
+    "glob": "^4.0.5",
+    "gulp": "^3.8.7",
+    "gulp-autoprefixer": "0.0.10",
+    "gulp-concat": "^2.3.4",
+    "gulp-csso": "^0.2.9",
+    "gulp-gh-pages": "^0.4.0",
+    "gulp-htmlmin": "^0.1.3",
+    "gulp-imagemin": "^0.6.2",
+    "gulp-jekyll": "0.0.0",
+    "gulp-jshint": "^1.8.4",
+    "gulp-minify-css": "^0.3.7",
+    "gulp-minify-html": "^0.1.4",
+    "gulp-plumber": "^0.6.4",
+    "gulp-sass": "^0.7.2",
+    "gulp-size": "^1.0.0",
+    "gulp-uglify": "^0.2.1",
+    "gulp-uncss": "^0.4.5",
+    "gulp-util": "^3.0.0",
+    "run-sequence": "^1.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

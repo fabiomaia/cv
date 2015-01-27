@@ -1,0 +1,21 @@
+---
+layout:      "page"
+title:       "faviouz"
+description: "Yet another blog"
+---
+
+<section>
+    <ul class="posts-list">
+        {% for post in site.posts %}
+            <li class="posts-list__item">
+                <a class="posts-list__title" href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+
+                <span class="posts-list__meta">
+                    <time class="posts-list__timestamp" datetime="{{ post.date | date:"%Y-%m-%d" }}">
+                        {{ post.date | date: "%B %-d, %Y" }}
+                    </time>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+</section>

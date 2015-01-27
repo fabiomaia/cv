@@ -1,0 +1,10 @@
+a {
+    text-decoration: none;
+    color: $color-links;
+
+    @include attention() {
+        background: $color-links;
+        color: $color-white;
+    }
+
+}
