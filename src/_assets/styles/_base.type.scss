@@ -2,7 +2,6 @@
  * Headings 1–6.
  */
 @include headings() {
-    color: $color-headings;
     font-family: $fonts-headings;
 }
 
@@ -10,7 +9,9 @@
  * A generic heading style which can be applied to any headings.
  */
 .heading {
-    @include font-size(22px);
+    font-family: $fonts-headings;
+    text-transform: uppercase;
+    font-weight: 900;
 }
 
 .heading-sub {
@@ -42,18 +43,8 @@ pre {
     word-wrap: normal;
     overflow: auto;
     padding: $spacing-unit--small;
-    background-color: $color-pre-background;
     border-radius: $base-round;
-
-    &,
-    code, kbd, samp {
-        color: $color-pre;
-    }
-
 }
-
-
-
 
 
 /**

@@ -1,54 +1,15 @@
-main {
-    @extend .aligner;
-}
-
 .header {
-    background-color: $color-brand;
-    background-image: url('../images/header2.jpg');
-        background-size: cover;
-    background-position: center center;
     color: $color-white;
-    height: 50vh;
-    @extend .aligner;
-    margin-bottom: $spacing-unit * 2;
-}
-
-.header--post {
-    background-size: cover;
-    background-position: bottom center;
-}
-
-.header__logo {
-    @include unstyled-link();
-    @include font-size(24px);
-    padding: ($spacing-unit / 4) ($spacing-unit / 2);
-    background: $color-white;
-    font-family: $fonts-headings;
-    text-transform: lowercase;
-
-    span {
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-color: $color-brand;
-        background-image: url('../images/header2.jpg');
-        background-position: center center;
-    }
-
-    @include attention() {
-        background: rgba(255, 255, 255, 0.6);
-    }
 }
 
 @include media-query(lap) {
-    .header__logo {
-        padding: ($spacing-unit / 2) $spacing-unit;
-        @include font-size(32px);
+    .header {
+
     }
 }
 
 @include media-query(desk) {
-    .header__logo {
-        padding: $spacing-unit ($spacing-unit * 2);
-        @include font-size(48px);
+    .header {
+
     }
 }

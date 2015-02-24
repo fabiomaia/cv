@@ -9,6 +9,7 @@
 // A link that looks and acts like the text it is contained within
 @mixin unstyled-link {
     @include attention(self) {
+        background: none;
         color: inherit;
         cursor: inherit;
         outline: none;

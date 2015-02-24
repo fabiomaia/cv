@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -7,10 +7,10 @@
         <meta name="description" content="{{ page.description }}">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{{ site.baseurl }}/styles/main.css">
+        <link rel="stylesheet" href="{{ site.baseurl }}/assets/styles/main.css">
     </head>
 
-    <body>
+    <body class="body--{{ page.classname }}">
         {{ content }}
     </body>
 </html>

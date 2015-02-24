@@ -1,15 +1,9 @@
 .wrapper {
-    max-width: 700px;
+    max-width: 1296px;
     margin: 0 auto;
-    padding-right: 2 * $spacing-unit;
-    padding-left: 2 * $spacing-unit;
-
-
 }
 
 @include media-query(lap-and-up) {
-    .header {
-        padding-right: $spacing-unit;
-        padding-left:  $spacing-unit;
+    .wrapper {
     }
 }

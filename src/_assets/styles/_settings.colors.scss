@@ -2,10 +2,10 @@
 $color-red:         red;
 $color-pink:        #FF4867;
 $color-pink--light: #FFA68F;
-$color-purple:      #633d4b;
+$color-purple:      #5c4283;
 $color-blue:        #57D6F2;
 $color-blue--light: #0080E8;
-$color-green:       #b6e33e;
+$color-green:       #a1db30;
 $color-orange:      #FD7430;
 $color-white:       #FFF;
 $color-gray:        #9EABB3;
@@ -13,13 +13,15 @@ $color-gray--light: #999;
 $color-gray--ui:    #ddd;
 $color-tint:        #f2f2f2;
 $color-brown:       #8f5700;
+$color-black:       #333;
+$color-yellow:      #ffd21c;
 
 // Semantic Colors
-$color-brand:       $color-purple;
+$color-brand:       $color-green;
 $color-paragraph:   #3A4145;
 $color-positive:    #3f990f;
 $color-negative:    #9f102e;
-$color-highlight:   $color-brand;
+$color-highlight:   rgba(0, 0, 0, 0.2);
 
 // Buttons
 $btn-color:           $color-white;

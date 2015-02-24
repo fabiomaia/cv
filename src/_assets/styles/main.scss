@@ -40,7 +40,7 @@
  */
 
 @import "../bower_components/inuit-buttons/objects.buttons";
-@import "objects.aligner";
+@import "../bower_components/inuit-layout/objects.layout";
 @import "objects.wrapper";
 @import "objects.unlist";
 
@@ -49,10 +49,12 @@
  */
 
 @import "components.header";
-@import "components.post";
-@import "components.posts-list";
-@import "components.social";
+@import "components.page";
+@import "components.posts";
+@import "components.nav";
 @import "components.footer";
+@import "components.highlight";
+@import "components.project";
 
 /*
  * Trumps

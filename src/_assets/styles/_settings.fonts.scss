@@ -1,6 +1,17 @@
+// Google Fonts
 @import url(http://fonts.googleapis.com/css?family=Source+Serif+Pro:400,700,400italic|Roboto:400,700);
+@import url(http://fonts.googleapis.com/css?family=Raleway:700,800,900);
 
-$fonts-code: 'Monaco', monospace;
-$fonts-headings: 'Roboto', sans-serif;
-$fonts-body: 'Source Serif Pro', serif;
-$fonts-base: $fonts-body;
+// Font Stack
+$fonts-monaco: 'Monaco', monospace;
+$fonts-consolas: monospace;
+$fonts-roboto: 'Roboto', sans-serif;
+$fonts-source-serif-pro: 'Source Serif Pro', serif;
+$fonts-raleway: 'Raleway', sans-serif;
+
+// Semantic Fonts
+$fonts-code: $fonts-consolas;
+$fonts-headings: $fonts-raleway;
+$fonts-body: $fonts-source-serif-pro;
+$fonts-base: $fonts-roboto;
+$fonts-lead: $fonts-roboto;

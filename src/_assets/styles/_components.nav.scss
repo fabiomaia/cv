@@ -1,0 +1,89 @@
+.nav {
+	display: flex;
+}
+
+.nav__link {
+	display: block;
+	flex-basis: 100%;
+	color: $color-white !important;
+	@include font-size(32px);
+	@extend .heading;
+	text-align: center;
+	text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+
+	@include attention() {
+		border: none;
+	}
+
+	span {
+		display: none;
+	}
+}
+
+.nav__link--logo {
+	background-color: $color-purple;
+
+	@include attention() {
+		background-color: lighten($color-purple, 10) !important;
+	}
+}
+
+.nav__link--about {
+	background-color: $color-brand;
+
+	@include attention() {
+		background-color: lighten($color-brand, 10) !important;
+	}
+}
+
+.nav__link--projects {
+	background-color: $color-pink;
+
+	@include attention() {
+		background-color: lighten($color-pink, 10) !important;
+	}
+}
+
+.nav__link--blog {
+	background-color: $color-yellow;
+
+	@include attention() {
+		background-color: lighten($color-yellow, 10) !important;
+	}
+}
+
+.nav__link--twitter {
+	background-color: $color-blue;
+
+	@include attention() {
+		background-color: lighten($color-blue, 10) !important;
+	}
+}
+
+.nav__link--github {
+	background-color: $color-orange;
+
+	@include attention() {
+		background-color: lighten($color-orange, 10) !important;
+	}
+}
+
+@include media-query(lap-and-up) {
+	.nav {
+	}
+
+	.nav__link {
+		padding: $spacing-unit 0;
+		@include font-size(22px);
+
+		i {
+		}
+
+		span {
+			display: inline;
+		}
+	}
+}
+
+@include media-query(desk) {
+}

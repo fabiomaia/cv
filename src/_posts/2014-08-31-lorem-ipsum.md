@@ -1,8 +1,8 @@
 ---
-layout:      "post"
+layout:      "page"
 title:       "Lorem Ipsum"
 description: "Lorem Ipsum"
-image:       "../images/header3.jpeg"
+classname:   "blog"
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

@@ -1,19 +1,21 @@
-.posts-list {
+.posts {
     @extend .unlist;
-    margin-top: 2 * $spacing-unit;
 }
 
-.posts-list__item {
+.posts__item {
+    @include unstyled-link();
+    background-color: $color-yellow;
     margin-bottom: $spacing-unit;
     @extend %clearfix;
 }
 
-.posts-list__title {
+.posts__title {
     @include font-size(24px);
-    font-family: $fonts-headings;
+    color: lighten($color-black, 10) !important;
+    @extend .heading;
 }
 
-.posts-list__meta {
+.posts__meta {
     @include font-size(14px);
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -21,18 +23,18 @@
     color: $color-gray;
 }
 
-.posts-list__timestamp {
+.posts__timestamp {
     float: none;
     display: block;
 }
 
 @include media-query(lap-and-up) {
-    .posts-list__timestamp {
+    .posts__timestamp {
         float: right;
         margin-left: $spacing-unit;
     }
 
-    .posts-list__title {
+    .posts__title {
         float: left;
     }
 }

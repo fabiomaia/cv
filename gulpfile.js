@@ -6,12 +6,11 @@ var gulp = require('gulp');
  * Plugins
  */
 
-var error = function(err) { beep([0, 0, 0]); utils.log(utils.colors.green(err)); }
+var error = function(err) { utils.log(utils.colors.green(err)); }
 var plumber = require('gulp-plumber');
 var concat = require('gulp-concat');
 var size = require('gulp-size');
 var del = require('del');
-var beep = require('beepbeep');
 var utils = require('gulp-util');
 var spawn = require('child_process').spawn;
 var glob = require('glob');
@@ -44,22 +43,22 @@ paths.markup = {
 
 paths.images = {
     src: paths.src + '/_assets/images',
-    dest: paths.dist + '/images'
+    dest: paths.dist + '/assets/images'
 };
 
 paths.styles = {
     src: paths.src + '/_assets/styles',
-    dest: paths.dist + '/styles'
+    dest: paths.dist + '/assets/styles'
 };
 
 paths.scripts = {
     src: paths.src + '/_assets/scripts',
-    dest: paths.dist + '/scripts'
+    dest: paths.dist + '/assets/scripts'
 };
 
 paths.fonts = {
     src: paths.src + '/_assets/fonts',
-    dest: paths.dist + '/fonts'
+    dest: paths.dist + '/assets/fonts'
 };
 
 /**
@@ -118,9 +117,9 @@ gulp.task('styles', function() {
         .pipe(csscompile({
             style: 'expanded',
         }))
-        .pipe(cssunused({
-            html: glob.sync(paths.markup.dest + '/**/*.html')
-        }))
+        // .pipe(cssunused({
+        //     html: glob.sync(paths.markup.dest + '/**/*.html')
+        // }))
         .pipe(cssprefix(
             'ie >= 10',
             'ie_mob >= 10',

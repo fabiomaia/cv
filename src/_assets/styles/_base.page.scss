@@ -1,20 +1,67 @@
 html {
+    background-color: $color-black;
     font-family: $fonts-base;
 }
 
-::-moz-selection{
+::-moz-selection {
     color: $color-white;
     text-shadow: none;
     background: $color-highlight;
 }
 
-::selection{
+::selection {
     color: $color-white;
     text-shadow: none;
     background: $color-highlight;
 }
 
 body {
-    background-color: $color-white;
+    background-color: $color-black;
     -webkit-tap-highlight-color: $color-highlight;
 }
+
+.body--index {
+    .footer,
+    .page__body {
+        display: none;
+    }
+
+    a {
+        color: $color-purple;
+
+        @include attention() {
+            background: $color-purple;
+        }
+    }
+}
+
+.body--about {
+    a {
+        color: $color-green;
+
+        @include attention() {
+            background: $color-green;
+        }
+    }
+}
+
+.body--projects {
+    a {
+        color: $color-pink;
+
+        @include attention() {
+            background: $color-pink;
+        }
+    }
+}
+
+.body--blog {
+    a {
+        color: $color-yellow;
+
+        @include attention() {
+            background: $color-yellow;
+        }
+    }
+}
+

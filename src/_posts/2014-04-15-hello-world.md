@@ -1,8 +1,9 @@
 ---
-layout:      "post"
+layout:      "page"
 title:       "Hello, World!"
 description: "Hello, World!"
-image:       "../images/header1.jpeg"
+id:          "blog"
+classname:   "blog"
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
