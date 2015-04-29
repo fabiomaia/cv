@@ -1,35 +1,21 @@
 <header class="header" role="banner">
     <div class="wrapper">
+        <a class="header__logo" href="{{ site.baseurl }}">Fábio</a>
+
         <nav class="nav">
-            <a class="nav__link nav__link--logo" href="{{ site.baseurl }}">
-                <i class="fa fa-home"></i>
-                <span>Fábio</span>
-            </a>
-
-            <a class="nav__link nav__link--about" href="{{ site.baseurl }}/about">
-                <i class="fa fa-male"></i>
-                <span>About</span>
-            </a>
-
-            <a class="nav__link nav__link--projects" href="{{ site.baseurl }}/projects">
-                <i class="fa fa-rocket"></i>
-                <span>Projects</span>
-            </a>
-
-            <a class="nav__link nav__link--blog" href="{{ site.baseurl }}/blog">
-                <i class="fa fa-comments"></i>
-                <span>Blog</span>
-            </a>
-
-            <a class="nav__link nav__link--twitter" href="https://twitter.com/{{ site.data.about.twitter }}">
-                <i class="fa fa-twitter"></i>
-                <span>Twitter</span>
-            </a>
-
-            <a class="nav__link nav__link--github" href="https://github.com/{{ site.data.about.github }}">
-                <i class="fa fa-github"></i>
-                <span>GitHub</span>
-            </a>
+            <a class="nav__link nav__link--about" href="{{ site.baseurl }}/about">About</a>
+            <a class="nav__link nav__link--projects" href="{{ site.baseurl }}/projects">Projects</a>
+            <a class="nav__link nav__link--blog" href="{{ site.baseurl }}/blog">Blog</a>
         </nav>
+
+        <a class="nav__link nav__link--twitter" href="https://twitter.com/{{ site.data.about.twitter }}">
+            <i class="fa fa-twitter"></i>
+            <span>Twitter</span>
+        </a>
+
+        <a class="nav__link nav__link--github" href="https://github.com/{{ site.data.about.github }}">
+            <i class="fa fa-github"></i>
+            <span>GitHub</span>
+        </a>
     </div>
 </header>

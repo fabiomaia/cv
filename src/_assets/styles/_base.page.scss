@@ -16,52 +16,6 @@ html {
 }
 
 body {
-    background-color: $color-black;
+    background-color: $color-white;
     -webkit-tap-highlight-color: $color-highlight;
 }
-
-.body--index {
-    .footer,
-    .page__body {
-        display: none;
-    }
-
-    a {
-        color: $color-purple;
-
-        @include attention() {
-            background: $color-purple;
-        }
-    }
-}
-
-.body--about {
-    a {
-        color: $color-green;
-
-        @include attention() {
-            background: $color-green;
-        }
-    }
-}
-
-.body--projects {
-    a {
-        color: $color-pink;
-
-        @include attention() {
-            background: $color-pink;
-        }
-    }
-}
-
-.body--blog {
-    a {
-        color: $color-yellow;
-
-        @include attention() {
-            background: $color-yellow;
-        }
-    }
-}
-

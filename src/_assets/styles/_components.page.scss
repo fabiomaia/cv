@@ -3,7 +3,7 @@
 
 .page__header {
     padding: $spacing-unit * 2;
-    color: $color-white;
+    color: $color-black;
     background-position: bottom center;
     background-size: cover;
 
@@ -13,41 +13,18 @@
 }
 
 .page__header--index {
-    height: 100vh;
-    background-color: $color-purple;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .page__description {
-        display: block !important;
-    }
-
     .page__title {
-        @include font-size(48px, 1.2);
+        @include font-size(98px, 1.2);
     }
 }
-
-.page__header--about {
-    background-color: $color-green;
-}
-
-.page__header--projects {
-    background-color: $color-pink;
-}
-
-.page__header--blog {
-    background-color: $color-yellow;
-}
-
 .page__title {
     @extend .heading;
     @include font-size(28px, 1.2);
 }
 
 .page__description {
-    display: none;
+    @include font-size(24px, 1.7);
+    color: lighten($color-black, 10%);
 }
 
 .page__meta {
@@ -60,24 +37,13 @@
 
 .page__body {
     padding: $spacing-unit * 2;
-    background-color: $color-white;
     @include font-size(21px, 1.7);
     font-family: $fonts-body;
 }
 
-
-
-
-
 @include media-query(lap-and-up) {
     .page__body {
         text-align: justify;
-    }
-
-    .page__description {
-        display: block;
-        @include font-size(24px, 1.7);
-        color: rgba(255, 255, 255, 0.9);
     }
 }
 

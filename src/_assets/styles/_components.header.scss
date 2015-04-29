@@ -1,5 +1,17 @@
 .header {
+    background: $color-green url('../images/header4.jpeg');
+    background-position: bottom;
     color: $color-white;
+    padding: ($spacing-unit * 4) 0;
+}
+
+.header__logo {
+    @include unstyled-link();
+    text-transform: uppercase;
+    @include font-size(24px);
+    font-family: $fonts-headings;
+    font-weight: 900;
+    float: left;
 }
 
 @include media-query(lap) {
