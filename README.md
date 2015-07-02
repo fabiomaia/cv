@@ -1,25 +1,43 @@
 # fabiomaia.pt
 
-## Setup Development Environment
+## Install
 
-```
+### Development Environment
+
+```shell
 $ sudo npm -g install npm@next
-$ git clone git@github.com:faviouz/fabiomaia.pt.git
 $ sudo npm install gulp
-$ sudo npm install
 $ sudo apt-get install ruby1.9.1-dev
 $ sudo gem install github-pages
 ```
 
+### Clone the Repository
+
+```shell
+$ git clone git@github.com:faviouz/fabiomaia.pt.git
+```
+
+### Install Dependencies
+
+```shell
+$ cd fabiomaia.pt
+$ sudo npm install
+```
+
 ## Build
 
+```shell
+$ gulp build
+$ gulp watch
 ```
+
+```shell
 $ gulp
 ```
 
-## Deployment
+## Deploy
 
-```
+```shell
 $ gulp deploy
 ```
 

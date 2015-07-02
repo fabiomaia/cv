@@ -17,6 +17,7 @@
         @include font-size(98px, 1.2);
     }
 }
+
 .page__title {
     @extend .heading;
     @include font-size(28px, 1.2);

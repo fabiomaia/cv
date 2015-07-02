@@ -2,125 +2,131 @@
 
 var gulp = require('gulp');
 
-/**
- * Plugins
- */
+/********************************
+ ** HELPERS
+ ********************************/
 
 var error = function(err) { utils.log(utils.colors.green(err)); }
+
+/********************************
+ ** PLUGINS
+ ********************************/
+
 var plumber = require('gulp-plumber');
 var concat = require('gulp-concat');
-var size = require('gulp-size');
 var del = require('del');
 var utils = require('gulp-util');
 var spawn = require('child_process').spawn;
 var glob = require('glob');
 var runSequence = require('run-sequence');
 var deploy = require("gulp-gh-pages");
-var imagesminify = require('gulp-imagemin');
-var htmlminify = require('gulp-minify-html');
-var csscompile = require('gulp-sass');
-var cssminify = require('gulp-csso');
-var cssprefix = require('gulp-autoprefixer');
-var cssunused = require('gulp-uncss');
-var jslint = require('gulp-jshint');
-var jsminify = require('gulp-uglify');
+var imagesMinify = require('gulp-imagemin');
+var htmlMinify = require('gulp-minify-html');
+var cssCompile = require('gulp-sass');
+var cssMinify = require('gulp-csso');
+var cssPrefix = require('gulp-autoprefixer');
+var cssUnused = require('gulp-uncss');
+var jsLint = require('gulp-jshint');
+var jsMinify = require('gulp-uglify');
 
-/**
- * Paths
- */
+/********************************
+ ** PATHS
+ ********************************/
 
 var paths = {
-    src: './src',
-    dist: './dist',
+    root: {
+        src: './src',
+        dist: './dist',
+    }
 };
 
-paths.bower = paths.src + '/_assets/bower_components';
+paths.bower = paths.root.src + '/_assets/bower_components';
 
 paths.markup = {
-    src: paths.dist,
-    dest: paths.dist
+    src: paths.root.dist,
+    dest: paths.root.dist
 };
 
 paths.images = {
-    src: paths.src + '/_assets/images',
-    dest: paths.dist + '/assets/images'
+    src: paths.root.src + '/_assets/images',
+    dest: paths.root.dist + '/assets/images'
 };
 
 paths.styles = {
-    src: paths.src + '/_assets/styles',
-    dest: paths.dist + '/assets/styles'
+    src: paths.root.src + '/_assets/styles',
+    dest: paths.root.dist + '/assets/styles'
 };
 
 paths.scripts = {
-    src: paths.src + '/_assets/scripts',
-    dest: paths.dist + '/assets/scripts'
+    src: paths.root.src + '/_assets/scripts',
+    dest: paths.root.dist + '/assets/scripts'
 };
 
 paths.fonts = {
-    src: paths.src + '/_assets/fonts',
-    dest: paths.dist + '/assets/fonts'
+    src: paths.root.src + '/_assets/fonts',
+    dest: paths.root.dist + '/assets/fonts'
 };
 
-/**
- * Clean
- */
+/********************************
+ ** TASK: CLEAN
+ ********************************/
 
-gulp.task('clean', del.bind(null, [paths.dist]));
+gulp.task('clean', del.bind(null, [paths.root.dist]));
 
-/**
- * Jekyll
- */
+/********************************
+ ** TASK: JEKYLL
+ ********************************/
 
-gulp.task('jekyll', function(cb) {
+gulp.task('jekyll', function(callback) {
     return spawn('jekyll', ['build'], { stdio: 'inherit' })
-        .on('close', cb);
+        .on('close', callback);
 });
 
-/**
- * Markup
- */
+/********************************
+ ** TASK: MARKUP
+ ********************************/
 
 gulp.task('markup', function() {
     return gulp.src(paths.markup.src + '/**/*.html')
         .pipe(plumber({
             errorHandler: error
         }))
-        .pipe(htmlminify({ collapseWhitespace: true }))
+        .pipe(htmlMinify({ collapseWhitespace: true }))
         .pipe(gulp.dest(paths.markup.dest));
 });
 
-/**
- * Images
- */
+/********************************
+ ** TASK: IMAGES
+ ********************************/
 
 gulp.task('images', function() {
     return gulp.src(paths.images.src + '/*')
         .pipe(plumber({
             errorHandler: error
         }))
-        .pipe(imagesminify({
+        .pipe(imagesMinify({
             progressive: true,
             interlaced: true
         }))
         .pipe(gulp.dest(paths.images.dest));
 });
 
-/**
- * Styles
- */
+/********************************
+ ** TASK: STYLES
+ ********************************/
 
 gulp.task('styles', function() {
     return gulp.src(paths.styles.src + '/main.scss')
         .pipe(plumber({
             errorHandler: error
         }))
-        .pipe(csscompile({
+        .pipe(cssCompile({
             style: 'expanded',
         }))
-        // .pipe(cssunused({
-        //     html: glob.sync(paths.markup.dest + '/**/*.html')
-        // }))
-        .pipe(cssprefix(
+        .pipe(cssUnused({
+            html: glob.sync(paths.markup.dest + '/**/*.html')
+        }))
+        .pipe(cssPrefix(
             'ie >= 10',
             'ie_mob >= 10',
             'ff >= 30',
@@ -131,13 +137,13 @@ gulp.task('styles', function() {
             'android >= 4.4',
             'bb >= 10'
         ))
-        .pipe(cssminify())
+        .pipe(cssMinify())
         .pipe(gulp.dest(paths.styles.dest));
 });
 
-/**
- * Scripts
- */
+/********************************
+ ** TASK: SCRIPTS
+ ********************************/
 
 gulp.task('scripts', function() {
     return gulp.src([
@@ -146,16 +152,16 @@ gulp.task('scripts', function() {
         .pipe(plumber({
             errorHandler: error
         }))
-        .pipe(jslint())
-        .pipe(jslint.reporter('default'))
+        .pipe(jsLint())
+        .pipe(jsLint.reporter('default'))
         .pipe(concat('main.js'))
-        .pipe(jsminify())
+        .pipe(jsMinify())
         .pipe(gulp.dest(paths.scripts.dest));
 });
 
-/**
- * Fonts
- */
+/********************************
+ ** TASK: FONTS
+ ********************************/
 
 gulp.task('fonts', function() {
     return gulp.src([
@@ -168,40 +174,40 @@ gulp.task('fonts', function() {
         .pipe(gulp.dest(paths.fonts.dest));
 });
 
-/**
- * Watch
- */
+/********************************
+ ** TASK: BUILD
+ ********************************/
+
+gulp.task('build', ['clean'], function(callback) {
+    runSequence('jekyll', ['markup', 'images', 'styles', 'scripts', 'fonts'], callback);
+});
+
+/********************************
+ ** TASK: WATCH
+ ********************************/
 
 gulp.task('watch', function() {
-    gulp.watch([paths.src + '/**/*.html', paths.src + '/**/*.md'], ['build']);
+    gulp.watch([paths.root.src + '/**/*.html', paths.root.src + '/**/*.md'], ['build']);
     gulp.watch(paths.styles.src + '/**/*.scss',                    ['styles']);
     gulp.watch(paths.scripts.src + '/**/*.js',                     ['scripts']);
     gulp.watch(paths.images.src + '/*',                            ['images']);
     gulp.watch(paths.fonts.src + '/*',                             ['fonts']);
 });
 
-/**
- * Build
- */
+/********************************
+ ** TASK: DEPLOY
+ ********************************/
 
-gulp.task('build', ['clean'], function(cb) {
-    runSequence('jekyll', ['markup', 'images', 'styles', 'scripts', 'fonts'], cb);
+gulp.task('deploy', ['build'], function() {
+    return gulp.src(paths.root.dist + '/**/*')
+        .pipe(deploy());
 });
 
-/**
- * Default
- */
+/********************************
+ ** TASK: DEFAULT
+ ********************************/
 
 gulp.task('default', [
     'build',
     'watch'
 ]);
-
-/**
- * Deploy
- */
-
-gulp.task('deploy', ['build'], function() {
-    return gulp.src(paths.dist + '/**/*')
-        .pipe(deploy());
-});
