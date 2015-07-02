@@ -2,7 +2,6 @@
 layout:      "page"
 title:       "Lorem Ipsum"
 description: "Lorem Ipsum"
-classname:   "blog"
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

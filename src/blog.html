@@ -1,21 +1,26 @@
 ---
-layout:      "page"
+layout:      "master"
 title:       "Blog"
 description: "I don't write much, but when I do I usually have something nice to say."
 permalink:   "blog/"
-classname:   "blog"
 ---
 
-<ul class="posts">
-    {% for post in site.posts %}
-        <li class="posts__item">
-            <a class="posts__title" href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+{% include header.html %}
 
-            <span class="posts__meta">
-                <time class="posts__timestamp" datetime="{{ post.date | date:"%Y-%m-%d" }}">
-                    {{ post.date | date: "%B %-d, %Y" }}
-                </time>
-            </span>
-        </li>
-    {% endfor %}
-</ul>
+<main role="main">
+    <div class="wrapper">
+        <ul class="posts">
+            {% for post in site.posts %}
+                <li class="posts__item">
+                    <a class="posts__title" href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+
+                    <span class="posts__meta">
+                        <time class="posts__timestamp" datetime="{{ post.date | date:"%Y-%m-%d" }}">
+                            {{ post.date | date: "%B %-d, %Y" }}
+                        </time>
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</main>

@@ -1,20 +1,21 @@
 .nav {
-	float: right;
+    margin-top: $spacing-unit;
 }
 
 .nav__link {
-	@include unstyled-link();
-	display: block;
-	color: $color-white;
-	@include font-size(24px);
-	@extend .heading;
-
-	@include attention() {
-		border: none;
-	}
+    @include unstyled-link();
+    @include font-size(24px);
+    @extend .heading;
+    display: block;
+    margin-bottom: $spacing-unit;
+    color: $color-white;
 }
 
 @include media-query(lap-and-up) {
+    .nav__link {
+        margin-right: $spacing-unit;
+        display: inline-block;
+    }
 }
 
 @include media-query(desk) {

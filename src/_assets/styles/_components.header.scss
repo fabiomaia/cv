@@ -1,27 +1,57 @@
 .header {
-    background: $color-green url('../images/header1.jpeg');
-    background-position: bottom;
+    background-color: $color-gray;
+    background-size: cover;
+    background-position: center;
     color: $color-white;
-    padding: ($spacing-unit * 8) 0;
+    padding: ($spacing-unit * 2) 0;
+    text-align: center;
+}
+
+.header--index {
+    height: 100vh;
+
+    .wrapper {
+        @include vertical-align();
+    }
 }
 
 .header__logo {
-    @include unstyled-link();
-    text-transform: uppercase;
-    @include font-size(24px);
-    font-family: $fonts-headings;
-    font-weight: 900;
-    float: left;
+    @include font-size(32px);
+    @extend .heading;
+    padding: ($spacing-unit * 0.5) ($spacing-unit * 1);
+    background: $color-white;
+    display: inline-block;
+
+    span {
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-color: $color-gray;
+        background-position: center;
+    }
+
+    @include attention() {
+        background: rgba(255, 255, 255, 0.6);
+    }
 }
 
 @include media-query(lap) {
-    .header {
+    .header__logo {
+        padding: ($spacing-unit * 1) ($spacing-unit * 1);
+        @include font-size(48px);
+    }
 
+    .header {
+        padding: ($spacing-unit * 6) 0;
     }
 }
 
 @include media-query(desk) {
-    .header {
+    .header__logo {
+        padding: ($spacing-unit * 1) ($spacing-unit * 2);
+        @include font-size(64px);
+    }
 
+    .header {
+        padding: ($spacing-unit * 4) 0;
     }
 }
