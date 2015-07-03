@@ -199,7 +199,10 @@ gulp.task('watch', function() {
  ********************************/
 
 gulp.task('deploy', ['build'], function() {
-    return gulp.src(paths.root.dist + '/**/*')
+    return gulp.src([
+            paths.root.dist + '/**/*',
+            './CNAME'
+        ])
         .pipe(deploy());
 });
 
