@@ -19,13 +19,13 @@
     @include font-size(32px);
     @extend .heading;
     padding: ($spacing-unit * 0.5) ($spacing-unit * 1);
-    background: $color-white;
+    color: $color-white;
     display: inline-block;
 
     span {
+        color: $color-white;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        background-color: $color-gray;
         background-position: center;
     }
 
