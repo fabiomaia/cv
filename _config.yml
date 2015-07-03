@@ -37,7 +37,7 @@ excerpt_separator: "\n\n"
 detach:  false
 port:    4000
 host:    0.0.0.0
-baseurl: "https://fabiomaia.pt" # does not include hostname
+baseurl: "//fabiomaia.pt" # does not include hostname
 
 # Backwards-compatibility
 relative_permalinks: false
