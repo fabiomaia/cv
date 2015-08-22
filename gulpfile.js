@@ -3,13 +3,15 @@
 var gulp = require('gulp');
 
 /********************************
- ** HELPERS
+ ** Helpers
  ********************************/
 
-var error = function(err) { utils.log(utils.colors.green(err)); }
+var error = function error(err) {
+    utils.log(utils.colors.green(err));
+};
 
 /********************************
- ** PLUGINS
+ ** Plugins
  ********************************/
 
 var plumber = require('gulp-plumber');
@@ -19,71 +21,68 @@ var utils = require('gulp-util');
 var spawn = require('child_process').spawn;
 var glob = require('glob');
 var runSequence = require('run-sequence');
-var deploy = require("gulp-gh-pages");
 var imagesMinify = require('gulp-imagemin');
 var htmlMinify = require('gulp-minify-html');
 var cssCompile = require('gulp-sass');
-var cssMinify = require('gulp-csso');
 var cssPrefix = require('gulp-autoprefixer');
 var cssUnused = require('gulp-uncss');
+var cssMinify = require('gulp-csso');
+var postcss = require('gulp-postcss');
 var jsLint = require('gulp-jshint');
 var jsMinify = require('gulp-uglify');
+var deploy = require('gulp-gh-pages');
 
 /********************************
- ** PATHS
+ ** Paths
  ********************************/
 
 var paths = {
-    root: {
-        src: './src',
-        dist: './dist',
-    }
+    src: './src',
+    dist: './dist',
+    bower: './bower_components'
 };
 
-paths.bower = paths.root.src + '/_assets/bower_components';
-
 paths.markup = {
-    src: paths.root.dist,
-    dest: paths.root.dist
+    src: paths.dist,
+    dest: paths.dist
 };
 
 paths.images = {
-    src: paths.root.src + '/_assets/images',
-    dest: paths.root.dist + '/assets/images'
+    src: paths.src + '/_assets/images',
+    dest: paths.dist + '/assets/images'
 };
 
 paths.styles = {
-    src: paths.root.src + '/_assets/styles',
-    dest: paths.root.dist + '/assets/styles'
+    src: paths.src + '/_assets/styles',
+    dest: paths.dist + '/assets/styles'
 };
 
 paths.scripts = {
-    src: paths.root.src + '/_assets/scripts',
-    dest: paths.root.dist + '/assets/scripts'
+    src: paths.src + '/_assets/scripts',
+    dest: paths.dist + '/assets/scripts'
 };
 
 paths.fonts = {
-    src: paths.root.src + '/_assets/fonts',
-    dest: paths.root.dist + '/assets/fonts'
+    src: paths.src + '/_assets/fonts',
+    dest: paths.dist + '/assets/fonts'
 };
 
 /********************************
- ** TASK: CLEAN
+ ** Task: clean
  ********************************/
 
-gulp.task('clean', del.bind(null, [paths.root.dist]));
+gulp.task('clean', del.bind(null, [paths.dist]));
 
 /********************************
- ** TASK: JEKYLL
+ ** Task: jekyll
  ********************************/
 
 gulp.task('jekyll', function(callback) {
-    return spawn('jekyll', ['build'], { stdio: 'inherit' })
-        .on('close', callback);
+    return spawn('jekyll', ['build'], { stdio: 'inherit' }).on('close', callback);
 });
 
 /********************************
- ** TASK: MARKUP
+ ** Task: markup
  ********************************/
 
 gulp.task('markup', function() {
@@ -96,7 +95,7 @@ gulp.task('markup', function() {
 });
 
 /********************************
- ** TASK: IMAGES
+ ** Task: images
  ********************************/
 
 gulp.task('images', function() {
@@ -112,7 +111,7 @@ gulp.task('images', function() {
 });
 
 /********************************
- ** TASK: STYLES
+ ** Task: styles
  ********************************/
 
 gulp.task('styles', function() {
@@ -124,8 +123,12 @@ gulp.task('styles', function() {
             style: 'expanded',
         }))
         .pipe(cssUnused({
-            html: glob.sync(paths.markup.dest + '/**/*.html')
+            html: glob.sync(paths.markup.dest + '/**/*.html'),
+            ignore: ['.random-bg--flowers', '.random-bg--mountain', '.random-bg--valley', '.random-bg--forest']
         }))
+        .pipe(postcss([
+            require('postcss-font-magician')({})
+        ]))
         .pipe(cssPrefix(
             'ie >= 10',
             'ie_mob >= 10',
@@ -142,7 +145,7 @@ gulp.task('styles', function() {
 });
 
 /********************************
- ** TASK: SCRIPTS
+ ** Task: scripts
  ********************************/
 
 gulp.task('scripts', function() {
@@ -160,7 +163,7 @@ gulp.task('scripts', function() {
 });
 
 /********************************
- ** TASK: FONTS
+ ** Task: fonts
  ********************************/
 
 gulp.task('fonts', function() {
@@ -175,7 +178,7 @@ gulp.task('fonts', function() {
 });
 
 /********************************
- ** TASK: BUILD
+ ** Task: build
  ********************************/
 
 gulp.task('build', ['clean'], function(callback) {
@@ -183,31 +186,31 @@ gulp.task('build', ['clean'], function(callback) {
 });
 
 /********************************
- ** TASK: WATCH
+ ** Task: watch
  ********************************/
 
 gulp.task('watch', function() {
-    gulp.watch([paths.root.src + '/**/*.html', paths.root.src + '/**/*.md'], ['build']);
-    gulp.watch(paths.styles.src + '/**/*.scss',                    ['styles']);
-    gulp.watch(paths.scripts.src + '/**/*.js',                     ['scripts']);
-    gulp.watch(paths.images.src + '/*',                            ['images']);
-    gulp.watch(paths.fonts.src + '/*',                             ['fonts']);
+    gulp.watch([paths.src + '/**/*.html', paths.src + '/**/*.md'], ['build']);
+    gulp.watch([paths.styles.src + '/**/*.scss'],                            ['styles']);
+    gulp.watch([paths.scripts.src + '/**/*.js'],                             ['scripts']);
+    gulp.watch([paths.images.src + '/*'],                                    ['images']);
+    gulp.watch([paths.fonts.src + '/*'],                                     ['fonts']);
 });
 
 /********************************
- ** TASK: DEPLOY
+ ** Task: deploy
  ********************************/
 
 gulp.task('deploy', ['build'], function() {
     return gulp.src([
-            paths.root.dist + '/**/*',
+            paths.dist + '/**/*',
             './CNAME'
         ])
         .pipe(deploy());
 });
 
 /********************************
- ** TASK: DEFAULT
+ ** Task: default
  ********************************/
 
 gulp.task('default', [
