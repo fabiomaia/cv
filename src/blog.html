@@ -12,13 +12,11 @@ permalink:   "blog/"
         <ul class="posts">
             {% for post in site.posts %}
                 <li class="posts__item">
-                    <a class="posts__title" href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                    <a class="posts__title truncate-text" href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
 
-                    <span class="posts__meta">
-                        <time class="posts__timestamp" datetime="{{ post.date | date:"%Y-%m-%d" }}">
-                            {{ post.date | date: "%B %-d, %Y" }}
-                        </time>
-                    </span>
+                    <time class="posts__timestamp" datetime="{{ post.date | date:"%Y-%m-%d" }}">
+                        {{ post.date | date: "%B %-d, %Y" }}
+                    </time>
                 </li>
             {% endfor %}
         </ul>

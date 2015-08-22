@@ -1,15 +1,10 @@
-// Google Fonts
-@import url(//fonts.googleapis.com/css?family=Source+Serif+Pro:400,700,400italic);
-@import url(//fonts.googleapis.com/css?family=Raleway:700,800,900);
-
 // Font Stack
-$fonts-consolas:         'Consolas', monospace;
 $fonts-source-serif-pro: 'Source Serif Pro', serif;
 $fonts-raleway:          'Raleway', sans-serif;
 
 // Semantic Fonts
-$fonts-code:     $fonts-consolas;
+$fonts-code:     monospace;
 $fonts-headings: $fonts-raleway;
 $fonts-body:     $fonts-source-serif-pro;
-$fonts-base:     $fonts-source-serif-pro;
 $fonts-lead:     $fonts-source-serif-pro;
+$fonts-base:     $fonts-source-serif-pro;

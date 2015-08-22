@@ -1,8 +1,8 @@
-<header class="header {% if page.pagename %}header--{{ page.pagename }}{% endif %}" role="banner">
+<header class="header{% if page.pagename %} header--{{ page.pagename }}{% endif %}" role="banner">
     <div class="wrapper">
         <a class="header__logo" href="/"><span>Fábio Maia</span></a>
 
-        {% if page.pagename %}
+        {% if page.pagename == "index" %}
             <nav class="nav">
                 <a class="nav__link nav__link--twitter" href="https://twitter.com/{{ site.data.about.twitter }}">
                     <i class="fa fa-twitter"></i>
@@ -12,6 +12,11 @@
                 <a class="nav__link nav__link--github" href="https://github.com/{{ site.data.about.github }}">
                     <i class="fa fa-github"></i>
                     <span>GitHub</span>
+                </a>
+
+                <a class="nav__link nav__link--blog" href="/blog">
+                    <i class="fa fa-book"></i>
+                    <span>Blog</span>
                 </a>
             </nav>
         {% endif %}

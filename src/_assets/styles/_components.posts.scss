@@ -1,42 +1,53 @@
 .posts {
     @extend .unlist;
+    padding: $spacing-unit * 2;
 }
 
 .posts__item {
     @include unstyled-link();
-    background-color: $color-yellow;
     margin-bottom: $spacing-unit;
-    @extend %clearfix;
+}
+
+.truncate-text {
+    max-width:100%;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    white-space:nowrap!important;
+    word-wrap:normal!important;
 }
 
 .posts__title {
     @include font-size(24px);
-    color: lighten($color-black, 10) !important;
     @extend .heading;
-}
+    color: $color-black !important;
+    display: block;
 
-.posts__meta {
-    @include font-size(14px);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-family: $fonts-headings;
-    color: $color-gray;
+    @include attention() {
+        background: $color-black;
+        color: $color-white !important;
+    }
 }
 
 .posts__timestamp {
-    float: none;
+    @include font-size(14px);
+    text-transform: uppercase;
+    font-family: $fonts-headings;
+    color: $color-gray;
+    letter-spacing: 1px;
     display: block;
 }
 
 @include media-query(lap-and-up) {
+
+    .posts__title {
+        float: left;
+    }
+
     .posts__timestamp {
         float: right;
         margin-left: $spacing-unit;
     }
 
-    .posts__title {
-        float: left;
-    }
 }
 
 @include media-query(desk) {

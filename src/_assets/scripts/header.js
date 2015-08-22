@@ -1,19 +1,42 @@
 (function() {
-    // Return a random integer between min and max
-    var randomIntBetween = function(min, max) {
+    /* Returns a random integer between min and max
+     * @param {number} min
+     * @param {number} max
+     * @return {number} Random integer between min and max
+     */
+    var randomIntBetween = function randomIntBetween(min, max) {
         return Math.floor(Math.random()*(max-min+1)+min);
     };
 
-    // Return a random element from an array
-    var randomArrayElement = function(array) {
+    /* Returns a random element from array
+     * @param {Object[]} array
+     * @return {Object} Random element from array
+     */
+    var randomArrayElement = function randomArrayElement(array) {
         return array[randomIntBetween(0, array.length-1)];
     };
 
-    // Return true if webkit based browser
-    var isWebKit = 'WebkitAppearance' in document.documentElement.style;
+    /* Returns if the browser is webkit-based
+     * @return {boolean} Is webkit-based browser
+     */
+    var isWebKit = function isWebKit() {
+        return 'WebkitAppearance' in document.documentElement.style;
+    };
 
-    // List of header images
-    var images = ['header2.jpg', 'header3.jpeg', 'header5.jpg', 'header6.jpg'];
+    /* Applies a class modifier to element
+     * @param {Object} element
+     * @param {string} baseClass
+     * @param {string} modifier
+     */
+    var applyClassModifier = function applyClassModifier(element, baseClass, modifier) {
+        element.className += ' ' + baseClass + '--' + modifier;
+    };
+
+    // The classname of the random background styles
+    var baseClassName = 'random-bg';
+
+    // List of class modifiers
+    var modifiers = ['flowers', 'forest', 'mountain', 'valley'];
 
     // Query the DOM for the elements
     var header = document.querySelector('.header');
@@ -21,12 +44,12 @@
     var headerLogoSpan = document.querySelector('.header__logo span');
 
     // Calculate the random image to be loaded
-    var randomImageFilename = randomArrayElement(images);
+    var randomModifier = randomArrayElement(modifiers);
 
-    // Set an initial random image
-    header.style.backgroundImage = "url('../assets/images/" + randomImageFilename + "')";
+    // Apply the random class modifier to load a background image
+    applyClassModifier(header, baseClassName, randomModifier);
     if(isWebKit) {
         headerLogo.style.backgroundColor = '#fff';
-        headerLogoSpan.style.backgroundImage = "url('../assets/images/" + randomImageFilename + "')";
+        applyClassModifier(headerLogoSpan, baseClassName, randomModifier);
     }
 })();

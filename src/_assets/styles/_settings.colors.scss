@@ -1,9 +1,9 @@
 // Color Palette
-$color-red:         red;
+$color-red:         #ff0000;
 $color-pink:        #FF4867;
 $color-pink--light: #FFA68F;
 $color-purple:      #5c4283;
-$color-blue:        #57D6F2;
+$color-blue:        #107be8;
 $color-blue--light: #0080E8;
 $color-green:       #a1db30;
 $color-orange:      #fe8346;
@@ -17,10 +17,10 @@ $color-black:       #333;
 $color-yellow:      #ffd21c;
 
 // Semantic Colors
-$color-brand:       $color-orange;
-$color-paragraph:   #3A4145;
-$color-positive:    #3f990f;
-$color-negative:    #9f102e;
+$color-brand:       $color-blue;
+$color-paragraph:   $color-black;
+$color-positive:    $color-green;
+$color-negative:    $color-red;
 $color-highlight:   rgba(0, 0, 0, 0.2);
 
 // Buttons
@@ -35,20 +35,15 @@ $inuit-base-text-color:         $color-paragraph;
 // Links
 $color-links:           $color-brand;
 
-// Text
-$color-code:            $color-green;
+// Code
+$color-code:            $color-black;
 $color-pre-background:  $color-gray;
 $color-pre:             #fff;
 
 // Headings
-$color-headings:    $color-brand;
+$color-headings:    $color-gray;
 $color-heading-sub: $color-gray;
 
 // Quotes
 $color-quote:           $color-gray--light;
 $color-quote--banner:   $color-gray;
-
-// Boxes
-$color-box-highlight-background:    $color-highlight;
-$color-box-highlight-border:        $color-gray--ui;
-$color-box-tint-background:         $color-tint;

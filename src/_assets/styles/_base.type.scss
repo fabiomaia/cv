@@ -2,7 +2,7 @@
  * Headings 1–6.
  */
 @include headings() {
-    font-family: $fonts-headings;
+    @extend .heading;
 }
 
 /**
@@ -12,13 +12,6 @@
     font-family: $fonts-headings;
     text-transform: uppercase;
     font-weight: 900;
-}
-
-.heading-sub {
-    @include font-size(16px);
-    @include font-weight(bold);
-    margin-bottom: 0;
-    color: $color-heading-sub;
 }
 
 /**
@@ -43,7 +36,12 @@ pre {
     word-wrap: normal;
     overflow: auto;
     padding: $spacing-unit--small;
-    border-radius: $base-round;
+
+    &,
+    code, kbd, samp {
+        color: $color-pre;
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
 }
 
 
