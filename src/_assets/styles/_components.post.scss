@@ -1,8 +1,8 @@
-.page {
+.post {
+    padding: $spacing-unit * 2;
 }
 
-.page__header {
-    padding: $spacing-unit * 2;
+.post__header {
     color: $color-black;
     background-position: bottom center;
     background-size: cover;
@@ -12,38 +12,37 @@
     }
 }
 
-.page__header--index {
-    .page__title {
+.post__header--index {
+    .post__title {
         @include font-size(98px, 1.2);
     }
 }
 
-.page__title {
+.post__title {
     @extend .heading;
     @include font-size(28px, 1.2);
 }
 
-.page__description {
+.post__description {
     @include font-size(24px, 1.7);
     color: lighten($color-black, 10%);
 }
 
-.page__meta {
+.post__meta {
+    padding-bottom: $spacing-unit * 2;
     text-align: center;
     display: block;
     text-transform: uppercase;
     @include font-size(14px);
-    color: rgba(255, 255, 255, 0.5);
 }
 
-.page__body {
-    padding: $spacing-unit * 2;
+.post__body {
     @include font-size(21px, 1.7);
     font-family: $fonts-body;
 }
 
 @include media-query(lap-and-up) {
-    .page__body {
+    .post__body {
         text-align: justify;
     }
 }
@@ -52,7 +51,7 @@
 }
 
 @include media-query(desk) {
-    .page__title {
+    .post__title {
         @include font-size(32px);
     }
 }
