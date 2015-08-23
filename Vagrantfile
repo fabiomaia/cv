@@ -2,9 +2,9 @@
 # vi: set ft=ruby :
 
 # Config Github Settings
-github_username = "fideloper"
+github_username = "faviouz"
 github_repo     = "Vaprobash"
-github_branch   = "1.4.0"
+github_branch   = "fix-gitconfig-overwrite"
 github_url      = "https://raw.githubusercontent.com/#{github_username}/#{github_repo}/#{github_branch}"
 
 # Because this:https://developer.github.com/changes/2014-12-08-removing-authorizations-token/
@@ -184,7 +184,7 @@ Vagrant.configure("2") do |config|
   ##########
 
   # Provision Base Packages
-  # config.vm.provision "shell", path: "#{github_url}/scripts/base.sh", args: [github_url, server_swap, server_timezone]
+  config.vm.provision "shell", path: "#{github_url}/scripts/base.sh", args: [github_url, server_swap, server_timezone]
 
   # optimize base box
   config.vm.provision "shell", path: "#{github_url}/scripts/base_box_optimizations.sh", privileged: true
@@ -196,7 +196,7 @@ Vagrant.configure("2") do |config|
   # config.vm.provision "shell", path: "#{github_url}/scripts/mssql.sh"
 
   # Provision Vim
-  # config.vm.provision "shell", path: "#{github_url}/scripts/vim.sh", args: github_url
+  config.vm.provision "shell", path: "#{github_url}/scripts/vim.sh", args: github_url
 
   # Provision Docker
   # config.vm.provision "shell", path: "#{github_url}/scripts/docker.sh", args: "permissions"
