@@ -2,9 +2,9 @@
 # vi: set ft=ruby :
 
 # Config Github Settings
-github_username = "faviouz"
+github_username = "fideloper"
 github_repo     = "Vaprobash"
-github_branch   = "fix-gitconfig-overwrite"
+github_branch   = "master"
 github_url      = "https://raw.githubusercontent.com/#{github_username}/#{github_repo}/#{github_branch}"
 
 # Because this:https://developer.github.com/changes/2014-12-08-removing-authorizations-token/
@@ -21,7 +21,7 @@ hostname        = "fabiomaia.dev"
 #   10.0.0.1    - 10.255.255.254
 #   172.16.0.1  - 172.31.255.254
 #   192.168.0.1 - 192.168.255.254
-server_ip             = "192.168.22.11"
+server_ip             = "192.168.22.10"
 server_cpus           = "1"   # Cores
 server_memory         = "384" # MB
 server_swap           = "768" # Options: false | int (MB) - Guideline: Between one or two times the server_memory
@@ -45,6 +45,9 @@ php_timezone          = "UTC"    # http://php.net/manual/en/timezones.php
 php_version           = "5.6"    # Options: 5.5 | 5.6
 ruby_version          = "latest" # Choose what ruby version should be installed (will also be the default version)
 ruby_gems             = [        # List any Ruby Gems that you want to install
+  #"jekyll",
+  #"sass",
+  #"compass",
   "github-pages",
 ]
 
@@ -72,8 +75,10 @@ symfony_root_folder   = "/vagrant/symfony" # Where to install Symfony.
 
 nodejs_version        = "latest"   # By default "latest" will equal the latest stable version
 nodejs_packages       = [          # List any global NodeJS packages that you want to install
+  #"grunt-cli",
   "gulp",
   "bower",
+  #"yo",
 ]
 
 # RabbitMQ settings
