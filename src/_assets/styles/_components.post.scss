@@ -39,6 +39,10 @@
 .post__body {
     @include font-size(21px, 1.7);
     font-family: $fonts-body;
+
+    img {
+        text-align: center;
+    }
 }
 
 @include media-query(lap-and-up) {
