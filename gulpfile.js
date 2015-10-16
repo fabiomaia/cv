@@ -28,8 +28,6 @@ var cssPrefix = require('gulp-autoprefixer');
 var cssUnused = require('gulp-uncss');
 var cssMinify = require('gulp-csso');
 var postcss = require('gulp-postcss');
-var jsLint = require('gulp-jshint');
-var jsMinify = require('gulp-uglify');
 var deploy = require('gulp-gh-pages');
 
 /********************************
@@ -99,7 +97,7 @@ gulp.task('markup', function() {
  ********************************/
 
 gulp.task('images', function() {
-    return gulp.src(paths.images.src + '/*')
+    return gulp.src(paths.images.src + '/**/*')
         .pipe(plumber({
             errorHandler: error
         }))
@@ -122,10 +120,9 @@ gulp.task('styles', function() {
         .pipe(cssCompile({
             style: 'expanded',
         }))
-        .pipe(cssUnused({
-            html: glob.sync(paths.markup.dest + '/**/*.html'),
-            ignore: ['.random-bg--flowers', '.random-bg--mountain', '.random-bg--valley', '.random-bg--forest']
-        }))
+        // .pipe(cssUnused({
+        //     html: glob.sync(paths.markup.dest + '/**/*.html')
+        // }))
         .pipe(postcss([
             require('postcss-font-magician')({})
         ]))
@@ -142,24 +139,6 @@ gulp.task('styles', function() {
         ))
         .pipe(cssMinify())
         .pipe(gulp.dest(paths.styles.dest));
-});
-
-/********************************
- ** Task: scripts
- ********************************/
-
-gulp.task('scripts', function() {
-    return gulp.src([
-            paths.scripts.src + '/**/*.js',
-        ])
-        .pipe(plumber({
-            errorHandler: error
-        }))
-        .pipe(jsLint())
-        .pipe(jsLint.reporter('default'))
-        .pipe(concat('main.js'))
-        .pipe(jsMinify())
-        .pipe(gulp.dest(paths.scripts.dest));
 });
 
 /********************************
@@ -182,7 +161,7 @@ gulp.task('fonts', function() {
  ********************************/
 
 gulp.task('build', ['clean'], function(callback) {
-    runSequence('jekyll', ['markup', 'images', 'styles', 'scripts', 'fonts'], callback);
+    runSequence('jekyll', ['markup', 'images', 'styles', 'fonts'], callback);
 });
 
 /********************************
@@ -191,10 +170,9 @@ gulp.task('build', ['clean'], function(callback) {
 
 gulp.task('watch', function() {
     gulp.watch([paths.src + '/**/*.html', paths.src + '/**/*.md'], ['build']);
-    gulp.watch([paths.styles.src + '/**/*.scss'],                            ['styles']);
-    gulp.watch([paths.scripts.src + '/**/*.js'],                             ['scripts']);
-    gulp.watch([paths.images.src + '/*'],                                    ['images']);
-    gulp.watch([paths.fonts.src + '/*'],                                     ['fonts']);
+    gulp.watch([paths.styles.src + '/**/*.scss'],                  ['styles']);
+    gulp.watch([paths.images.src + '/*'],                          ['images']);
+    gulp.watch([paths.fonts.src + '/*'],                           ['fonts']);
 });
 
 /********************************
