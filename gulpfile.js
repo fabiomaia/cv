@@ -19,13 +19,12 @@ var concat = require('gulp-concat');
 var del = require('del');
 var utils = require('gulp-util');
 var spawn = require('child_process').spawn;
-var glob = require('glob');
 var runSequence = require('run-sequence');
 var imagesMinify = require('gulp-imagemin');
 var htmlMinify = require('gulp-minify-html');
 var cssCompile = require('gulp-sass');
 var cssPrefix = require('gulp-autoprefixer');
-var cssUnused = require('gulp-uncss');
+var cssUnused = require('gulp-purifycss');
 var cssMinify = require('gulp-csso');
 var postcss = require('gulp-postcss');
 var deploy = require('gulp-gh-pages');
@@ -120,11 +119,11 @@ gulp.task('styles', function() {
         .pipe(cssCompile({
             style: 'expanded',
         }))
-        // .pipe(cssUnused({
-        //     html: glob.sync(paths.markup.dest + '/**/*.html')
-        // }))
         .pipe(postcss([
             require('postcss-font-magician')({})
+        ]))
+        .pipe(cssUnused([
+            paths.markup.dest + '/**/*.html'
         ]))
         .pipe(cssPrefix(
             'ie >= 10',
