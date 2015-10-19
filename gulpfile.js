@@ -3,14 +3,6 @@
 var gulp = require('gulp');
 
 /********************************
- ** Helpers
- ********************************/
-
-var error = function error(err) {
-    utils.log(utils.colors.green(err));
-};
-
-/********************************
  ** Plugins
  ********************************/
 
@@ -30,13 +22,21 @@ var postcss = require('gulp-postcss');
 var deploy = require('gulp-gh-pages');
 
 /********************************
+ ** Helpers
+ ********************************/
+
+var error = function error(err) {
+    utils.log(utils.colors.green(err));
+};
+
+/********************************
  ** Paths
  ********************************/
 
 var paths = {
     src: './src',
     dist: './dist',
-    bower: './bower_components'
+    npm: './node_modules'
 };
 
 paths.markup = {
@@ -101,8 +101,9 @@ gulp.task('images', function() {
             errorHandler: error
         }))
         .pipe(imagesMinify({
+            interlaced: true,
             progressive: true,
-            interlaced: true
+            optimizationLevel: 3
         }))
         .pipe(gulp.dest(paths.images.dest));
 });
@@ -147,7 +148,7 @@ gulp.task('styles', function() {
 gulp.task('fonts', function() {
     return gulp.src([
             paths.fonts.src + '/*',
-            paths.bower + '/fontawesome/fonts/*'
+            paths.npm + '/font-awesome/fonts/*'
         ])
         .pipe(plumber({
             errorHandler: error

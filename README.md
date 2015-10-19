@@ -21,7 +21,6 @@ $ cd /vagrant
 
 ```shell
 $ npm install
-$ bower install
 ```
 
 ## Build
