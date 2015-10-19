@@ -2,8 +2,8 @@
  * Settings
  */
 
-@import "../../../bower_components/inuit-defaults/settings.defaults";
-@import "../../../bower_components/inuit-responsive-settings/settings.responsive";
+@import "../../../node_modules/inuit-defaults/settings.defaults";
+@import "../../../node_modules/inuit-responsive-tools/node_modules/inuit-responsive-settings/settings.responsive";
 @import "settings.global";
 @import "settings.fonts";
 @import "settings.colors";
@@ -12,25 +12,25 @@
  * Tools
  */
 
-@import "../../../bower_components/fontawesome/scss/font-awesome";
-@import "../../../bower_components/inuit-functions/tools.functions";
+@import "../../../node_modules/font-awesome/scss/font-awesome";
+@import "../../../node_modules/inuit-functions/tools.functions";
 @import "tools.aliases";
-@import "../../../bower_components/inuit-mixins/tools.mixins";
+@import "../../../node_modules/inuit-mixins/tools.mixins";
 @import "tools.mixins";
-@import "../../../bower_components/inuit-responsive-tools/tools.responsive";
+@import "../../../node_modules/inuit-responsive-tools/tools.responsive";
 
 /*
  * Generic
  */
 
-@import "../../../bower_components/inuit-normalize/generic.normalize";
-@import "../../../bower_components/inuit-box-sizing/generic.box-sizing";
+@import "../../../node_modules/inuit-normalize/generic.normalize";
+@import "../../../node_modules/inuit-box-sizing/generic.box-sizing";
 
 /*
  * Base
  */
 
-@import "../../../bower_components/inuit-page/base.page";
+@import "../../../node_modules/inuit-page/base.page";
 @import "base.page";
 @import "base.links";
 @import "base.type";
@@ -39,8 +39,8 @@
  * Objects
  */
 
-@import "../../../bower_components/inuit-buttons/objects.buttons";
-@import "../../../bower_components/inuit-layout/objects.layout";
+@import "../../../node_modules/inuit-buttons/objects.buttons";
+@import "../../../node_modules/inuit-layout/objects.layout";
 @import "objects.wrapper";
 @import "objects.unlist";
 
@@ -59,4 +59,4 @@
  * Trumps
  */
 
-@import "../../../bower_components/inuit-clearfix/trumps.clearfix";
+@import "../../../node_modules/inuit-clearfix/trumps.clearfix";
