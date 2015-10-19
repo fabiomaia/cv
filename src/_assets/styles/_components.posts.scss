@@ -5,7 +5,7 @@
 
 .posts__item {
     @include unstyled-link();
-    margin-bottom: $spacing-unit;
+    margin-bottom: $spacing-unit * 2;
 }
 
 .truncate-text {
