@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+    {{>head}}
+
+    <body>
+        {{>header}}
+
+        <main role="main">
+            <div class="wrapper">
+                <article class="post">
+                    <header class="post__header">
+                        <span class="post__meta">
+                            <time class="post__timestamp" datetime="{{date}}">{{date}}</time>
+                        </span>
+
+                        <h1 class="post__title">{{title}}</h1>
+                    </header>
+
+                    <section class="post__body">
+                        {{{contents}}}
+                    </section>
+                </article>
+            </div>
+        </main>
+    </body>
+
+    {{>googleanalytics}}
+</html>

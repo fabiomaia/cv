@@ -1,21 +1,8 @@
-# fabiomaia.pt
+# fabiomaia.pt [![devDependency Status](https://david-dm.org/faviouz/fabiomaia.pt/dev-status.svg?style=flat-square)](https://david-dm.org/faviouz/fabiomaia.pt#info=devDependencies)
+
+> :house: Personal website
 
 ## Install
-
-### Repository
-
-```shell
-$ git clone git@github.com:faviouz/fabiomaia.pt.git
-$ cd fabiomaia.pt/
-```
-
-### Development Environment
-
-```shell
-$ vagrant up
-$ vagrant ssh
-$ cd /vagrant
-```
 
 ### Dependencies
 
@@ -26,11 +13,11 @@ $ npm install
 ## Build
 
 ```shell
-$ gulp
+$ npm run build
 ```
 
 ## Deploy
 
 ```shell
-$ gulp deploy
+$ npm run deploy
 ```

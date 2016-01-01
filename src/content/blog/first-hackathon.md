@@ -1,7 +1,9 @@
 ---
-layout:      "post"
 title:       "First Hackathon"
 description: "Thoughts and experiences at my first hackathon."
+date:        "2015-10-19"
+layout:      "post.hbs"
+collection:  "blog"
 ---
 
 A month ago I participated in a one-week hackathon, [Porto Summer of Code](http://www.portosummerofcode.com/), with two friends. We decided to build an app that algorithmically generated a tourism route from a given city and a set of interests. You input it your interests as a tourist and from your geographical location it suggests routes with potential points of interest. We called it *On My Way*. It looks something like this:

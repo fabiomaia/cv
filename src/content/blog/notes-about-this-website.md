@@ -1,7 +1,9 @@
 ---
-layout:      "post"
 title:       "Notes about this website"
 description: "A few notes about the engineering behind this very simple website."
+date:        "2015-08-20"
+layout:      "post.hbs"
+collection:  "blog"
 ---
 
 Rather than posting the extremely bland _Hello World_ first entry on my blog, I figured I should write something a little more useful. These are some notes about the engineering behind this very simple static website.
@@ -14,10 +16,10 @@ Thanks to [Vaprobash](https://github.com/fideloper/Vaprobash) I quickly whipped 
 
 To setup the virtual machine and SSH in I run:
 
-{% highlight bash %}
+```bash
 $ vagrant up
 $ vagrant ssh
-{% endhighlight %}
+```
 
 ## Markup
 
@@ -43,9 +45,9 @@ Every byte counts on shitty hotel Wi-Fi. With that in mind I made it a goal to:
 
 [gulp](http://gulpjs.com/) is managing the whole build process. To build once and automatically watch for changes to your assets I run:
 
-{% highlight bash %}
+```bash
 $ gulp
-{% endhighlight %}
+```
 
 ## Deploy
 
@@ -53,9 +55,9 @@ For simple static websites you can't really beat GitHub Pages. Free, 100% uptime
 
 When I'm ready to deploy a new blog post or push my latest changes, all I need to do is run:
 
-{% highlight bash %}
+```bash
 $ gulp deploy
-{% endhighlight %}
+```
 
 ## CloudFlare
 

@@ -1,14 +1,14 @@
-<header class="header{% if page.pagename %} header--{{ page.pagename }}{% endif %}" role="banner">
+<header class="header header--{{path}}" role="banner">
     <div class="wrapper">
-        <a class="header__logo" href="/"><span>{{ site.data.about.name }}</span></a>
+        <a class="header__logo" href="/"><span>{{ title }}</span></a>
 
         <nav class="nav">
-            <a class="nav__link nav__link--twitter" href="https://twitter.com/{{ site.data.about.twitter }}">
+            <a class="nav__link nav__link--twitter" href="https://twitter.com/{{twitter}}">
                 <i class="fa fa-twitter"></i>
                 <span>Twitter</span>
             </a>
 
-            <a class="nav__link nav__link--github" href="https://github.com/{{ site.data.about.github }}">
+            <a class="nav__link nav__link--github" href="https://github.com/{{github}}">
                 <i class="fa fa-github"></i>
                 <span>GitHub</span>
             </a>
