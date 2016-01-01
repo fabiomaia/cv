@@ -4,8 +4,6 @@
 
 ## Install
 
-### Dependencies
-
 ```shell
 $ npm install
 ```
