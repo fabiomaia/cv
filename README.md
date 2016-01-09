@@ -19,3 +19,8 @@ $ npm run build
 ```shell
 $ npm run deploy
 ```
+
+## Todo
+
+- metalsmith-sitemap
+- metalsmith-seo-checker
