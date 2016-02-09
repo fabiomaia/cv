@@ -1,9 +1,12 @@
 var metalsmith  = require('metalsmith');
+var changed     = require('metalsmith-changed');
+var date        = require('metalsmith-build-date');
 var markdown    = require('metalsmith-markdown');
 var prism       = require('metalsmith-prism');
 var permalinks  = require('metalsmith-permalinks');
 var collections = require('metalsmith-collections');
 var layouts     = require('metalsmith-layouts');
+var sitemap     = require('metalsmith-sitemap');
 
 metalsmith(__dirname)
     .source('./src/content')
@@ -18,10 +21,19 @@ metalsmith(__dirname)
         'twitter': 'faviouz',
         'github': 'faviouz'
     })
+    .clean(false)
+    .use(changed({
+        extnames: {
+            '.md': '.html'
+        }
+    ))
     .use(markdown({
         gfm: true,
         tables: true,
         langPrefix: 'language-'
+    }))
+    .use(date({
+        key: 'lastmod'
     }))
     .use(prism())
     .use(permalinks({
@@ -38,6 +50,9 @@ metalsmith(__dirname)
         engine: 'handlebars',
         directory: './src/layouts',
         partials: './src/layouts/partials'
+    }))
+    .use(sitemap({
+        'hostname': 'https://fabiomaia.pt'
     }))
     .build(function(err) {
         if(err) throw err;

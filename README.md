@@ -24,3 +24,4 @@ $ npm run deploy
 
 - metalsmith-sitemap
 - metalsmith-seo-checker
+- LaTeX font
