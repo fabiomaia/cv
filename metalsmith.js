@@ -26,7 +26,7 @@ metalsmith(__dirname)
         extnames: {
             '.md': '.html'
         }
-    ))
+    }))
     .use(markdown({
         gfm: true,
         tables: true,
