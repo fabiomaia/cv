@@ -1,0 +1,26 @@
+:root {
+    --color-green: #AEEE00;
+    --color-black: #333;
+    --color-white: #fff;
+}
+
+html {
+    font-size: calc(1em + 0.5vw);
+    font-family: sans-serif;
+}
+
+body {
+    background: var(--color-white);
+    color: var(--color-black);
+}
+
+.container {
+    width: 60%;
+    margin: 0 auto;
+}
+
+/*
+h1:before { content: '# '; }
+h2:before { content: '## '; }
+h3:before { content: '### '; }
+*/

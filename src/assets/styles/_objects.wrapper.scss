@@ -1,9 +1,0 @@
-.wrapper {
-    max-width: 720px;
-    margin: 0 auto;
-}
-
-@include media-query(lap-and-up) {
-    .wrapper {
-    }
-}
