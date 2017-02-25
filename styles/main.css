@@ -57,12 +57,14 @@ a:visited {
     font-weight: 900;
     font-size: 4em;
     text-transform: uppercase;
+    margin: 0;
 }
 
 .header-nav {
     list-style: none;
     padding: 0;
     margin: 0;
+    padding-top: 3em;
 }
 
 .head-nav-item {
@@ -77,4 +79,41 @@ a:visited {
 .footer {
     padding: 2em 0;
     background: var(--color-pink);
+}
+
+.icon > svg {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    vertical-align: middle;
+}
+
+.icon > svg path {
+    fill: var(--color-white);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+} 
+
+    nav ul {
+        display: flex;
+    }
+
+        nav ul a {
+            padding: 1rem 2rem;
+        }
+
+dl {
+    padding-left: 2rem;
+    margin: 1rem 0;
+}
+
+dt {
+    margin-bottom: 0.5em;
+}
+
+dd {
+    margin-bottom: 1.5em;
 }
