@@ -50,24 +50,34 @@ a:visited {
 
 .header {
     background: var(--color-green);
-    padding: 2em 0;
+    padding: 4rem 0;
 }
 
 .header-title {
     font-weight: 900;
-    font-size: 4em;
+    font-size: 3rem;
     text-transform: uppercase;
     margin: 0;
 }
 
+@media (min-width: 720px) {
+    .header {
+        padding: 5rem 0;
+    }
+
+    .header-title {
+        font-size: 4rem;
+    }
+}
+
 
 .main {
-    padding: 2em 0;
+    padding: 2rem 0;
     background: var(--color-blue);
 }
 
 .footer {
-    padding: 2em 0;
+    padding: 2rem 0;
     background: var(--color-pink);
 }
 
@@ -108,13 +118,19 @@ nav {
 
 .skills {
     margin: 0;
-    padding: 0; 
+    padding: 0;
 }
 
     .skills li {
-        display: inline-block;
+        display: block;
         margin-bottom: 1rem;
         margin-right: 4rem;
+    }
+
+    @media (min-width: 720px) {
+        .skills li {
+            display: inline-block;
+        }
     }
 
         .skills li ul {
@@ -142,6 +158,6 @@ dt {
 }
 
 dd {
-    margin-bottom: 1.5em;
+    margin-bottom: 1.5rem;
 }
 
