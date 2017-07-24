@@ -74,7 +74,7 @@ a:visited {
 
 @media (min-width: 720px) {
     .header {
-        padding: 2rem 0;
+        padding: 3rem 0;
     }
 
     .header-title {
@@ -152,7 +152,7 @@ a:visited {
         }
 
             .skills li ul li {
-                background: var(--color-grey);
+                background: var(--color-green);
                 color: var(--color-white);
                 margin: 0.5rem 0;
                 padding: 0.2rem 0.5rem;
