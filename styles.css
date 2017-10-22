@@ -54,36 +54,18 @@ a:hover, a:active {
     color: var(--color-white);
     font-weight: 900;
     font-size: 2rem;
-    margin: 0;
-    margin-bottom: 1rem;
+    margin: 0 0 1rem 0;
 }
 
-.header-social {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: inline-block;
+.header-social-item {
+    font-style: normal;
+    color: var(--color-white) !important;
+    padding-right: 2rem;
 }
 
-    .header-social-item {
-        display: inline-block;
-        font-style: normal;
-        font-size: 0.9rem;
-    }
-
-        .header-social-item a {
-            color: var(--color-white);
-            padding: 1rem;
-        }
-
-        .header-social-item .icon {
-            margin-right: 0.5rem;
-        }
-
-.icon > svg {
-    display: inline-block;
+.icon {
+    margin-right: 0.5rem;
     width: 1rem;
-    height: 1rem;
     vertical-align: middle;
     fill: var(--color-white);
 }
@@ -93,7 +75,6 @@ a:hover, a:active {
  ******************************************************************************/
 
 .main {
-    padding: 1rem 0;
     background: var(--color-white);
 }
 
