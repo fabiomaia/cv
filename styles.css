@@ -75,6 +75,7 @@ a:hover, a:active {
  ******************************************************************************/
 
 .main {
+    padding-top: 1rem;
     background: var(--color-white);
 }
 
