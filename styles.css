@@ -8,6 +8,7 @@
     --color-green: rgb(161, 222, 96);
     --color-white: rgb(255, 255, 255);
     --color-grey: #888;
+    --color-light-grey: #aaa;
 }
 
 html {
@@ -19,14 +20,21 @@ html {
 body {
     color: var(--color-grey);
     margin: 0;
+    padding: 1rem 2rem;
+    margin: 0 auto;
+    width: 50%;
 }
 
 h1, h2 {
     color: var(--color-green);
 }
 
+h2 {
+    border-bottom: 4px solid var(--color-green);
+}
+
 a:link, a:visited {
-    color: var(--color-green);
+    color: var(--color-grey);
     text-decoration: underline;
 }
 
@@ -34,24 +42,18 @@ a:hover, a:active {
     color: color(var(--color-green) shade(20%));
 }
 
-.container {
-    width: 50vw;
-    margin: 0 auto;
-}
 
 /******************************************************************************
  * Header
  ******************************************************************************/
 
 .header {
-    background: var(--color-green);
-    color: var(--color-white);
+    color: var(--color-green);
     padding: 2rem 0;
     text-align: center;
 }
 
 .header-title {
-    color: var(--color-white);
     font-weight: 900;
     font-size: 2rem;
     margin: 0 0 1rem 0;
@@ -59,7 +61,7 @@ a:hover, a:active {
 
 .header-social-item {
     font-style: normal;
-    color: var(--color-white) !important;
+    color: var(--color-green) !important;
     padding-right: 2rem;
 }
 
@@ -67,7 +69,7 @@ a:hover, a:active {
     margin-right: 0.5rem;
     width: 1rem;
     vertical-align: middle;
-    fill: var(--color-white);
+    fill: var(--color-green);
 }
 
 /******************************************************************************
