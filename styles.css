@@ -9,20 +9,25 @@
     --color-white: rgb(255, 255, 255);
     --color-grey: #888;
     --color-light-grey: #aaa;
+    --max-font: 1em;
+    --min-font: 1em;
+    --max-line-height: 1em;
 }
 
 html {
-    font-size: calc(0.9em + 0.1vw);
-    line-height: calc( 1.3em + ( 1.5 - 1.3 ) * ( ( 100vw - 21em ) / ( 35 - 21 ) ) ); /* https://blog.typekit.com/2016/08/17/flexible-typography-with-css-locks/ */
+    font-size: calc(1em + (1.3125 - 1) * ((100vw - 20em) / (80 - 20)));
+    line-height: calc(1.4em + (1.8 - 1.4) * ((100vw - 20em) / (80 - 20)));
     font-family: 'Open Sans', sans-serif;
 }
 
 body {
+    background: var(--color-white);
     color: var(--color-grey);
-    margin: 0;
-    padding: 1rem 2rem;
+    padding: 0 2rem;
     margin: 0 auto;
-    width: 50%;
+    width: calc(80vw);
+    min-width: 21em;
+    max-width: 35em;
 }
 
 h1, h2 {
@@ -39,7 +44,7 @@ a:link, a:visited {
 }
 
 a:hover, a:active {
-    color: color(var(--color-green) shade(20%));
+    color: var(--color-green);
 }
 
 
@@ -62,27 +67,19 @@ a:hover, a:active {
 .header-social-item {
     font-style: normal;
     color: var(--color-green) !important;
-    padding-right: 2rem;
+    padding: 0 1rem;
+    text-decoration: none !important;
+    display: inline-block;
+}
+
+.header-social-item span {
 }
 
 .icon {
+    width: 1.2rem;
     margin-right: 0.5rem;
-    width: 1rem;
     vertical-align: middle;
     fill: var(--color-green);
-}
-
-/******************************************************************************
- * Main
- ******************************************************************************/
-
-.main {
-    padding-top: 1rem;
-    background: var(--color-white);
-}
-
-.main section {
-    margin-bottom: 1rem;
 }
 
 /******************************************************************************
