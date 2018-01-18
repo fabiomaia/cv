@@ -80,6 +80,7 @@ a:hover, a:active {
     margin-right: 0.5rem;
     vertical-align: middle;
     fill: var(--color-green);
+    stroke: var(--color-green);
 }
 
 /******************************************************************************
