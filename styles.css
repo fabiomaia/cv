@@ -143,3 +143,10 @@ a:hover, a:active {
     margin: 0;
 }
 
+@media print {
+    body {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
