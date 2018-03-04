@@ -3,10 +3,9 @@
  ******************************************************************************/
 
 :root {
-    --color-green: rgb(161, 222, 96);
+    --color-green: rgb(11, 181, 0);
     --color-white: rgb(255, 255, 255);
-    --color-grey: #888;
-    --color-light-grey: #aaa;
+    --color-grey: #666;
     --max-font: 1em;
     --min-font: 1em;
     --max-line-height: 1em;
