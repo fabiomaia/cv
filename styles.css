@@ -11,6 +11,7 @@
     --max-line-height: 1em;
 }
 
+/* TODO: review fontsize/lineheight relationship */
 html {
     font-size: calc(1em + (1.3125 - 1) * ((100vw - 20em) / (80 - 20)));
     line-height: calc(1.4em + (1.8 - 1.4) * ((100vw - 20em) / (80 - 20)));
@@ -20,8 +21,8 @@ html {
 body {
     background: var(--color-white);
     color: var(--color-grey);
-    padding: 0 8vw;
     margin: 0 auto;
+    width: 80vw;
 }
 
 h1, h2 {
@@ -48,7 +49,7 @@ a:hover, a:active {
 
 .header {
     color: var(--color-green);
-    padding: 2rem 0;
+    padding: 2rem 0 1rem;
     text-align: center;
 }
 
