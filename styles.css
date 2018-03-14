@@ -20,9 +20,8 @@ html {
 body {
     background: var(--color-white);
     color: var(--color-grey);
-    padding: 0 2rem;
+    padding: 0 8vw;
     margin: 0 auto;
-    width: calc(80vw);
 }
 
 h1, h2 {
