@@ -79,34 +79,6 @@ a:hover, a:active {
 }
 
 /******************************************************************************
- * Skills
- ******************************************************************************/
-
-.skills {
-    margin: 0;
-    padding: 0;
-}
-
-    .skills li {
-        display: inline-block;
-        margin-bottom: 1rem;
-        margin-right: 2rem;
-    }
-
-        .skills li ul {
-            margin: 0;
-            padding: 0;
-        }
-
-            .skills li ul li {
-                background: var(--color-green);
-                color: var(--color-white);
-                margin: 0;
-                padding: 0 0.5rem;
-                display: inline-block;
-            }
-
-/******************************************************************************
  * Timeline
  ******************************************************************************/
 
