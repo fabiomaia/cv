@@ -25,6 +25,14 @@ body {
     width: 85vw;
 }
 
+@media print {
+    body {
+        width: 100%;
+        font-size: 0.8em;
+        line-height: 1.6em;
+    }
+}
+
 h1, h2 {
     color: var(--color-green);
 }
@@ -67,9 +75,6 @@ a:hover, a:active {
     display: inline-block;
 }
 
-.header-social-item span {
-}
-
 .icon {
     width: 1.2rem;
     margin-right: 0.5rem;
@@ -110,13 +115,5 @@ a:hover, a:active {
 
 .timeline dd p {
     margin: 0;
-}
-
-@media print {
-    body {
-        width: 100%;
-        font-size: 0.8em;
-        line-height: 1.6em;
-    }
 }
 
