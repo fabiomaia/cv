@@ -3,16 +3,16 @@
  ******************************************************************************/
 
 :root {
-    --color-green: rgb(11, 181, 0);
-    --color-white: rgb(255, 255, 255);
-    --color-grey: #666;
+    --color-white: #FFF;
+    --color-black: #111;
+    --color-grey: #AAA;
     --max-font: 1em;
     --min-font: 1em;
     --max-line-height: 1em;
 }
 
 html {
-    font-size: calc(0.7em + 0.5vw);
+    font-size: calc(0.6em + 0.5vw);
     line-height: calc(1.4em + 1.4vw);
     font-family: sans-serif;
     text-align: justify;
@@ -20,7 +20,7 @@ html {
 
 body {
     background: var(--color-white);
-    color: var(--color-grey);
+    color: var(--color-black);
     margin: 0 auto;
     width: 85vw;
 }
@@ -33,21 +33,17 @@ body {
     }
 }
 
-h1, h2 {
-    color: var(--color-green);
-}
-
 h2 {
-    border-bottom: 4px solid var(--color-green);
+    border-bottom: 4px solid var(--color-black);
 }
 
 a:link, a:visited {
-    color: var(--color-grey);
+    color: var(--color-black);
     text-decoration: underline;
 }
 
 a:hover, a:active {
-    color: var(--color-green);
+    color: var(--color-grey);
 }
 
 
@@ -56,7 +52,7 @@ a:hover, a:active {
  ******************************************************************************/
 
 .header {
-    color: var(--color-green);
+    color: var(--color-black);
     padding: 2rem 0 1rem;
     text-align: center;
 }
@@ -67,20 +63,24 @@ a:hover, a:active {
     margin: 0 0 1rem 0;
 }
 
-.header-social-item {
+.header-link {
     font-style: normal;
-    color: var(--color-green) !important;
     padding: 0 1rem;
     text-decoration: none !important;
     display: inline-block;
+    fill: var(--color-black);
+    stroke: var(--color-black);
+}
+
+.header-link:hover {
+    fill: var(--color-grey);
+    stroke: var(--color-grey);
 }
 
 .icon {
     width: 1.2rem;
     margin-right: 0.5rem;
     vertical-align: middle;
-    fill: var(--color-green);
-    stroke: var(--color-green);
 }
 
 /******************************************************************************
@@ -116,4 +116,3 @@ a:hover, a:active {
 .timeline dd p {
     margin: 0;
 }
-
