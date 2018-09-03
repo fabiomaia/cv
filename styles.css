@@ -5,7 +5,7 @@
 :root {
     --color-white: #FFF;
     --color-black: #111;
-    --color-grey: #AAA;
+    --color-grey: #888;
     --max-font: 1em;
     --min-font: 1em;
     --max-line-height: 1em;
@@ -34,7 +34,8 @@ body {
 }
 
 h2 {
-    border-bottom: 4px solid var(--color-black);
+    margin: 1rem 0;
+    border-bottom: 3px solid var(--color-black);
 }
 
 a:link, a:visited {
@@ -53,7 +54,7 @@ a:hover, a:active {
 
 .header {
     color: var(--color-black);
-    padding: 2rem 0 1rem;
+    padding: 1rem 0 1rem;
     text-align: center;
 }
 
@@ -77,7 +78,7 @@ a:hover, a:active {
     stroke: var(--color-grey);
 }
 
-.icon {
+svg {
     width: 1.2rem;
     margin-right: 0.5rem;
     vertical-align: middle;
@@ -87,10 +88,12 @@ a:hover, a:active {
  * Timeline
  ******************************************************************************/
 
-.timeline {
+ul {
     margin: 1rem 0;
+    padding: 0 0 0 2rem;
 }
-.timeline time {
+
+time {
     font-weight: bold;
-    text-decoration: underline;
+    color: var(--color-black);
 }
