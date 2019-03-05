@@ -6,9 +6,6 @@
   --color-white: #FFF;
   --color-black: #111;
   --color-grey: #888;
-  --max-font: 1em;
-  --min-font: 1em;
-  --max-line-height: 1em;
 }
 
 html {
@@ -91,9 +88,4 @@ svg {
 ul {
   margin: 1rem 0;
   padding: 0 0 0 2rem;
-}
-
-time {
-  font-weight: bold;
-  color: var(--color-black);
 }
