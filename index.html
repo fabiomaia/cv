@@ -7,9 +7,8 @@
     <title>Fábio Maia</title>
     <style>
     :root {
-      --color-white: #FFF;
-      --color-black: #111;
-      --color-grey: #888;
+      --color-background: #FFF;
+      --color-foreground: #111;
     }
 
     html {
@@ -20,8 +19,8 @@
     }
 
     body {
-      background: var(--color-white);
-      color: var(--color-black);
+      background: var(--color-background);
+      color: var(--color-foreground);
       margin: 0 auto;
       width: 85vw;
     }
@@ -36,21 +35,19 @@
 
     h2 {
       margin: 1rem 0;
-      border-bottom: 3px solid var(--color-black);
+      border-bottom: 3px solid var(--color-foreground);
     }
 
     a {
       font-style: normal;
       text-decoration: underline;
-      color: var(--color-black);
-      fill: var(--color-black);
-      stroke: var(--color-black);
+      color: var(--color-foreground);
+      fill: var(--color-foreground);
+      stroke: var(--color-foreground);
     }
 
     a:hover, a:active {
-      color: var(--color-grey);
-      fill: var(--color-grey);
-      stroke: var(--color-grey);
+      opacity: 0.5;
     }
 
     header {
