@@ -11,31 +11,22 @@
       --color-foreground: #111;
     }
 
-    html {
-      font-size: calc(0.6em + 0.5vw);
-      line-height: calc(1.4em + 1.4vw);
-      font-family: sans-serif;
-      text-align: justify;
-    }
-
     body {
       background: var(--color-background);
       color: var(--color-foreground);
       margin: 0 auto;
-      width: 85vw;
-    }
+      padding: 0 1.5rem;
+      max-width: 40rem;
 
-    @media print {
-      body {
-        width: 100vw;
-        font-size: 0.8em;
-        line-height: 1.6em;
-      }
+      font-size: calc(0.5em + 0.5vw);
+      line-height: calc(1.3em + 1.2vw);
+      font-family: sans-serif;
+      text-align: justify;
     }
 
     h2 {
-      margin: 1rem 0;
-      border-bottom: 3px solid var(--color-foreground);
+      margin: 0 0 1rem 0;
+      border-bottom: 2px solid var(--color-foreground);
     }
 
     a {
@@ -46,18 +37,19 @@
       stroke: var(--color-foreground);
     }
 
-    a:hover, a:active {
-      opacity: 0.5;
-    }
+    a:hover, a:active { opacity: 0.5; }
 
     header {
-      padding: 1rem 0 1rem;
       text-align: center;
+      padding: 1.5rem 0;
     }
 
     h1 {
-      font-weight: 900;
-      font-size: 2rem;
+      margin: 0.5rem;
+    }
+
+    address {
+      margin: 0.5rem;
     }
 
     header a {
@@ -73,7 +65,8 @@
 
     ul, ol {
       margin: 1rem 0;
-      padding: 0 0 0 2rem;
+      padding: 0;
+      list-style-position: inside;
     }
     </style>
   </head>
@@ -110,13 +103,8 @@
         <section>
           <h2>Education</h2>
           <ul>
-            <li>
-              <time datetime="2017-09">Sep 2017</time> &ndash; <time datetime="2019-07">Jul 2019:</time> MSc in Computer and Telematics Engineering at <a href="http://www.ua.pt/deti/">DETI, University of Aveiro</a> where I focused on Machine Learning, Parallel Computing, Distributed Systems, Security, Computer Architecture, Computer Graphics, and <a href="https://www.fer.unizg.hr/">FER, University of Zagreb</a> where I focused on Deep Learning, Neural Networks, Advanced Databases, Web Services.
-            </li>
-
-            <li>
-              <time datetime="2014-09">Sep 2014</time> &ndash; <time datetime="2017-07">Jul 2017:</time> BSc in Computer and Telematics Engineering at <a href="http://www.ua.pt/deti/">DETI, University of Aveiro</a> where I focused on Algorithms and Data Structures, Compilers, Computer Architecture, Operating Systems, Artificial Intelligence.
-            </li>
+            <li><time datetime="2017-09">Sep 2017</time> &ndash; <time datetime="2019-07">Jul 2019:</time> MSc in Computer and Telematics Engineering at <a href="http://www.ua.pt/deti/">DETI, University of Aveiro</a> where I focused on Machine Learning, Parallel Computing, Distributed Systems, Security, Computer Architecture, Computer Graphics, and <a href="https://www.fer.unizg.hr/">FER, University of Zagreb</a> where I focused on Deep Learning, Neural Networks, Advanced Databases, Web Services.</li>
+            <li><time datetime="2014-09">Sep 2014</time> &ndash; <time datetime="2017-07">Jul 2017:</time> BSc in Computer and Telematics Engineering at <a href="http://www.ua.pt/deti/">DETI, University of Aveiro</a> where I focused on Algorithms and Data Structures, Compilers, Computer Architecture, Operating Systems, Artificial Intelligence.</li>
           </ul>
         </section>
 
@@ -134,7 +122,7 @@
             <li><a href="https://github.com/fabiomaia/linreg">github.com/fabiomaia/linreg</a>: Hardware-accelerated vectorized gradient descent for linear regression.</li>
             <li><a href="https://github.com/fabiomaia/fleetit">github.com/fabiomaia/fleetit</a>: Bike tracking web application where one can monitor and be alerted about properties of bikes on a live-updated map.</li>
             <li><a href="https://github.com/fabiomaia/checkers">github.com/fabiomaia/checkers</a>: Model a game of checkers from a live video feed where the camera is not static.</li>
-            <li><a href="https://github.com/fabiomaia/linuxify">github.com/fabiomaia/linuxify</a>: Script that transparently transform the macOS CLI into a fresh GNU/Linux CLI experience by installing missing GNU programs, updating outdated GNU programs, replacing pre-installed BSD programs with their preferred GNU implementation, installing other programs common among popular GNU/Linux distributions.</li>
+            <li><a href="https://github.com/fabiomaia/linuxify">github.com/fabiomaia/linuxify</a>: Bash script for macOS that replaces command-line BSD programs with updated GNU programs.</li>
             <li><a href="https://github.com/fabiomaia/movie-search-engine">github.com/fabiomaia/movie-search-engine</a>: Exploration of PostgreSQL's built-in full text search capabilities to build a movie search engine on top of a dummy movies database.</li>
             <li><a href="https://github.com/fabiomaia/articles">github.com/fabiomaia/articles</a>: Demo of MongoDB and the MapReduce programming model on a dummy articles dataset.</li>
           </ul>
