@@ -17,8 +17,8 @@
       margin: 0 auto;
       padding: 0 1.5rem;
       max-width: 40rem;
-      font-size: calc(0.5em + 0.5vw);
-      line-height: calc(1.3em + 1.2vw);
+      font-size: calc(0.6em + 0.4vw);
+      line-height: calc(1.4em + 1.2vw);
       font-family: sans-serif;
       text-align: justify;
     }
@@ -59,11 +59,17 @@
 
     header a {
       padding: 0 1rem;
-      display: inline-block;
+      display: block;
+    }
+
+    @media (min-width: 600px) {
+      header a {
+        display: inline-block;
+      }
     }
 
     svg {
-      width: 1.2rem;
+      width: calc(0.9rem + 0.5vw);
       margin-right: 0.5rem;
       vertical-align: middle;
     }
