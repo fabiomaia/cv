@@ -11,15 +11,18 @@
       --color-foreground: #111;
     }
 
+    html {
+      font-size: calc(0.8em + 0.1vw);
+      line-height: calc(2.2em + 0.5vw);
+      font-family: sans-serif;
+      text-align: justify;
+    }
+
     body {
       background: var(--color-background);
       color: var(--color-foreground);
       margin: 0 auto;
       padding: 0 1.5rem;
-      font-size: calc(0.6em + 0.4vw);
-      line-height: calc(1.4em + 1.2vw);
-      font-family: sans-serif;
-      text-align: justify;
     }
 
     a {
@@ -30,7 +33,8 @@
       stroke: var(--color-foreground);
     }
 
-    a:hover, a:active {
+    a:hover,
+    a:active {
       opacity: 0.5;
     }
 
@@ -39,32 +43,28 @@
       padding: 1.5rem 0;
     }
 
-    h1 {
-      margin: 0.5rem;
-    }
-
     address {
       margin: 0.5rem;
     }
 
     header a {
       padding: 0 1rem;
-      display: inline-block;
-    }
-
-    @media only screen and (min-width: 600px) {
-      body {
-        max-width: 40rem;
-      }
+      display: block;
     }
 
     svg {
-      width: calc(0.9rem + 0.5vw);
+      width: 1.6rem;
       margin-right: 0.5rem;
       vertical-align: middle;
     }
 
+    h1 {
+      font-size: 1.8rem;
+      margin: 0.5rem;
+    }
+
     h2 {
+      font-size: 1.3rem;
       margin: 0 0 1rem 0;
       border-bottom: 2px solid var(--color-foreground);
     }
@@ -73,6 +73,40 @@
       margin: 1rem 0;
       padding: 0;
       list-style-position: inside;
+    }
+
+    @media only screen and (min-width: 600px) {
+      body {
+        max-width: 45rem;
+      }
+
+      header a {
+        padding: 0 1rem;
+        display: inline;
+      }
+    }
+
+    @media print {
+      html {
+        font-size: 0.75em;
+        line-height: 1.65em;
+      }
+
+      body {
+        padding: 0;
+      }
+
+      header {
+        padding: 0 0 1.5rem 0;
+      }
+
+      header a {
+        display: inline;
+      }
+
+      svg {
+        width: 2.0rem;
+      }
     }
     </style>
   </head>
@@ -116,7 +150,7 @@
             <li>Data: PostgreSQL, MySQL, SQLite, MongoDB, Kafka</li>
             <li>HTTP API: Flask, Express, Django, Laravel</li>
             <li>Programming: Python, Node.js, Java</li>
-            <li>Machine Learning: Keras, scikit-learn, TensorFlow, MATLAB</li>
+            <li>Machine Learning: Keras, scikit-learn, TensorFlow</li>
           </ul>
         </section>
 
@@ -140,9 +174,9 @@
         <section>
           <h2>Projects</h2>
           <ul>
-            <li><a href="https://github.com/fabiomaia/fleetit">github.com/fabiomaia/fleetit</a>: Bike tracking web application where one can monitor and be alerted about properties of bikes on a live-updated map.</li>
-            <li><a href="https://github.com/fabiomaia/movie-search-engine">github.com/fabiomaia/movie-search-engine</a>: Exploration of PostgreSQL's built-in full text search capabilities to build a movie search engine on top of a dummy movies database.</li>
-            <li><a href="https://github.com/fabiomaia/articles">github.com/fabiomaia/articles</a>: Demo of MongoDB and the MapReduce programming model on a dummy articles dataset.</li>
+            <li><a href="https://github.com/fabiomaia/fleetit">github.com/fabiomaia/fleetit</a>: Web application for real-time visualization, monitoring, and alerting of a fleet of bikes.</li>
+            <li><a href="https://github.com/fabiomaia/movie-search-engine">github.com/fabiomaia/movie-search-engine</a>: Exploration of PostgreSQL's built-in full text search capabilities on a movies database.</li>
+            <li><a href="https://github.com/fabiomaia/articles">github.com/fabiomaia/articles</a>: Exploration of MongoDB and the MapReduce programming model on a dataset of text articles.</li>
             <li><a href="https://github.com/fabiomaia/checkers">github.com/fabiomaia/checkers</a>: Model a game of checkers from a live video feed where the camera is not static.</li>
             <li><a href="https://github.com/fabiomaia/linuxify">github.com/fabiomaia/linuxify</a>: Bash script for macOS that replaces command-line BSD programs with updated GNU programs.</li>
             <li><a href="https://github.com/fabiomaia/linreg">github.com/fabiomaia/linreg</a>: Hardware-accelerated vectorized gradient descent for linear regression.</li>
