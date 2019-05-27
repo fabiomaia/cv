@@ -1,0 +1,14 @@
+services:
+  - docker
+
+script:
+  - docker run -it --rm -v $(pwd)/index.html:/tmp/index.html validator/validator vnu --verbose /tmp/index.html
+  - docker run -it --rm -v $(pwd)/index.html:/tmp/index.html linkchecker/linkchecker --verbose --check-extern /tmp/index.html
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  on:
+    branch: master
