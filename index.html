@@ -12,6 +12,13 @@
       --color-foreground: #111;
     }
 
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-background: #111;
+        --color-foreground: #FFF;
+      }
+    }
+
     html {
       font-size: calc(0.8em + 0.1vw);
       line-height: calc(2.2em + 0.5vw);

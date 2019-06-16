@@ -7,7 +7,7 @@ My online résumé which you are free to fork and use as a template.
 - Simple, minimal, [motherfuckingwebsite.com](https://motherfuckingwebsite.com/)-esque design
 - Mobile-first and responsive
 - Print-friendly and made to be exported to a one-page PDF with <kbd>ctrl</kbd>+<kbd>p</kbd> on any modern web browser
-- Dark-friendly through extensions like Dark Reader
+- [`prefers-color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme)-friendly
 - Highly semantic, accessible, specification compliant HTML5
 - Zero additional HTTP requests besides `GET /index.html`
     - Relies on available system fonts by setting `font-family: sans-serif` because incurring an external HTTP request of 1-3KB responses of Google Fonts CSS that will trigger additional external HTTP requests with 10-20KB responses for each selected font format provides questionable impact on readability of a one page résumé
