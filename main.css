@@ -1,0 +1,101 @@
+:root {
+  --color-background: #FFF;
+  --color-foreground: #111;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #222;
+    --color-foreground: #FFF;
+  }
+}
+
+html {
+  font-size: calc(0.8em + 0.1vw);
+  line-height: calc(2.2em + 0.5vw);
+  font-family: sans-serif;
+  text-align: justify;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: 0 1.5rem;
+}
+
+a {
+  font-style: normal;
+  text-decoration: underline;
+  color: var(--color-foreground);
+}
+
+a:hover,
+a:active {
+  opacity: 0.5;
+}
+
+header {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+address {
+  margin: 0;
+}
+
+address a {
+  padding: 0 1rem;
+  display: block;
+}
+
+p {
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.3rem;
+  margin: 0 0 1rem 0;
+  border-bottom: 2px solid var(--color-foreground);
+}
+
+ul, ol {
+  margin: 1rem 0;
+  padding: 0;
+  list-style-position: inside;
+}
+
+@media only screen and (min-width: 600px) {
+  body {
+    max-width: 45rem;
+    margin: 0 auto;
+  }
+
+  header a {
+    padding: 0 1rem;
+    display: inline;
+  }
+}
+
+@media print {
+  html {
+    font-size: 0.75em;
+    line-height: 1.65em;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  header {
+    padding: 0 0 1.5rem 0;
+  }
+
+  header a {
+    display: inline;
+  }
+}
