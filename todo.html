@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="main.css">
+
+<h1>Todo Lists</h1>
+
+Most software engineers are used to leaving TODO comments in their source code, e.g.,
+
+<ul>
+  <li>
+<pre>
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0' // TODO: this is cheating
+</pre>
+  </li>
+  <li>
+<pre>
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0' // TODO: this is cheating
+</pre>
+  </li>
+</ul>
+
+What many don't realize is that if you follow this methodology of keeping
+
+If you do this in a certain way you can even effectively version control many of your tasks. Then you can produce a list of todos quite easily:
+
+<pre>
+#!/bin/sh
+grep -RInH "TODO" .
+</pre>
+
+<ul>
+  <li><code>-R</code></li>
+  <li><code>-I</code></li>
+  <li><code>-n</code></li>
+  <li><code>-H</code></li>
+</ul>
+
+For many cases (e.g., small to medium projects or solo projects) this is actually quite productive and really simple. It works anywhere <code>grep</code> is installed.
+
+Feel free to wrap it in a utility script that you can extend as you go
+
+<pre>
+#!/bin/sh
+DIR="$1"
+STR="TODO"
+grep -RInH "$STR" "$DIR"
+</pre>

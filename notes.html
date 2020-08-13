@@ -1,0 +1,19 @@
+Taking notes
+Note-taking applications have too many features. I just want to write stuff down quickly. Like a thought dump, a stream of random strings.
+
+For me this suffices
+
+<pre>
+#!/bin/sh
+vim stream.txt
+</pre>
+
+Then you can get creative and do things like, e.g.,
+https://news.ycombinator.com/item?id=23889370
+
+<pre>
+#!/bin/sh
+read _text
+_date=$(date +'%Y-%m-%d')
+echo -e "\n$_date: $_text" >> ~/Dropbox/notes/stream.txt
+</pre>
