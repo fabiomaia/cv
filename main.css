@@ -7,21 +7,21 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: #222;
-    --color-foreground: #FFF;
+    --color-background: #171717;
+    --color-foreground: #fff;
   }
 }
 
 body {
   background: var(--color-background);
   color: var(--color-foreground);
-  font-size: 1.3rem;
-  font-family: "Computer Modern Serif", sans-serif;
+  font-size: 1.1rem;
+  font-family: "Computer Modern Sans", sans-serif;
 }
 
 @media only screen and (min-width: 600px) {
   body {
-    max-width: 50rem;
+    max-width: 40rem;
     margin: 0 auto;
   }
 
@@ -42,13 +42,13 @@ address {
 }
 
 h1 { 
-  font-size: 2.2rem;
+  font-size: 2.3rem;
   font-weight: bold;
   margin: 0;
 }
 
 h2 {
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 
