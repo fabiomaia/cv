@@ -1,64 +1,48 @@
 @import url("https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css");
 
 :root {
-  --color-background: #FFF;
+  --color-background: #fff;
   --color-foreground: #111;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: #222;
-    --color-foreground: #FFF;
+    --color-background: #fff;
+    --color-foreground: #111;
   }
 }
 
 body {
   background: var(--color-background);
   color: var(--color-foreground);
-  font-size: 1.3rem;
+  font-size: 1.0rem;
   font-family: "Computer Modern Serif", sans-serif;
+  padding: 5vh 1vh;
 }
 
 @media only screen and (min-width: 600px) {
   body {
-    max-width: 50rem;
+    max-width: 35rem;
     margin: 0 auto;
   }
-
-  header a {
-    /* css grid 3 */
-    margin: 0 2rem 0 0;
-    display: inline;
-  }
 }
 
-header {
-  padding: 2rem 0 2rem 0;
-
+header { 
 }
 
-address {
-  font-style: normal;
-}
-
-h1 { 
-  font-size: 2.2rem;
-  font-weight: bold;
-  margin: 0;
-}
+header h1 { font-size: 2.2rem; font-weight: bold; margin: 0; }
+header address { font-style: normal; font-size: 0.8rem; }
+header address a { display: block; }
+header p { }
 
 h2 {
   font-size: 1.7rem;
   font-weight: bold;
 }
 
-p { 
-}
-
 a {
   font-style: normal;
   text-decoration: underline;
-  color: var(--color-foreground);
 }
 
 a:hover {

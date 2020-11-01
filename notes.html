@@ -1,19 +1,30 @@
-Taking notes
-Note-taking applications have too many features. I just want to write stuff down quickly. Like a thought dump, a stream of random strings.
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Software Engineer">
+    <title>Fábio Maia</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" href="main.css">
+  </head>
 
-For me this suffices
+  <body>
+    <article>
+      <header>
+        <h1>Fábio Maia</h1>
 
-<pre>
-#!/bin/sh
-vim stream.txt
-</pre>
+        <p>I maintain notes as a kind of knowledgebase which I make available online for my own ease of access and documentation purposes.</p>
 
-Then you can get creative and do things like, e.g.,
-https://news.ycombinator.com/item?id=23889370
+        <h2>Notes</h2>
 
-<pre>
-#!/bin/sh
-read _text
-_date=$(date +'%Y-%m-%d')
-echo -e "\n$_date: $_text" >> ~/Dropbox/notes/stream.txt
-</pre>
+        <ul>
+          <li><a href="linux.html">GNU/Linux</a></li>
+          <li><a href="git.html">Git</a></li>
+          <li><a href="python.html">Python</a></li>
+          <li><a href="simple-static-sites.html">Simple Static Sites</a>: description of how i built mine, simple .html files served over web server that rewrites url without .html to look nice, or build script that makes symlinks to /dir/ withot .html</li>
+        </ul>
+      </header>
+    </article>
+  </body>
+</html>
