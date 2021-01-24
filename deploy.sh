@@ -1,4 +1,4 @@
-#! /bin/sh -ex
+#!/bin/sh -ex
 
 #docker run -it --rm -v ${PWD}:/tmp validator/validator vnu --Werror --also-check-css --also-check-svg --verbose /tmp/index.html
 #docker run -it --rm -v ${PWD}:/tmp linkchecker/linkchecker --verbose --check-extern /tmp/index.html

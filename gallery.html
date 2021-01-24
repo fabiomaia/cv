@@ -1,37 +1,43 @@
-<link rel="stylesheet" href="gallery.css">
-<!-- dynamic api endpoint to convert images on the fly to right size size, and cache them -->
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+		<link rel="stylesheet" href="all.css">
+		<link rel="stylesheet" media="screen" href="screen.css">
+		<link rel="stylesheet" href="gallery.css">
+	</head>
 
-<h1>Stacked Cubes</h1>
-<ul class="grid">
-  <li><img src='https://images.unsplash.com/photo-1514911278673-b33f6439fad3?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1490260400179-d656f04de422?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1509878540737-aac7c51cb9a1?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1514591404656-22ae99b3261c?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1486293682022-c4a23cc83790?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1506098974556-f3db2a9d2556?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1514893077758-a486369778b6?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1490174280982-e08ef40fa7d2?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1506146829809-ecf5010c774f?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1514908723567-37415a284929?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1484406566174-9da000fda645?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1506355381101-42f8e488efff?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1514361599930-87252b68bab0?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1481883814866-f6e972dd8916?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1506352639784-4b7c4ab33251?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1514146423364-9c19016e7bfc?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1486365227551-f3f90034a57c?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1506463108611-88834e9f6169?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1513682322455-ea8b2d81d418?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1470688090067-6d429c0b2600?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1506498247-befb6176bbbe?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1513687496344-0ec96d63fdff?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1487241281672-301e0f542588?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1505356822725-08ad25f3ffe4?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1513358130276-442a18340285?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1469724053707-ca040f6b8a7e?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1505426519484-49cb8fef3def?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1458724338480-79bc7a8352e4?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1505410807948-88c1d8ac0e4a?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1476293602671-beea27e1e702?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-  <li><img src='https://images.unsplash.com/photo-1505570726482-d47489345504?auto=format&fit=crop&w=250&h=250&q=80' /></li>
-</ul>
+	<body>
+		<h1>Gallery</h1>
+
+		<div class="row">
+			<div class="column">
+				<img src="https://www.w3schools.com/w3images/underwater.jpg" style="width:100%">
+				<img src="https://www.w3schools.com//w3images/ocean.jpg" style="width:100%">
+				<img src="https://www.w3schools.com//w3images/wedding.jpg" style="width:100%">
+				<img src="https://www.w3schools.com//w3images/mountainskies.jpg" style="width:100%">
+				<img src="https://www.w3schools.com//w3images/rocks.jpg" style="width:100%">
+				<img src="https://www.w3schools.com//w3images/underwater.jpg" style="width:100%">
+			</div>
+			<div class="column">
+				<img src="https://www.w3schools.com//w3images/wedding.jpg" style="width:100%">
+				<img src="https://www.w3schools.com//w3images/rocks.jpg" style="width:100%">
+				<img src="https://www.w3schools.com//w3images/falls2.jpg" style="width:100%">
+				<img src="https://www.w3schools.com//w3images/paris.jpg" style="width:100%">
+				<img src="https://www.w3schools.com//w3images/nature.jpg" style="width:100%">
+				<img src="https://www.w3schools.com//w3images/mist.jpg" style="width:100%">
+				<img src="https://www.w3schools.com//w3images/paris.jpg" style="width:100%">
+			</div>
+			<div class="column">
+				<img src="https://www.w3schools.com/w3images/underwater.jpg" style="width:100%">
+				<img src="https://www.w3schools.com//w3images/ocean.jpg" style="width:100%">
+				<img src="https://www.w3schools.com//w3images/wedding.jpg" style="width:100%">
+				<img src="https://www.w3schools.com//w3images/mountainskies.jpg" style="width:100%">
+				<img src="https://www.w3schools.com//w3images/rocks.jpg" style="width:100%">
+				<img src="https://www.w3schools.com//w3images/underwater.jpg" style="width:100%">
+			</div>
+		</div>
+	</body>
+</html>
