@@ -19,19 +19,21 @@
 			<section>
 				<p>I am a Software Engineer interested in early-stage startups solving interesting problems that can offer me</p>
 				<ul>
-					<li>flexible working hours</li>
-					<li>agile workflow in flat hierarchy</li>
+					<li>interesting technology (no serverless thanks) that maximizes my learning</li>
 					<li>learning budget</li>
+					<li>flexible working hours</li>
+					<li>agile workflow in flat-ish hierarchy</li>
 					<li>choice of hardware</li>
 				</ul>
+				<p>I <em>can</em> <a href="http://paulgraham.com/ds.html">do the thing that doesn't scale</a> first quickly, then figure out how to scale it carefully. If your company is at a later stage you certainly won't hear me complaining about not having to work fast though.</p>
 			</section>
 
 			<section>
 				<h2>Skills</h2>
 				<ul>
-					<li>DevOps: GNU/Linux, dash and bash, git, vim, systemd, Docker, LXD, Juju</li>
-					<li>Web: Python, Flask, Node.js, Express, React, PostgreSQL, MongoDB, Firebase</li>
-					<li>Mobile: Flutter, Android, ADB, Appium, Anbox Cloud</li>
+					<li>DevOps: GNU/Linux, bash/dash/sh, git, vim, systemd, Docker, LXD, Juju</li>
+					<li>Web: Python, Flask, Node.js, Express, React, PostgreSQL, MongoDB, Serverless</li>
+					<li>Mobile: Flutter, Android, ADB, Appium, Anbox Cloud, Frida</li>
 					<li>Machine Learning: Keras, scikit-learn, TensorFlow, PyTorch</li>
 				</ul>
 
@@ -50,16 +52,14 @@
 					<li>From <time datetime="2017-05">May 2017</time> to <time datetime="2017-08">August 2017</time> I was a student researcher in Aveiro at <a href="http://geometrix.web.ua.pt/old/index.php">CIDMA's Geometrix thematic strand</a> where I developed, using three.js, interactive learning and teaching environments for children with <abbr title="Autism Spectrum Disorder">ASD</abbr> while working with a PhD in education.</li>
 					<li>From <time datetime="2017-09">September 2017</time> to <time datetime="2018-09">September 2018</time> I was a student researcher in Aveiro at <a href="http://bioinformatics.ua.pt/">IEETA's Bioinformatics group</a> where I developed a ranking algorithm for software based on a weighted sum model that evaluates a number of alternatives in terms of decision criteria, and explored ways to improve performance in chemical entity mention recognition on the BioCreative IV CHEMDNER corpus of chemicals and drugs using BMDSoftware's Neji as a platform for biomedical information extraction.</li>
 					<li>Since <time datetime="2020-02">February 2020</time> I am a software engineer in Berlin at <a href="https://bliq.ai">Bliq</a> where I
-						<ul>
-							<li>Developed the ability to work concurrently on tasks with reasonably-rapid context-switching in a fast-paced early-stage startup environment with a focus on delivering fast prototypes and later dealing with scalability and cleanliness.</li>
-							<li>Automated testing, linting, code quality, and building using GitLab CI/CD with autoscalable GitLab Runners. Rewrote history of all git repositories to censor out secrets, now available as an open source project.</li>
-							<li>Managed LXD cluster of Anbox containers and deployments based on a custom CI/CD framework and gitflow. Customization of the Android rootfs. Appium interactions. <code>adb</code>debugging.</li>
-							<li>Wrote per-cgroup metrics of LXD clusters to Telegraf and query Prometheus for statistics to be consumed by Grafana dashboards. Monitoring of 100-1000 container cluster. Monitoring and administration of Anbox Cloud production and development clusters.</li>
-							<li>Developed I/O-bound/hungry applications for containers running on ARM CPU, developed using Node.js and packaged to pseudo-executable with embedded runtime and concatenated obfuscated code. Prepared a development and build environment based on LXD and QEMU to simulate the production environment (ARM CPU, LXD, systemd, Node.js). Tune the Node.js runtime for ARM CPU.</li>
-							<li>Tuned JVM applications running on LXD containers in ARM CPU.</li>
-							<li>Developed cross-platform mobile applications with Flutter and web applications with React. Improved performance of a the React app embedded in an Android WebView by means of Server Side Rendering.</li>
-							<li></li>
-						</ul>
+					<ul>
+						<li>Developed the ability to work concurrently on tasks with reasonably-rapid context-switching in a fast-paced early-stage startup environment with a focus on delivering fast prototypes and iterating quickly to find market fit, and later dealing with scalability and reliability.</li>
+						<li>Prototyped mobile app automations running in containers for high density at scale. Customization of the Android system on a minimal Ubuntu container image, scripting application lifecycle with systemd and adb. Resource usage monitoring and optimization for high container density.</li>
+						<li>Reverse engineered Android applications with Frida (and prior customization of the underlying Android rootfs) to hide leaks of an emulated Android environment by intercepting method calls at the JNI layer.<li>
+						<li>Monitoring of 100-1000 container production cluster. Zero downtime deployments based on a custom CI/CD framework and gitflow. Custom reactive and predictive autoscaler. Intelligent scheduler of containers.</li>
+						<li>Developed I/O-bound/hungry applications for containers running on LXD hosts with ARM CPU, developed using Node.js and packaged to pseudo-executable with embedded runtime and concatenated code. Prepared local development environments to test these applications for a faster feedback loop to maximize developer productivity. Tune the Node.js runtime for ARM CPU.</li>
+						<li>Developed cross-platform mobile applications with Flutter and web applications with React. Built supporting infrastructure and business logic with Firebase and Google Cloud Functions. Automated testing, linting, code quality, and building for Android and iOS.</li>
+					</ul>
 				</ol>
 			</section>
 
@@ -85,5 +85,4 @@
 			</section>
 		</article>
 	</body>
-	<script src="nav.js"></script>
 </html>
