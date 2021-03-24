@@ -4,4 +4,8 @@
 #docker run -it --rm -v ${PWD}:/tmp linkchecker/linkchecker --verbose --check-extern /tmp/index.html
 #docker run -it --rm -v ${PWD}:/tmp flungo/html-minify sh -c "mkdir /tmp/out && html-minifier --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true /tmp/index.html > /tmp/out/index.html"
 
-docker run -d -p 443:443 -v ${PWD}:/srv caddy caddy file-server --domain fabiomaia.eu
+docker run -d -p 80:80 -p 443:443 \
+	-v $(pwd):/srv \
+	-v $(pwd)/caddy_data:/data \
+	-v $(pwd)/caddy_config:/config \
+	caddy caddy file-server --domain fabiomaia.eu
