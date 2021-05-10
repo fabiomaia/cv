@@ -5,84 +5,109 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Fábio Maia</title>
 		<link rel="icon" href="data:;base64,iVBORw0KGgo=">
-		<link rel="stylesheet" media="all" href="all.css">
-		<link rel="stylesheet" media="screen" href="screen.css">
-		<link rel="stylesheet" media="print" href="print.css">
+		<link rel="stylesheet" href="styles/print.css" media="print">
+		<link rel="stylesheet" href="styles/sakura.css" media="screen">
+<style>
+body {
+	text-align: justify;
+}
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2em 0;
+}
+
+header img {
+	margin: 0;
+	width: 90px;
+	height: 90px;
+	border-radius: 50px;
+	margin-right: 0.5em;
+}
+
+header h1,
+header a {
+	display: flex;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+}
+</style>
 	</head>
 
 	<body>
-		<article>
-			<header>
-				<h1>Fábio Maia</h1>
-			</header>
+		<header>
+			<h1>
+				<img src="https://avatars.githubusercontent.com/u/180382?v=4">
+				Fábio Maia
+			</h1>
+			<a href="mailto:fabiu.maia@gmail.com">fabiu.maia@gmail.com</a>
+		</header>
 
-			<section>
-				<p>I am a Software Engineer interested in early-stage startups solving interesting problems that can offer me</p>
+		<section>
+			<p>I am a strong generalist software engineer interested in early-stage startups solving interesting problems that can offer me</p>
+			<ul>
+				<li>flexible yet respected working hours</li>
+				<li>structured yet agile development process in a flat hierarchy</li>
+				<li>personal development and hardware budget</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>Skills</h2>
+			<ul>
+				<li>DevOps: GNU/Linux, POSIX sh, systemd, Docker, Docker Compose, Docker Stack, LXD, Juju, Git, GitLab CI</li>
+				<li>Web: Python, Flask, Node.js, Express, Google Cloud Functions, Firebase, PostgreSQL, MongoDB, React</li>
+				<li>Mobile: Flutter, Android, AOSP, adb, Anbox Cloud, Anbox, Open GApps, Appium, Frida</li>
+				<li>Machine Learning: Keras, scikit-learn, TensorFlow, PyTorch</li>
+			</ul>
+
+			<h2>Interests</h2>
+			<ul>
+				<li>GNU, POSIX, gratis and libre software, decentralization, federation</li>
+				<li>Zero waste, carbon offsetting, circular economies, anti-trust law</li>
+				<li>Cycling, running</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>Employment</h2>
+			<ol>
+				<li>From <time datetime="2011-08">August 2011</time> to <time datetime="2015-10">October 2015</time> I was a contributor to the <a href="https://mybb.com">MyBB</a> open source forum software where I provided support and debugged problems for hundreds of thousands of users, while also maintaining the public-facing website and documentation.</li>
+				<li>From <time datetime="2017-05">May 2017</time> to <time datetime="2017-08">August 2017</time> I was a student researcher in Aveiro at CIDMA's Geometrix group where I developed, using three.js, interactive learning and teaching environments for children with ASD while working with a PhD in education.</li>
+				<li>From <time datetime="2017-09">September 2017</time> to <time datetime="2018-09">September 2018</time> I was a student researcher in Aveiro at IEETA's Bioinformatics group where I developed a ranking algorithm for software based on a weighted sum model that evaluates a number of alternatives in terms of decision criteria, and explored ways to improve performance in chemical entity mention recognition on the BioCreative IV CHEMDNER corpus of chemicals and drugs.</li>
+				<li>Since <time datetime="2020-02">February 2020</time> I am a software engineer in Berlin at <a href="https://bliq.ai">Bliq</a> where I
 				<ul>
-					<li>interesting technology (no serverless thanks) that maximizes my learning</li>
-					<li>learning budget</li>
-					<li>flexible working hours</li>
-					<li>agile workflow in flat-ish hierarchy</li>
-					<li>choice of hardware</li>
+					<li>Developed and monitored multi-region deployments of Anbox Cloud provisioned by Juju on AWS. Scaled LXD cluster to a high density of 50 containers per host by optimizing individual container resource usage. Monitored production cluster overtime and on call support.</li>
+					<li>Customized builds of AOSP 10 and 11 with distributions of GApps like Open GApps and microG. Reverse engineered Android applications and instrumented them with Frida in an emulated environment. Designed automated system for APK analysis. Automated UI interactions with adb and Appium.</li>
+					<li>Developed custom reactive and predictive autoscaler of the LXD cluster built on top of the Juju API. Intelligent scheduling of containers based on statistics of real-time data.</li>
+					<li>Developed cross-platform mobile applications with Flutter and web applications with React. Built supporting infrastructure and business logic on top of Firebase and Google Cloud Functions.</li>
+					<li>Designed GitLab CI/CD pipelines for Flutter mobile application, multi-region Anbox Cloud deployments, and multi-region Google Cloud Functions. Unit testing, linting, code quality, building, testing, deployment.</li>
 				</ul>
-				<p>I <em>can</em> <a href="http://paulgraham.com/ds.html">do the thing that doesn't scale</a> first quickly, then figure out how to scale it carefully. If your company is at a later stage you certainly won't hear me complaining about not having to work fast though.</p>
-			</section>
+			</ol>
+		</section>
 
-			<section>
-				<h2>Skills</h2>
+		<section>
+			<h2>Projects</h2>
+			<ul>
+				<li><a href="https://github.com/fabiomaia/linuxify">github.com/fabiomaia/linuxify</a>: Script for macOS that transparently and safely overrides the macOS CLI with a typical GNU/Linux experience.</li>
+				<li><a href="https://github.com/detiuaveiro/ua-thesis-template">github.com/detiuaveiro/ua-thesis-template</a>: LaTeX thesis template for students of the University of Aveiro</li>
+				<li><a href="https://github.com/bnan">Hackathon projects</a> since college years and ongoing hobby</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>Education</h2>
+			<ol>
+				<li>From <time datetime="2014-09">September 2014</time> to <time datetime="2017-07">July 2017</time> I completed a BSc in Computer and Telematics Engineering at the University of Aveiro.</li>
+				<li>From <time datetime="2017-09">September 2017</time> to <time datetime="2018-12">December 2019</time> I started a MSc in Computer and Telematics Engineering at the University of Aveiro.</li>
 				<ul>
-					<li>DevOps: GNU/Linux, bash/dash/sh, git, vim, systemd, Docker, LXD, Juju</li>
-					<li>Web: Python, Flask, Node.js, Express, React, PostgreSQL, MongoDB, Serverless</li>
-					<li>Mobile: Flutter, Android, ADB, Appium, Anbox Cloud, Frida</li>
-					<li>Machine Learning: Keras, scikit-learn, TensorFlow, PyTorch</li>
+					<li>From <time datetime="2018-09">September 2018</time> to <time datetime="2019-02">February 2019</time> I continued my MSc at the University of Zagreb as part of the Erasmus student exchange program, where I focused on Deep Learning and Databases while also traveling and connecting with people from different countries and different cultures.</li>
+					<li>From <time datetime="2019-02">February 2019</time> to <time datetime="2019-12">December 2019</time> I completed my MSc thesis where I studied transfer learning techniques to transfer the parameters from models trained on ImageNet to new models for skin lesion classification.</li>
 				</ul>
-
-				<h2>Interests</h2>
-				<ul>
-					<li>GNU, POSIX, gratis and libre software, decentralization, federation</li>
-					<li>Zero waste, carbon offsetting, circular economies, anti-trust law</li>
-					<li>Cycling, hackathons</li>
-				</ul>
-			</section>
-
-			<section>
-				<h2>Employment</h2>
-				<ol>
-					<li>From <time datetime="2011-08">August 2011</time> to <time datetime="2015-10">October 2015</time> I was a contributor to the <a href="https://mybb.com">MyBB</a> open source forum software where I provided support to hundreds of thousands of users and maintained the public-facing website and documentation.</li>
-					<li>From <time datetime="2017-05">May 2017</time> to <time datetime="2017-08">August 2017</time> I was a student researcher in Aveiro at <a href="http://geometrix.web.ua.pt/old/index.php">CIDMA's Geometrix thematic strand</a> where I developed, using three.js, interactive learning and teaching environments for children with <abbr title="Autism Spectrum Disorder">ASD</abbr> while working with a PhD in education.</li>
-					<li>From <time datetime="2017-09">September 2017</time> to <time datetime="2018-09">September 2018</time> I was a student researcher in Aveiro at <a href="http://bioinformatics.ua.pt/">IEETA's Bioinformatics group</a> where I developed a ranking algorithm for software based on a weighted sum model that evaluates a number of alternatives in terms of decision criteria, and explored ways to improve performance in chemical entity mention recognition on the BioCreative IV CHEMDNER corpus of chemicals and drugs using BMDSoftware's Neji as a platform for biomedical information extraction.</li>
-					<li>Since <time datetime="2020-02">February 2020</time> I am a software engineer in Berlin at <a href="https://bliq.ai">Bliq</a> where I
-					<ul>
-						<li>Developed the ability to work concurrently on tasks with reasonably-rapid context-switching in a fast-paced early-stage startup environment with a focus on delivering fast prototypes and iterating quickly to find market fit, and later dealing with scalability and reliability.</li>
-						<li>Prototyped mobile app automations running in containers for high density at scale. Customization of the Android system on a minimal Ubuntu container image, scripting application lifecycle with systemd and adb. Resource usage monitoring and optimization for high container density.</li>
-						<li>Reverse engineered Android applications with Frida (and prior customization of the underlying Android rootfs) to hide leaks of an emulated Android environment by intercepting method calls at the JNI layer.<li>
-						<li>Monitoring of 100-1000 container production cluster. Zero downtime deployments based on a custom CI/CD framework and gitflow. Custom reactive and predictive autoscaler. Intelligent scheduler of containers.</li>
-						<li>Developed I/O-bound/hungry applications for containers running on LXD hosts with ARM CPU, developed using Node.js and packaged to pseudo-executable with embedded runtime and concatenated code. Prepared local development environments to test these applications for a faster feedback loop to maximize developer productivity. Tune the Node.js runtime for ARM CPU.</li>
-						<li>Developed cross-platform mobile applications with Flutter and web applications with React. Built supporting infrastructure and business logic with Firebase and Google Cloud Functions. Automated testing, linting, code quality, and building for Android and iOS.</li>
-					</ul>
-				</ol>
-			</section>
-
-			<section>
-				<h2>Projects</h2>
-				<ul>
-					<li><a href="https://github.com/fabiomaia/linuxify">github.com/fabiomaia/linuxify</a>: Shell script for macOS that replaces command-line BSD programs with updated GNU programs.</li>
-					<li><a href="https://github.com/fabiomaia/pssht">github.com/fabiomaia/pssht</a>: Stupid shell script to creep out customers passing through the Apple section of a retail store.</li>
-					<li><a href="https://github.com/detiuaveiro/ua-thesis-template">github.com/detiuaveiro/ua-thesis-template</a>: LaTeX thesis template for students of the University of Aveiro</li>
-					<li><a href="https://github.com/bnan">Hackathon projects</a> since college years and ongoing hobby</li>
-				</ul>
-			</section>
-
-			<section>
-				<h2>Education</h2>
-				<ol>
-					<li>From <time datetime="2014-09">September 2014</time> to <time datetime="2017-07">July 2017</time> I did a <abbr title="Bachelor of Science">BSc</abbr> in Computer and Telematics Engineering at the University of Aveiro.</li>
-					<li>From <time datetime="2017-09">September 2017</time> to <time datetime="2018-12">July 2018</time> I started a <abbr title="Master of Science">MSc</abbr> in Computer and Telematics Engineering at the University of Aveiro.</li>
-					<li>From <time datetime="2018-09">September 2018</time> to <time datetime="2019-02">February 2019</time> I continued my <abbr title="Master of Science">MSc</abbr> at the University of Zagreb for one semester as part of the Erasmus student exchange program, where I focused on Deep Learning and Databases while also traveling and connecting with people from different countries and different cultures.</li>
-					<li>From <time datetime="2019-02">February 2019</time> to <time datetime="2019-12">December 2019</time> I finished my <abbr title="Master of Science">MSc</abbr> thesis at the University of Aveiro where I studied transfer learning techniques to transfer the parameters from models trained on ImageNet to new models for skin lesion classification.</li>
-					<li>Since <time datetime="2020-10">October 2020</time> I am enrolled in the Linux Foundation's <a href="https://training.linuxfoundation.org/training/cloud-engineer-bootcamp/">Cloud Engineer Bootcamp</a>.</li>
-				</ol>
-			</section>
-		</article>
+				<li>Studying the<a href="https://training.linuxfoundation.org/training/cloud-engineer-bootcamp/">Linux Foundation's Cloud Engineer Bootcamp</a>: Essentials of Linux System Administration, Linux Networking, Containers, Kubernetes, SRE.</li>
+			</ol>
+		</section>
 	</body>
 </html>

@@ -1,0 +1,9 @@
+html, body {
+	text-align: justify;
+font-family: sans-serif;
+background: none;
+color: black;
+}
+body {
+	padding: 1rem 3rem;
+}
