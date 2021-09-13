@@ -1,9 +1,72 @@
-html, body {
-	text-align: justify;
-font-family: sans-serif;
-background: none;
-color: black;
-}
+/*********************************************\
+ *         Priss - CSS Print Framework       *
+ *   http://github.com/mikecrittenden/priss  *
+\*********************************************/
+
+/* BODY */
 body {
-	padding: 1rem 3rem;
+	width:100% !important;
+	margin:0 !important;
+	padding:0 !important;
+	line-height: 1.4;
+	word-spacing:1.1pt;
+	letter-spacing:0.2pt;
+	font-family: Garamond,"Times New Roman", serif;
+	color: #000;
+	background: none;
+	font-size: 12pt;
+}
+
+/* HEADINGS */
+h1,h2,h3,h4,h5,h6 {font-family: Helvetica, Arial, sans-serif;}
+h1{font-size:19pt;}
+h2{font-size:17pt;}
+h3{font-size:15pt;}
+h4,h5,h6{font-size:12pt;}
+
+/* ELEMENTS */
+code {font: 10pt Courier, monospace;}
+blockquote {margin: 1.3em; padding: 1em;  font-size: 10pt;}
+hr {background-color: #ccc;}
+
+/* IMAGES */
+img {float: left; margin: 1em 1.5em 1.5em 0;}
+a img {border: none;}
+
+/* LINKS */
+a:link, a:visited {background: transparent; font-weight: 700; text-decoration: underline;color:#333;}
+a[href^="http://"]:link:after, a[href^="http://"]:visited:after {content: " (" attr(href) ") "; font-size: 90%;}
+a[href^="http://"] {color:#000;}
+
+/* TABLES */
+table {margin: 1px; text-align:left;}
+th {border-bottom: 1px solid #333;  font-weight: bold;}
+td {border-bottom: 1px solid #333;}
+th,td {padding: 4px 10px 4px 0;}
+tfoot {font-style: italic;}
+caption {background: #fff; margin-bottom:2em; text-align:left;}
+thead {display: table-header-group;}
+tr {page-break-inside: avoid;}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2em 0;
+}
+
+header img {
+	margin: 0;
+	width: 90px;
+	height: 90px;
+	border-radius: 50px;
+	margin-right: 0.5em;
+}
+
+header h1,
+header a {
+	display: flex;
+	align-items: center;
+	margin: 0;
+	padding: 0;
 }

@@ -6,84 +6,41 @@
 		<title>Fábio Maia</title>
 		<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 		<link rel="stylesheet" href="styles/print.css" media="print">
+		<link rel="stylesheet" href="styles/main.css" media="screen">
 		<link rel="stylesheet" href="styles/sakura.css" media="screen">
-<style>
-body {
-	text-align: justify;
-}
-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 2em 0;
-}
-
-header img {
-	margin: 0;
-	width: 90px;
-	height: 90px;
-	border-radius: 50px;
-	margin-right: 0.5em;
-}
-
-header h1,
-header a {
-	display: flex;
-	align-items: center;
-	margin: 0;
-	padding: 0;
-}
-</style>
 	</head>
-
 	<body>
 		<header>
-			<h1>
-				<img src="https://avatars.githubusercontent.com/u/180382?v=4">
-				Fábio Maia
-			</h1>
-			<a href="mailto:fabiu.maia@gmail.com">fabiu.maia@gmail.com</a>
+			<h1><img src="https://avatars.githubusercontent.com/u/180382?v=4">Fábio Maia</h1>
+			<a href="mailto:vim3@protonmail.com">vim3@protonmail.com</a>
 		</header>
 
 		<section>
-			<p>I am a strong generalist software engineer interested in early-stage startups solving interesting problems that can offer me</p>
-			<ul>
-				<li>flexible yet respected working hours</li>
-				<li>structured yet agile development process in a flat hierarchy</li>
-				<li>personal development and hardware budget</li>
-			</ul>
+			<p>I am a generalist software engineer interested in early-stage startups solving interesting problems.</p>
 		</section>
 
 		<section>
 			<h2>Skills</h2>
 			<ul>
 				<li>DevOps: GNU/Linux, POSIX sh, systemd, Docker, Docker Compose, Docker Stack, LXD, Juju, Git, GitLab CI</li>
-				<li>Web: Python, Flask, Node.js, Express, Google Cloud Functions, Firebase, PostgreSQL, MongoDB, React</li>
-				<li>Mobile: Flutter, Android, AOSP, adb, Anbox Cloud, Anbox, Open GApps, Appium, Frida</li>
+				<li>Mobile: Flutter, Android, JNI, AOSP, adb, Anbox Cloud, Anbox, Open GApps, Appium, jadx, Frida, mitmproxy, arm64 assembly</li>
+				<li>Web: Nginx, Caddy, Python, Flask, Node.js, Express, Google Cloud Functions, Firebase, PostgreSQL, MongoDB, React</li>
 				<li>Machine Learning: Keras, scikit-learn, TensorFlow, PyTorch</li>
-			</ul>
-
-			<h2>Interests</h2>
-			<ul>
-				<li>GNU, POSIX, gratis and libre software, decentralization, federation</li>
-				<li>Zero waste, carbon offsetting, circular economies, anti-trust law</li>
-				<li>Cycling, running</li>
 			</ul>
 		</section>
 
 		<section>
 			<h2>Employment</h2>
 			<ol>
-				<li>From <time datetime="2011-08">August 2011</time> to <time datetime="2015-10">October 2015</time> I was a contributor to the <a href="https://mybb.com">MyBB</a> open source forum software where I provided support and debugged problems for hundreds of thousands of users, while also maintaining the public-facing website and documentation.</li>
 				<li>From <time datetime="2017-05">May 2017</time> to <time datetime="2017-08">August 2017</time> I was a student researcher in Aveiro at CIDMA's Geometrix group where I developed, using three.js, interactive learning and teaching environments for children with ASD while working with a PhD in education.</li>
-				<li>From <time datetime="2017-09">September 2017</time> to <time datetime="2018-09">September 2018</time> I was a student researcher in Aveiro at IEETA's Bioinformatics group where I developed a ranking algorithm for software based on a weighted sum model that evaluates a number of alternatives in terms of decision criteria, and explored ways to improve performance in chemical entity mention recognition on the BioCreative IV CHEMDNER corpus of chemicals and drugs.</li>
+				<li>From <time datetime="2017-09">September 2017</time> to <time datetime="2018-09">September 2018</time> I was a student researcher in Aveiro at IEETA's Bioinformatics group where I explored ways to improve performance in chemical entity mention recognition on the BioCreative IV CHEMDNER corpus of chemicals and drugs.</li>
 				<li>Since <time datetime="2020-02">February 2020</time> I am a software engineer in Berlin at <a href="https://bliq.ai">Bliq</a> where I
 				<ul>
-					<li>Developed and monitored multi-region deployments of Anbox Cloud provisioned by Juju on AWS. Scaled LXD cluster to a high density of 50 containers per host by optimizing individual container resource usage. Monitored production cluster overtime and on call support.</li>
-					<li>Customized builds of AOSP 10 and 11 with distributions of GApps like Open GApps and microG. Reverse engineered Android applications and instrumented them with Frida in an emulated environment. Designed automated system for APK analysis. Automated UI interactions with adb and Appium.</li>
-					<li>Developed custom reactive and predictive autoscaler of the LXD cluster built on top of the Juju API. Intelligent scheduling of containers based on statistics of real-time data.</li>
+					<li>Developed custom runtime for controlling Android in LXD containers. Customized builds of AOSP 10 and installed distributions of GApps like Open GApps and microG. Reverse engineered Android applications and instrumented them with adb, UIAutomator, Frida, mitmproxy in an emulated environment at scale. Network sniffing and scraping for data with mitmproxy and Python.</li>
+					<li>Optimized resource usage in the LXD containers to achieve high container density per LXD host. Implement healthchecks and proactive error reporting at the individual container level.</li>
+					<li>Developed custom reactive autoscaler of the LXD cluster built on top of the Juju API. Scaled to a multi-region deployment provisioned by Juju on AWS. Monitored production cluster overtime and on-call support.</li>
 					<li>Developed cross-platform mobile applications with Flutter and web applications with React. Built supporting infrastructure and business logic on top of Firebase and Google Cloud Functions.</li>
-					<li>Designed GitLab CI/CD pipelines for Flutter mobile application, multi-region Anbox Cloud deployments, and multi-region Google Cloud Functions. Unit testing, linting, code quality, building, testing, deployment.</li>
+					<li>Designed GitLab CI/CD pipelines for Flutter mobile applications and multi-region Google Cloud Functions. Unit testing, linting, code quality, building, testing, deployment.</li>
 				</ul>
 			</ol>
 		</section>
@@ -94,19 +51,14 @@ header a {
 				<li><a href="https://github.com/fabiomaia/linuxify">github.com/fabiomaia/linuxify</a>: Script for macOS that transparently and safely overrides the macOS CLI with a typical GNU/Linux experience.</li>
 				<li><a href="https://github.com/detiuaveiro/ua-thesis-template">github.com/detiuaveiro/ua-thesis-template</a>: LaTeX thesis template for students of the University of Aveiro</li>
 				<li><a href="https://github.com/bnan">Hackathon projects</a> since college years and ongoing hobby</li>
+				<li><a href="https://fabiomaia.eu/random.html">fabiomaia.eu/random.html</a>: Random snippets and thoughts and things</li>
 			</ul>
 		</section>
 
 		<section>
 			<h2>Education</h2>
 			<ol>
-				<li>From <time datetime="2014-09">September 2014</time> to <time datetime="2017-07">July 2017</time> I completed a BSc in Computer and Telematics Engineering at the University of Aveiro.</li>
-				<li>From <time datetime="2017-09">September 2017</time> to <time datetime="2018-12">December 2019</time> I started a MSc in Computer and Telematics Engineering at the University of Aveiro.</li>
-				<ul>
-					<li>From <time datetime="2018-09">September 2018</time> to <time datetime="2019-02">February 2019</time> I continued my MSc at the University of Zagreb as part of the Erasmus student exchange program, where I focused on Deep Learning and Databases while also traveling and connecting with people from different countries and different cultures.</li>
-					<li>From <time datetime="2019-02">February 2019</time> to <time datetime="2019-12">December 2019</time> I completed my MSc thesis where I studied transfer learning techniques to transfer the parameters from models trained on ImageNet to new models for skin lesion classification.</li>
-				</ul>
-				<li>Studying the<a href="https://training.linuxfoundation.org/training/cloud-engineer-bootcamp/">Linux Foundation's Cloud Engineer Bootcamp</a>: Essentials of Linux System Administration, Linux Networking, Containers, Kubernetes, SRE.</li>
+				<li>From <time datetime="2014-09">September 2014</time> to <time datetime="2019-12">December 2019</time> I studied at the University of Aveiro and University of Zagreb and obtained a BSc and MSc in Computer Engineering.</li>
 			</ol>
 		</section>
 	</body>
