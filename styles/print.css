@@ -11,7 +11,7 @@ body {
 	line-height: 1.4;
 	word-spacing:1.1pt;
 	letter-spacing:0.2pt;
-	font-family: Garamond,"Times New Roman", serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 	color: #000;
 	background: none;
 	font-size: 12pt;
@@ -50,7 +50,6 @@ tr {page-break-inside: avoid;}
 
 header {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 	padding: 2em 0;
 }
@@ -60,13 +59,11 @@ header img {
 	width: 90px;
 	height: 90px;
 	border-radius: 50px;
-	margin-right: 0.5em;
+	margin-right: 1.3em;
 }
 
 header h1,
 header a {
-	display: flex;
-	align-items: center;
 	margin: 0;
 	padding: 0;
 }

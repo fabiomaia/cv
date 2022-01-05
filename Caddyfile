@@ -16,7 +16,3 @@ log
 basicauth /cv.html {
 	hire JDJhJDE0JEFxTkcxRnFlRmNQVlZ4dkpVbXhDaE82RVBtNGhtdC56akttR3FvUHl3d0tVcGhSWDN1b1Rp
 }
-
-basicauth /notes/ {
-	rute JDJhJDE0JGIzWUgvenA4bjB0eFB6Y05FQm1iVWVWeFFyTlJYOW5FOWthNVhDWXdqN1FCZU9lbHdjcW1l
-}

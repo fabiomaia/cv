@@ -11,21 +11,21 @@
 	</head>
 	<body>
 		<header>
-			<h1><img src="https://avatars.githubusercontent.com/u/180382?v=4">Fábio Maia</h1>
-			<a href="mailto:vim3@protonmail.com">vim3@protonmail.com</a>
+			<img src="fabio.jpeg">
+			<div>
+				<h1>Fábio Maia</h1>
+				<p><a href="mailto:vim3@protonmail.com">vim3@protonmail.com</a></p>
+			</div>
 		</header>
 
 		<section>
-			<p>I am a generalist software engineer interested in early-stage startups solving interesting problems.</p>
-		</section>
-
-		<section>
+			<p>I am a software engineer with a strong background in virtualization, networking, and security. Interested in startup-like environments where I can grow my skills.</p>
 			<h2>Skills</h2>
 			<ul>
-				<li>DevOps: GNU/Linux, POSIX sh, systemd, Docker, Docker Compose, Docker Stack, LXD, Juju, Git, GitLab CI</li>
-				<li>Mobile: Flutter, Android, JNI, AOSP, adb, Anbox Cloud, Anbox, Open GApps, Appium, jadx, Frida, mitmproxy, arm64 assembly</li>
-				<li>Web: Nginx, Caddy, Python, Flask, Node.js, Express, Google Cloud Functions, Firebase, PostgreSQL, MongoDB, React</li>
-				<li>Machine Learning: Keras, scikit-learn, TensorFlow, PyTorch</li>
+				<li><strong>Systems</strong>: GNU/Linux, POSIX sh, systemd, Docker, Docker Stack, LXD, Juju, Git</li>
+				<li><strong>Security</strong>: TLS, PKI, Android reverse engineering, Jadx, Ghidra, Frida, mitmproxy, SSL pinning, SafetyNet Attestation</li>
+				<li><strong>Networking</strong>: Linux networking, iptables, tcpdump, Wireshark, TCP/UDP socket programming, HTTP, DNS</li>
+				<li><strong>Mobile</strong>: Android, AOSP, adb, Anbox, Open GApps, UIAutomator, Appium</li>
 			</ul>
 		</section>
 
@@ -36,11 +36,10 @@
 				<li>From <time datetime="2017-09">September 2017</time> to <time datetime="2018-09">September 2018</time> I was a student researcher in Aveiro at IEETA's Bioinformatics group where I explored ways to improve performance in chemical entity mention recognition on the BioCreative IV CHEMDNER corpus of chemicals and drugs.</li>
 				<li>Since <time datetime="2020-02">February 2020</time> I am a software engineer in Berlin at <a href="https://bliq.ai">Bliq</a> where I
 				<ul>
-					<li>Developed custom runtime for controlling Android in LXD containers. Customized builds of AOSP 10 and installed distributions of GApps like Open GApps and microG. Reverse engineered Android applications and instrumented them with adb, UIAutomator, Frida, mitmproxy in an emulated environment at scale. Network sniffing and scraping for data with mitmproxy and Python.</li>
-					<li>Optimized resource usage in the LXD containers to achieve high container density per LXD host. Implement healthchecks and proactive error reporting at the individual container level.</li>
-					<li>Developed custom reactive autoscaler of the LXD cluster built on top of the Juju API. Scaled to a multi-region deployment provisioned by Juju on AWS. Monitored production cluster overtime and on-call support.</li>
-					<li>Developed cross-platform mobile applications with Flutter and web applications with React. Built supporting infrastructure and business logic on top of Firebase and Google Cloud Functions.</li>
-					<li>Designed GitLab CI/CD pipelines for Flutter mobile applications and multi-region Google Cloud Functions. Unit testing, linting, code quality, building, testing, deployment.</li>
+					<li>Developed AOSP custom ROM shipping a distribution of GApps and custom applications. Architected and developed custom container runtime for controlling and automating Android.</li>
+					<li>Developed highly-available, fault-tolerant infrastructure for a cluster of containers. On-call monitoring and maintenance of production clusters. Root cause analysis of process crashes, resource consumption, and networking problems.</li>
+					<li>Reverse engineered Android applications with strong protection against emulation. Static analysis of Java and embedded C libraries. Dynamic analysis and HTTP API reverse engineering.</li>
+					<li>Tracing and hooking application processes in Android containers while avoiding hooking detection. Sniffing and manipulating network traffic.</li>
 				</ul>
 			</ol>
 		</section>
@@ -49,16 +48,16 @@
 			<h2>Projects</h2>
 			<ul>
 				<li><a href="https://github.com/fabiomaia/linuxify">github.com/fabiomaia/linuxify</a>: Script for macOS that transparently and safely overrides the macOS CLI with a typical GNU/Linux experience.</li>
-				<li><a href="https://github.com/detiuaveiro/ua-thesis-template">github.com/detiuaveiro/ua-thesis-template</a>: LaTeX thesis template for students of the University of Aveiro</li>
-				<li><a href="https://github.com/bnan">Hackathon projects</a> since college years and ongoing hobby</li>
-				<li><a href="https://fabiomaia.eu/random.html">fabiomaia.eu/random.html</a>: Random snippets and thoughts and things</li>
+				<li><a href="https://github.com/detiuaveiro/ua-thesis-template">github.com/detiuaveiro/ua-thesis-template</a>: LaTeX thesis template for students of the University of Aveiro.</li>
+				<li><a href="https://github.com/bnan">github.com/bnan</a>: Hackathon projects since college years and ongoing hobby.</li>
 			</ul>
 		</section>
 
 		<section>
 			<h2>Education</h2>
 			<ol>
-				<li>From <time datetime="2014-09">September 2014</time> to <time datetime="2019-12">December 2019</time> I studied at the University of Aveiro and University of Zagreb and obtained a BSc and MSc in Computer Engineering.</li>
+				<li>From <time datetime="2014-09">September 2014</time> to <time datetime="2017-06">June 2017</time> I studied at the University of Aveiro where I obtained a BSc in Computer and Telematics Engineering with a strong background in computer architecture, operating systems, and networking.</li>
+				<li>From <time datetime="2017-09">September 2017</time> to <time datetime="2019-12">December 2019</time> I studied at the University of Aveiro and University of Zagreb and obtained a MSc in Computer and Telematics Engineering defending a thesis around convolutional neural networks and transfer learning.</li>
 			</ol>
 		</section>
 	</body>
