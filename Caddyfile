@@ -13,6 +13,10 @@ log
 # Reverse proxy
 # reverse_proxy localhost:8080
 
-basicauth /cv.html {
+basicauth /cv {
 	hire JDJhJDE0JEFxTkcxRnFlRmNQVlZ4dkpVbXhDaE82RVBtNGhtdC56akttR3FvUHl3d0tVcGhSWDN1b1Rp
+}
+
+basicauth /notes {
+	read JDJhJDE0JEFxTkcxRnFlRmNQVlZ4dkpVbXhDaE82RVBtNGhtdC56akttR3FvUHl3d0tVcGhSWDN1b1Rp
 }

@@ -1,0 +1,67 @@
+/*
+html {
+	color: var(--color-foreground);
+	font-size: 1.1rem;
+	font-family: sans-serif;
+}
+
+:root {
+	--color-background: #fff;
+	--color-foreground: #222;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-background: #171717;
+		--color-foreground: #fff;
+	}
+}
+
+body {
+	max-width: 20rem;
+	margin: 0 auto;
+}
+
+h1 { 
+	font-size: 1.1rem;
+	font-weight: bold;
+	margin: 0;
+}
+
+h2 {
+	font-size: 1.1rem;
+	font-weight: bold;
+}
+
+a {
+	font-style: normal;
+	text-decoration: underline;
+}
+
+*/
+
+header {
+  margin-top: 5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+header > img {
+width: 90px;
+height: 90px;
+border-radius: 50px;
+margin: 0 2rem 0 0;
+}
+
+header > div {
+  flex: 1;
+}
+header > div h1 {
+margin:0;
+}
+
+header > p {
+margin: 2rem 0 0 0;
+}

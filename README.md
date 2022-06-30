@@ -1,4 +1,4 @@
-# cv
+# Curriculum Vitae
 
 My résumé as a document for the web.
 
@@ -15,3 +15,14 @@ My résumé as a document for the web.
     - Inlined CSS because why would you incur an additional HTTP request to load ~1000 bytes of CSS?
     - base64-encoded transparent favicon `<link rel="icon" href="data:;base64,iVBORw0KGgo=">` (50 additional bytes in `index.html`) to prevent the browser from requesting `GET /favicon.ico` by default (whose response is certainly, albeit variably, larger than the favicon's 50 mere bytes)
 - Class-less HTML because why would you need classes for a single static document on which you can predictably target the elements themselves?
+
+## Deployment
+
+```
+docker run -d \
+	-p 80:80 \
+	-p 443:443 \
+	-v "$PWD:/srv" \
+	-v "$PWD/Caddyfile:/etc/caddy/Caddyfile" \
+	caddy caddy run
+```

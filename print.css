@@ -48,6 +48,10 @@ caption {background: #fff; margin-bottom:2em; text-align:left;}
 thead {display: table-header-group;}
 tr {page-break-inside: avoid;}
 
+/*********************************************\
+ *         header                            *
+\*********************************************/
+
 header {
 	display: flex;
 	align-items: center;
