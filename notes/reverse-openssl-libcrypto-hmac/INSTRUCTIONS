@@ -1,0 +1,17 @@
+We have an arm64-linux binary that takes a single command line argument input that is a string and then computes a 32 byte HMAC on the input and prints it to stdout using base64 encoding
+
+The task is to extract the secret used in the HMAC function
+
+If you are unable to fully complete the task please explain what strategies you have used as part of your investigation.
+
+The binary is named `main` and requires libcrypto from openssl in order to run since it uses the HMAC functions from libcrypto. We have included an arm64 alpine docker container that has the `main` binary at the location `/main` and has the dependencies already installed so it can be run.
+
+This container should be able to be run on an x86 machine using the latest docker desktop distribution because it has multi-architecture support.
+
+```
+docker load < retest_docker_image.tar
+docker run -it retest /bin/sh
+/ # /main foo
+A283gk/gcX/JA5yo6zNznSNHumIn91RxfCtyfR2rcXQ
+```
+```

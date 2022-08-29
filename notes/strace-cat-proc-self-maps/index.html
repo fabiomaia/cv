@@ -1,0 +1,15 @@
+If you start a shell and run
+
+cat /proc/self/maps
+
+If you strace it you can see
+
+strace -y cat /proc/self/maps
+
+OK it seems to be trying to resolve self to a particular pid and then reading /proc/<pid>/maps for you. Makes sense.
+
+But wait, if you watch over it (the -d flag will highlight differences for you) a few iterations
+
+watch -d strace -y cat /proc/self/maps
+
+Why is this pid changing?
