@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="/sakura.css">
+<h1>Find regressions with git bisect</h1>
+<date>August 5, 2021</date>
+
+<p>I just learned that with git bisect you can give git (1) a bad commit/branch, (2) a known good previous commit/branch, (3) a command to test said "goodness" (e.g. passing unit tests, passing linting, etc) and git will do a binary search between those commits, narrowing down the window at every step trying to find the commit that introduced the problem.</p>
+
+<p>Say you are working on a Flutter application implementing a new feature in branch feature/someNewFeatureWip (branched off of develop) and you realize, after many commits in this branch, that you introduced a bug. If you have tests you can simply</p>
+
+<pre>
+git bisect start
+git bisect bad feature/someNewFeatureWip                          # (1)
+git bisect good develop                                           # (2) 
+git bisect run sh -c 'flutter build && flutter test && ...'       # (3)
+</pre>
+
+<p>Of course, for this to work you need good tests that catch said bug. This is a big if but perhaps good motivation to have good tests!</p>
+
+<p>Furthermore, for best results, you need good modular commits. If your commits have lots of disparate changes then it will be tough to understand the bug once you find the problematic commit. On the other hand if your commits are highly granular then you should be able to understand the bug very very quickly.</p>
+
+<p>Without good tests, you could still use git bisect to manually mark commits as good and bad (to help you do the binary search in your head) and test manually rather than automatically, which I guess is all you can do in some cases.</p>

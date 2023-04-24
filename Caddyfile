@@ -1,22 +1,20 @@
 # Unless the file starts with a global options block, the first
 # uncommented line is always the address of your site.
-fabiomaia.eu
+fabiomaia.eu {
+	log access.log
 
-#root * /srv
+	# Enable the static file server.
+	file_server
 
-# Enable the static file server.
-file_server
+	# Configure the logging
 
-log
+	# Auth on special pages
+	basicauth /cv/* {
+		db4d5697edb8da8739043b96 JDJhJDE0JGpKZEVoWmZZdzJmeG50bi5jbXpWWmVZNXF0SUZpU3ZNSk9VOS9UQVl5QVZNY2t0YU9YemFD
+	}
 
-# Another common task is to set up a reverse proxy:
-# Reverse proxy
-# reverse_proxy localhost:8080
-
-basicauth /cv {
-	hire JDJhJDE0JEFxTkcxRnFlRmNQVlZ4dkpVbXhDaE82RVBtNGhtdC56akttR3FvUHl3d0tVcGhSWDN1b1Rp
+	basicauth /notes/* {
+		read JDJhJDE0JEFxTkcxRnFlRmNQVlZ4dkpVbXhDaE82RVBtNGhtdC56akttR3FvUHl3d0tVcGhSWDN1b1Rp
+	}
 }
 
-basicauth /notes {
-	read JDJhJDE0JEFxTkcxRnFlRmNQVlZ4dkpVbXhDaE82RVBtNGhtdC56akttR3FvUHl3d0tVcGhSWDN1b1Rp
-}

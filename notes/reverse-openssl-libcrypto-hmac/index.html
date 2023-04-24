@@ -1,0 +1,159 @@
+<link rel="stylesheet" href="/sakura.css">
+<title>Reverse OpenSSL libcrypto HMAC by dynamic analysis</title>
+<h1>Reverse OpenSSL libcrypto HMAC by dynamic analysis</h1>
+<date>December 30, 2021</date>
+
+<p>You are given <a href="./a.out">an executable <code>a.out</code></a> that takes a single command line argument, a string, and then computes a 32 byte HMAC on the input and prints it to stdout using base64 encoding. Can you retrieve the secret key used to compute the HMAC?</p>
+
+<p>For example:</p>
+
+<pre>
+$ ./a.out foo
+A283gk/gcX/JA5yo6zNznSNHumIn91RxfCtyfR2rcXQ
+</pre>
+
+<p>You start to inspect the executable and see that it's a 64 bit executable compiled for aarch64, stripped of debug symbols.</p>
+
+<pre>
+$ file a.out
+main: ELF 64-bit LSB shared object, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-musl-aarch64.so.1, stripped
+</pre>
+
+
+<p>The binary dynamically links to some common, unimportant shared libraries. Additionally we are told that it statically links <a href="https://wiki.openssl.org/index.php/Libcrypto_API">OpenSSL libcrypto</a>. In a real world scenario we don't usually have this information, and instead our first step would be to <strong>recognize</strong>, from the obfuscated code, which library is being used - a rather significant endeavour in itself.</p> 
+
+<pre>
+$ ldd a.out 
+linux-vdso.so.1 (0x0000f06f34466000)
+libcrypto.so.1.1 => /lib/aarch64-linux-gnu/libcrypto.so.1.1 (0x0000f06f34193000)
+libc.musl-aarch64.so.1 => not found
+libdl.so.2 => /lib/aarch64-linux-gnu/libdl.so.2 (0x0000f06f3417f000)
+libpthread.so.0 => /lib/aarch64-linux-gnu/libpthread.so.0 (0x0000f06f3414e000)
+libc.so.6 => /lib/aarch64-linux-gnu/libc.so.6 (0x0000f06f33fdb000)
+/lib/ld-musl-aarch64.so.1 => /lib/ld-linux-aarch64.so.1 (0x0000f06f34436000)
+</pre>
+
+<p>After some reconnaissance work in Ghidra I quickly realized that I was interested in the libcrypto HMAC function with signature <a href="https://www.openssl.org/docs/man1.1.1/man3/HMAC.html"><code>HMAC(hash_function, &key, 10, src, src_len, out, &out_len)</code></a>. The function takes a secret key by pointer (together with its integer length), as well as the source and output and their lengths.</p>
+
+<img src="ghidra.png">
+
+<p>The key is supplied shortly before the function is called, of course, however it is highly obfuscated because that is the entire point of this challenge. Since I was short on time I intuitively took a dynamic analysis approach as I thought it would take me too long to reverse the key by static analysis.</p>
+
+<p>When an executable is stripped of debug symbols, the resulting binary may not contain variable names, function names, line numbers, data types, etc. In this case the executable was stripped of <em>some</em> debug symbols but apparently not the <code>HMAC</code> function name. Once again, in a real world scenario we may not have this information because a well protected executable will be completely stripped of all debug symbols. In such a case we would first need to recognize the HMAC function and make note of its obfuscated name.</p>
+
+<p>I was excited because I could see the light at the end of the tunnel and rushed to load the binary in gdb, set a breakpoint at this HMAC function, and ran the program supplying "foo" as a command line argument.</p>
+
+<pre>
+$ gdb ./a.out
+(gdb) b HMAC
+(gdb) run foo
+</pre>
+
+Unfortunately gdb could not provide information about the arguments of the HMAC function because the symbol table is missing.
+
+<pre>
+(gdb) info args
+No symbol table info available.
+</pre>
+
+However, one can <strong>always</strong> try to meaningfully print the contents of the CPU registers at a function breakpoint, in this case keeping in mind the 64-bit ARM (AArch64) calling convention. In gdb run:
+
+<pre>
+(gdb) info registers
+x0             0xffffa69fd738      281473477236536
+x1             0xffffd886e430      281474314462256
+x2             0xa                 10
+x3             0xffffd886ef5d      281474314465117
+x4             0x3                 3
+x5             0xffffd886e4f8      281474314462456
+x6             0xffffd886e42c      281474314462252
+x7             0x5                 5
+x8             0x20                32
+x9             0xf5                245
+...
+</pre>
+
+<p>Recall the <a href="https://en.wikipedia.org/wiki/Calling_convention#ARM_(A64)">64-bit ARM calling convention</a>:</p>
+
+<blockquote cite="https://en.wikipedia.org/wiki/Calling_convention#ARM_(A64)">
+	The 64-bit ARM (AArch64) calling convention allocates the 31 general-purpose registers as:
+
+	<ul>
+		<li>...</li>
+		<li>x9 to x15: Local variables, caller saved.</li>
+		<li>x8 (XR): Indirect return value address.</li>
+		<li><strong>x0 to x7: Argument values passed to and results returned from a subroutine</strong>.</li>
+	</ul>
+</blockquote>
+
+<p>At this point everything was clear:</p>
+
+<ul>
+	<li>A pointer to the hash function should be in register x0 We don't really care about this right now.</li>
+	<li>A pointer to the key should be in register x1. If we try to print the value pointed to as a string:
+<pre>(gdb) p (char*) 0xffffd886e430
+$2 = 0xffffd886e430 "1234567890"
+</pre>
+	Well, this is anticlimatic, it seems that the key is just the string "1234567890". But let me finish my line of thought and we'll verify that in a moment. 
+	</li>
+	<li>The length of the key is in register x2, with value 10. Indeed the presumed string "1234567890" is 10 characters long.</li>
+	<li>The pointer to the supplied argument ("foo") should be in register x3. Again if we try to print the value pointed to as a string:
+<pre>
+(gdb) p (char*) 0xffffd886ef5d
+$1 = 0xffffd886ef5d "foo"
+</pre>
+	Indeed the pointer in x3 is pointing to the string "foo" that we supplied. 
+	</li>
+	<li>The input string's length is in register x4. Indeed "foo" is 3 characters long</li>
+</ul>
+
+<p>Nice! Everything is consistent. You could stop here and go home. But for brownie points we can write an equivalent program (using the same <code>HMAC</code> routine) using the key we found and double check that we get the same result. I just guessed by trial and error that the underlying hash function was SHA256.</p>
+
+<pre>
+#include <openssl/hmac.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <openssl/bio.h>
+#include <openssl/evp.h>
+
+int main(int argc, char *argv[]) {
+	if (argc < 2) {
+		fprintf(stderr, "Usage: %s <input string>\n", argv[0]);
+		return 1;
+	}
+
+	char key[] = "1234567890";
+	unsigned char result[32];
+	unsigned int result_len;
+
+	HMAC(EVP_sha256(), key, strlen(key), (unsigned char*) argv[1], strlen(argv[1]), result, &result_len);
+
+	// print as base64
+	BIO *b64 = BIO_new(BIO_f_base64());
+	BIO *bio = BIO_new_fp(stdout, BIO_NOCLOSE);
+
+	// Disable line breaks
+	BIO_set_flags(b64, BIO_FLAGS_BASE64_NO_NL);
+
+	BIO_push(b64, bio);
+	BIO_write(b64, result, result_len);
+	BIO_flush(b64);
+
+	BIO_free_all(bio);
+
+	return 0;
+}
+</pre>
+
+<p>Sure enough we get the same result as the mysterious binary:</p>
+
+<pre>
+$ gcc hmac.c
+$ ./a.out foo
+A283gk/gcX/JA5yo6zNznSNHumIn91RxfCtyfR2rcXQ=
+</pre>
+
+<p>In conclusion, by taking a dynamic analysis approach and using gdb to inspect the contents of the CPU registers at the HMAC function breakpoint, we were able to retrieve the key. This was achieved by examining the general-purpose registers allocated by the 64-bit ARM calling convention, which helped us identify the registers containing the pointer to the key and its length.</p>
+
+<p>This exercise highlights the importance of understanding the underlying CPU architecture and function calling convention, as well as the usefulness of dynamic analysis tools like gdb for reverse engineering and debugging. With the right techniques and tools, even a stripped binary can reveal its secrets.</p>

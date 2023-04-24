@@ -1,0 +1,7 @@
+[
+  { "event": "FIFA World Cup", "frequency": 0.342 },
+  { "event": "UEFA European Championship", "frequency": 0.342 },
+  { "event": "New Year", "frequency": 0.342 },
+  { "event": "Christmas", "frequency": 0.342 },
+  { "event": "Northern Lights", "frequency": 0.342 }
+]
