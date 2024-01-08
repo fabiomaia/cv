@@ -5,13 +5,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Fábio Maia</title>
 		<link rel="icon" href="data:;base64,iVBORw0KGgo=">
-		<link rel="stylesheet" href="/print.css" media="print">
 		<link rel="stylesheet" href="/sakura.css" media="screen">
+		<link rel="stylesheet" href="/print.css" media="print">
 		<style>
-		header { margin-top: 5rem; display: flex; align-items: flex-start; justify-content: center; flex-wrap: wrap; }
-		header > img { width: 90px; height: 90px; border-radius: 50px; margin: 0 2rem 0 0; }
-		header > div h1 { margin:0; }
-		header > p { margin: 2rem 0 0 0; }
+		header { margin: 0; display: flex; align-items: flex-start; justify-content: center; flex-wrap: wrap; }
+		header > div h1 { margin: 0; }
+		@media print {
+			header > img { width: 50px; height: 60px; border-radius: 60px; margin: 0 1rem 0 0; }
+			header > p { margin: 1rem 0 0 0; }
+		}
+		@media screen {
+			header > img { width: 90px; height: 90px; border-radius: 50px; margin: 0 2rem 0 0; } 
+			header > p { margin: 2rem 0 0 0; }
+		}
 		</style>
 	</head>
 	<body>
@@ -21,16 +27,17 @@
 				<h1>Fábio Maia</h1>
 				<address><a href="mailto:vim3@protonmail.com">vim3@protonmail.com</a></address>
 			</div>
-			<p>I am a generalist computer engineer with +4.5 years of professional experience, mostly interested in Linux and security. Currently prefer remote work. Looking to help develop startups while solving interesting and challenging problems.</p>
+			<p>I am a generalist computer engineer with +5 years of professional experience, mostly interested in Linux and security. Looking to help develop startups while solving interesting and challenging problems. Prefer remote work but open to relocation for extraordinary opportunities.</p>
 		</header>
 
 		<section>
 			<h2>Skillset</h2>
 			<ul>
-				<li><strong>Operating Systems</strong>: GNU/Linux (Debian, coreutils, systemd, Docker), Linux Kernel (kernel modules, tracing, debugging), AOSP (init.rc, HAL, shell, adb), POSIX, QEMU</li>
-				<li><strong>Security</strong>: (D)TLS & X.509 (OpenSSL, Golang), reverse engineering (Ghidra, strace, gdb, Frida), SSH</li>
-				<li><strong>Networking</strong>: HTTP1/2, TCP/UDP, IPv4/6, Linux networking (iptables, NFQUEUE, Wireguard, iproute2), Wireshark, tcpdump</li>
-				<li><strong>Programming</strong>: Golang, C/C++, POSIX shell, Python, Node.js, Java</li>
+				<li><strong>Operating Systems</strong>: GNU/Linux (Debian, coreutils, glibc, systemd, Docker), Linux Kernel (drivers and modules, eBPF), AOSP (init, Zygote, bionic, UIAutomator, SELinux), POSIX</li>
+				<li><strong>Hardware</strong>: QEMU, RISC CPU architectures (MIPS, ARM64), NVIDIA CUDA, FPGA & VHDL, GPIO programming, basic electronics, soldering</li>
+				<li><strong>Security</strong>: X.509 & (D)TLS (OpenSSL, Golang), TEE (Play Integrity, Web Integrity), reverse engineering (Ghidra, strace, gdb, Frida, Jadx), SELinux, rootkits</li>
+				<li><strong>Networking</strong>: HTTP1/2, TCP/UDP, IPv4/6, Linux networking (iptables, NFQUEUE, Wireguard, iproute2), SSH, Wireshark, tcpdump, Kubernetes</li>
+				<li><strong>Programming</strong>: C/C++, POSIX shell, Golang, Python, Node.js/TypeScript, Java</li>
 			</ul>
 		</section>
 
@@ -38,15 +45,15 @@
 			<h2>Education</h2>
 			<ol>
 				<li>
-					<h6>BSc, Computer and Telematics Engineering, University of Aveiro</h6>
+					<h6>BSc, Computer and Telematics Engineering, 🇵🇹 University of Aveiro</h6>
 					<time datetime="2017-05">Sep 2014</time> - <time datetime="2017-08">July 2017</time>
 					<p>Foundation in digital circuits and HDL, CPU architecture and assembly, embedded systems, object-oriented and functional programming styles, computer and ISP networks.</p>
 				</li>
 
 				<li>
-					<h6>MSc, Computer and Telematics Engineering, University of Aveiro and Zagreb</h6>
+					<h6>MSc, Computer and Telematics Engineering, 🇵🇹 University of Aveiro and 🇭🇷 Zagreb</h6>
 					<time datetime="2017-09">September 2017</time> to <time datetime="2018-09">December 2019</time>
-					<p>Studied CPU & GPU architectures as well as ASIC designs, backbone ISP networks, GNU/Linux userspace, security, deep learning.<br>Finally I defended a MSc thesis about effective use of pre-trained models of convolutional neural networks by means of transfer learning, having developed software for training & cross-validating hundreds of different state-of-the-art CNN models on NVIDIA GPUs.</p>
+					<p>Studied CPU & GPU architecture and microarchitecture as well as ASIC designs, backbone ISP networks, GNU/Linux userspace, security, deep learning.<br>Finally I defended a MSc thesis about effective use of pre-trained models of convolutional neural networks by means of transfer learning, having developed software for training & cross-validating hundreds of different state-of-the-art CNN models on NVIDIA GPUs.</p>
 				</li>
 			</ol>
 		</section>
@@ -63,36 +70,37 @@
 			<h2>Employment</h2>
 			<ol>
 				<li>
-					<h6>Undergrad Researcher, CIDMA Geometrix Group</h6>
+					<h6>Undergrad Researcher, 🇵🇹 CIDMA Geometrix Group</h6>
 					<time datetime="2017-05">May 2017</time> - <time datetime="2017-08">August 2017</time>
-					<p>Developed interactive web applications for teaching mathematics to children with ASD.</p>
+					<p>Developed interactive web applications using three.js for teaching mathematics to children with ASD.</p>
 				</li>
 
 				<li>
-					<h6>Undergrad Researcher, IEETA Bioinformatics Group</h6>
+					<h6>Undergrad Researcher, 🇵🇹 IEETA Bioinformatics Group</h6>
 					<time datetime="2017-09">September 2017</time> - <time datetime="2018-09">September 2018</time>
-					<p>Developed software for biomedical text processing with the goal of improving performance in chemical entity mention recognition.</li>
+					<p>Developed software using Java and shell for biomedical text processing with the goal of improving performance in chemical entity mention recognition.</p>
 				</li>
 
 				<li>
-					<h6>Software Engineer, <a href="https://bliq.app">Bliq</a></h6>
+					<h6>Software Engineer, 🇩🇪 <a href="https://bliq.app">Bliq</a></h6>
 					<time datetime="2020-02">February 2020</time> - <time datetime="2022-06">June 2022</time>
 					<ul>
-						<li>App development with Flutter and Dart. Backend API development with Node.js and GCP.</li>
+						<li>Computer vision models with PyTorch and TensorFlow Lite. ffmpeg video processing in Flutter. Backend API development with Node.js/TypeScript.</li>
 						<li>Development and sysadmin of cluster of Ubuntu VMs using EC2, S3, systemd, POSIX shell, Python, and Gitlab CI/CD pipelines.</li>
-						<li>Android emulators and adb scripting. Linux networking. Reverse engineering Android applications, web applications, and APIs.</li>
-						<li>Developed the MVP that found product-market fit. Help raise late seed and series A funding by iterating and delivering software very fast.</li>
+						<li>Reverse engineering Android applications, web applications, and APIs. Android emulators, instrumentation and scripting. Linux networking.</li>
+						<li>Developed the MVP that found product-market fit after many pivots. Help raise late seed and series A funding by iterating and delivering software very fast.</li>
 					</ul>
 				</li>
 
 				<li>
-					<h6>Lead Software Engineer, <a href="https://bliq.app">Bliq</a></h6>
+					<h6>Lead Software Engineer, 🇩🇪 <a href="https://bliq.app">Bliq</a></h6>
 					<time datetime="2022-07">July 2022</time> - present
 					<ul>
-						<li>AOSP ROM development with C/C++, shell, Java, make.</li>
-						<li>TLS proxies with Python/OpenSSL and Golang. Linux networking with iptables, NFQUEUE, Wireguard. Debugging with tcpdump and Wireshark.</li>
-						<li>Tracing and debugging GNU/Linux userspace and kernel to optimize memory and CPU usage.</li>
-						<li>Lead a team of software engineers responsible for core company intellectual property. Currently trying to help raise series B funding by cost reduction and security improvements.</li>
+						<li>AOSP development using C/C++ around Init and Zygote, SELinux policy, Verified Boot, UIAutomator. Instrumentation and rootkit development.</li>
+						<li>Kernel builds with custom kernel modules</li>
+						<li>TLS MITM proxy with Python/OpenSSL and Golang. Linux networking with iptables, NFQUEUE, Wireguard. Debugging with tcpdump and Wireshark.</li>
+						<li>Tracing and debugging GNU/Linux userspace and kernel to optimize memory and CPU usage in Kubernetes clusters.</li>
+						<li>Lead a team of software engineers responsible for core company intellectual property. Currently trying to raise series B funding by reducing costs and developing core security solutions.</li>
 					</ul>
 				</li>
 			</ol>
@@ -102,8 +110,8 @@
 			<h2>Extra</h2>
 			<ul>
 				<li>In my early teenage years I worked on open source PHP forum software <a href="https://mybb.com">mybb.com</a>. More than 10 years later it still runs <a href="https://forum.suprbay.org/">The Pirate Bay's forum</a> and a few other big communities.</li>
-				<li>In university I loved <a href="https://github.com/bnan">hackathons</a> and took 3 out of 11 projects to the podium in 24-48h hackathons against some 50-200 participants.</li>
-				<li>I maintain a few open source efforts on <a href="https://github.com/darksonic37">github.com/darksonic37</a> and blog about my work on <a href="https://fabiomaia.eu/notes">fabiomaia.eu/notes</a>. Sometimes I ask or answer things on <a href="https://stackoverflow.com/users/902414/fabiomaia">Stack Overflow</a>.</li>
+				<li>In university I loved <a href="https://github.com/bnan">hackathons</a> and took 3 out of 11 projects to the podium in 24-48h hackathons against some 50-200 participants high on caffeine and fueled by pizza.</li>
+				<li>I maintain a few open source efforts on <a href="https://github.com/darksonic37">github.com/darksonic37</a> and blog about stuff on <a href="https://fabiomaia.eu/notes">fabiomaia.eu/notes</a>. Sometimes I ask or answer things on <a href="https://stackoverflow.com/users/902414/fabiomaia">Stack Overflow</a>.</li>
 			</ul>
 		</section>
 	</body>

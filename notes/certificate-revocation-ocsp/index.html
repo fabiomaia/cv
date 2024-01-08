@@ -1,37 +1,49 @@
-<link rel="stylesheet" href="/sakura.css">
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+		<link rel="stylesheet" href="/sakura.css" media="screen">
+		<script defer data-domain="fabiomaia.eu" src="/js/script.js"></script>
+	</head>
 
-<h1>Certificate Revocation Status via OCSP</h1>
-<time datetime="2017-07-24">May 31, 2017</time>
+	<body>
+		<a class="logo" href="/"><div>fabiomaia.eu</div></a>
+		<time datetime="2017-07-24">May 31, 2017</time>
+		<h1>Certificate Revocation Status via OCSP</h1>
 
-<p>TLS is fundamentally based on trust. Operating systems will ship with a trusted set of certificates known as the root <strong>certificate authorities</strong> (CA for short) which are controlled by some companies. In turn, these are responsible for signing leaf certificates that are actually presented in TLS communications.</p>
+		<p>TLS is fundamentally based on trust. Operating systems will ship with a trusted set of certificates known as the root <strong>certificate authorities</strong> (CA for short) which are controlled by some companies. In turn, these are responsible for signing leaf certificates that are actually presented in TLS communications.</p>
 
-- TLS clients can contact the CA's OCSP servers to verify the validity of the certificate of the destination server, which can leave a trace of a MITM certificate. **However our certificate is self-signed so there is no CA to contact so nothing happens in the first place.**
-- Much like the previous status-checking method, [OCSP stapling](https://www.thesslstore.com/blog/ocsp-stapling-best-method-checking-certificate-validity/)
- is a process that also uses the online certificate status protocol. However, it’s a more advanced way of doing so. Instead of relying on the client to perform certificate revocation status checks, it places that responsibility on the web server instead.
-    - In a stapling scenario, the certificate holder itself queries the OCSP server at regular intervals, obtaining a [signed](https://en.wikipedia.org/wiki/Cryptographic_signature) time-stamped OCSP response. When the site's visitors attempt to connect to the site, this response is included ("stapled") with the [TLS/SSL handshake](https://en.wikipedia.org/wiki/Transport_Layer_Security)
-     via the Certificate Status Request extension response (note: the TLS client must explicitly include a Certificate Status Request extension in its ClientHello TLS/SSL handshake message)
+		<ul>
+		- TLS clients can contact the CA's OCSP servers to verify the validity of the certificate of the destination server, which can leave a trace of a MITM certificate. **However our certificate is self-signed so there is no CA to contact so nothing happens in the first place.**
+		- Much like the previous status-checking method, [OCSP stapling](https://www.thesslstore.com/blog/ocsp-stapling-best-method-checking-certificate-validity/)
+		 is a process that also uses the online certificate status protocol. However, it’s a more advanced way of doing so. Instead of relying on the client to perform certificate revocation status checks, it places that responsibility on the web server instead.
+		    - In a stapling scenario, the certificate holder itself queries the OCSP server at regular intervals, obtaining a [signed](https://en.wikipedia.org/wiki/Cryptographic_signature) time-stamped OCSP response. When the site's visitors attempt to connect to the site, this response is included ("stapled") with the [TLS/SSL handshake](https://en.wikipedia.org/wiki/Transport_Layer_Security)
+		     via the Certificate Status Request extension response (note: the TLS client must explicitly include a Certificate Status Request extension in its ClientHello TLS/SSL handshake message)
+		</ul>
 
-<p>But how would you actually validate certificates appropriately? There are essentially two steps:</p>
-<ul>
-<li>Chain of trust validation</li>
-<li>Certification status validation</li>
-</ul>
+		<p>But how would you actually validate certificates appropriately? There are essentially two steps:</p>
+		<ul>
+		<li>Chain of trust validation</li>
+		<li>Certification status validation</li>
+		</ul>
 
-Let's see how this could be done on a Python server leveraging a few libraries. For simplicity I'll inline the imports along with the code snippets.
+		Let's see how this could be done on a Python server leveraging a few libraries. For simplicity I'll inline the imports along with the code snippets.
 
-Essentially we want to implement a high level function: 
+		Essentially we want to implement a high level function: 
 
-<pre>
+		<pre>
 def validate(cert: bytes):
     if not verify_chain_of_trust(cert):
-        raise Exception('Invalid certificate')
+	raise Exception('Invalid certificate')
     if not verify_ocsp(cert):
-        raise Exception('Revoked certificate')
-</pre>
+	raise Exception('Revoked certificate')
+		</pre>
 
-Let's define some helper getter functions that are needed every step of the way: issuer, subject, and OCSP endpoint of a certificate.
+		Let's define some helper getter functions that are needed every step of the way: issuer, subject, and OCSP endpoint of a certificate.
 
-<pre>
+		<pre>
 def get_cert_issuer(cert):
     obj = x509.load_der_x509_certificate(cert, default_backend())
     return obj.issuer.get_attributes_for_oid(NameOID.COMMON_NAME)[0].value
@@ -44,36 +56,34 @@ def get_cert_ocsp(cert):
     obj = x509.load_der_x509_certificate(cert, default_backend())
 
     try:
-        url = obj.extensions.get_extension_for_oid(ExtensionOID.AUTHORITY_INFORMATION_ACCESS).value[0].access_location.value
-        url = url.replace('https', 'http')
+	url = obj.extensions.get_extension_for_oid(ExtensionOID.AUTHORITY_INFORMATION_ACCESS).value[0].access_location.value
+	url = url.replace('https', 'http')
     except:
-        # Hardcode the OCSP URL for 'Cartão de Cidadão 001' the first (and only) certificate
-        # signed by ECRaizEstado which did not specify OCSP because it was only introduced in 2014
-        # as announced at https://www.ecce.gov.pt/noticias/
-        url = 'http://ocsp.ecee.gov.pt' if get_cert_subject(cert) == 'Cartão de Cidadão 001' else None
+	# Hardcode the OCSP URL for 'Cartão de Cidadão 001' the first (and only) certificate
+	# signed by ECRaizEstado which did not specify OCSP because it was only introduced in 2014
+	# as announced at https://www.ecce.gov.pt/noticias/
+	url = 'http://ocsp.ecee.gov.pt' if get_cert_subject(cert) == 'Cartão de Cidadão 001' else None
 
-    return url
-</pre>
+    return url</pre>
 
-Then we load the certificates
+		Then we load the certificates
 
-<pre>
+		<pre>
 def load_certs():
     certs = {}
     with open('./cc_certs/PT.pem', 'rb') as f:
-        for _, _, pem_bytes in pem.unarmor(f.read(), multiple=True):
-            certs[get_cert_subject(pem_bytes)] = {
-                'bytes': pem_bytes,
-                'subject': get_cert_subject(pem_bytes),
-                'issuer': get_cert_issuer(pem_bytes),
-                'ocsp': get_cert_ocsp(pem_bytes)
-            }
-    return certs
-</pre>
+	for _, _, pem_bytes in pem.unarmor(f.read(), multiple=True):
+	    certs[get_cert_subject(pem_bytes)] = {
+		'bytes': pem_bytes,
+		'subject': get_cert_subject(pem_bytes),
+		'issuer': get_cert_issuer(pem_bytes),
+		'ocsp': get_cert_ocsp(pem_bytes)
+	    }
+    return certs</pre>
 
-First, the verify_chain_of_trust method will check if the 
- 
-<pre>
+		First, the verify_chain_of_trust method will check if the 
+		 
+		<pre>
 def verify_chain_of_trust(cert_pem):
     certificate = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_PEM, cert_pem)
     intermediates = [cert['bytes'] for cert in load_certs().values()]
@@ -81,8 +91,8 @@ def verify_chain_of_trust(cert_pem):
     # Create and fill a X509Sore with trusted certs
     store = OpenSSL.crypto.X509Store()
     for intermediate in intermediates:
-        i = OpenSSL.crypto.load_certificate(crypto.FILETYPE_ASN1, intermediate)
-        store.add_cert(i)
+	i = OpenSSL.crypto.load_certificate(crypto.FILETYPE_ASN1, intermediate)
+	store.add_cert(i)
 
     # Create a X590StoreContext with the cert and trusted certs
     # and verify the chain of trust
@@ -91,14 +101,13 @@ def verify_chain_of_trust(cert_pem):
     result = store_ctx.verify_certificate()
 
     if result is None:
-        return True
+	return True
     else:
-        return False
- </pre>
+	return False</pre>
 
-Secondly the the verify_ocsp will make a request to the OCSP endpoint to check the revocation status of the certificate
+		Secondly the the verify_ocsp will make a request to the OCSP endpoint to check the revocation status of the certificate
 
-<pre>
+		<pre>
 def verify_ocsp(cert):
     cert_store = load_certs()
     subject_cert = asymmetric.load_certificate(cert)
@@ -106,45 +115,46 @@ def verify_ocsp(cert):
 
     # Verify each pair-wise subject-issuer relationship against respective OCSP endpoint
     while True:
-        subject_name = get_cert_subject(subject_bytes)
-        subject_ocsp = get_cert_ocsp(subject_bytes)
+	subject_name = get_cert_subject(subject_bytes)
+	subject_ocsp = get_cert_ocsp(subject_bytes)
 
-        issuer_name = get_cert_issuer(subject_bytes)
-        issuer_bytes = cert_store[issuer_name]['bytes']
+	issuer_name = get_cert_issuer(subject_bytes)
+	issuer_bytes = cert_store[issuer_name]['bytes']
 
-        issuer_cert = keys.parse_certificate(issuer_bytes)
-        ocsp_request = OCSPRequestBuilder(subject_cert, issuer_cert).build().dump()
+	issuer_cert = keys.parse_certificate(issuer_bytes)
+	ocsp_request = OCSPRequestBuilder(subject_cert, issuer_cert).build().dump()
 
-        # Stop if we are at a self-signed certificate
-        if subject_name == issuer_name:
-            break
+	# Stop if we are at a self-signed certificate
+	if subject_name == issuer_name:
+	    break
 
-        if subject_ocsp:
-            response = requests.post(subject_ocsp, headers={'Content-Type': 'application/ocsp-request'}, data=ocsp_request)
-            ocsp_response = OCSPResponse.load(response.content)
+	if subject_ocsp:
+	    response = requests.post(subject_ocsp, headers={'Content-Type': 'application/ocsp-request'}, data=ocsp_request)
+	    ocsp_response = OCSPResponse.load(response.content)
 
-            response_status = ocsp_response['response_status']
-            cert_status = ocsp_response.basic_ocsp_response['tbs_response_data']['responses'][0]['cert_status'].name
+	    response_status = ocsp_response['response_status']
+	    cert_status = ocsp_response.basic_ocsp_response['tbs_response_data']['responses'][0]['cert_status'].name
 
-            # Hard-fail if the OCSP endpoint did not respond 200 OK (e.g. server is down, internal server error, malicious redirect, etc)
-            if not response.status_code == 200:
-                return False
+	    # Hard-fail if the OCSP endpoint did not respond 200 OK (e.g. server is down, internal server error, malicious redirect, etc)
+	    if not response.status_code == 200:
+		return False
 
-            # Fail if the OCSP responseStatus isn't successful
-            if not response_status == OCSPResponseStatus(0):
-                return False
+	    # Fail if the OCSP responseStatus isn't successful
+	    if not response_status == OCSPResponseStatus(0):
+		return False
 
-            # Fail if the certificate status isn't 'good'
-            if not cert_status == 'good':
-                return False
-        else:
-            # Fail if a OCSP endpoint could not be found reliably
-            return False
+	    # Fail if the certificate status isn't 'good'
+	    if not cert_status == 'good':
+		return False
+	else:
+	    # Fail if a OCSP endpoint could not be found reliably
+	    return False
 
-        # Next iteration
-        subject_bytes = issuer_bytes
-        subject_cert = asymmetric.load_certificate(subject_bytes)
+	# Next iteration
+	subject_bytes = issuer_bytes
+	subject_cert = asymmetric.load_certificate(subject_bytes)
 
     # At this point all certificates have been successfully verified
-    return True
-</pre>
+    return True</pre>
+	</body>
+</html>

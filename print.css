@@ -14,11 +14,14 @@ body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 	color: #000;
 	background: none;
-	font-size: 12pt;
+	font-size: 11pt;
 }
 
+ul { margin: 0.5em 0; }
+p { margin: 0.5em 0; }
+
 /* HEADINGS */
-h1,h2,h3,h4,h5,h6 {font-family: Helvetica, Arial, sans-serif;}
+h1,h2,h3,h4,h5,h6 {font-family: Helvetica, Arial, sans-serif; margin-bottom: 0;}
 h1{font-size:19pt;}
 h2{font-size:17pt;}
 h3{font-size:15pt;}
@@ -47,27 +50,3 @@ tfoot {font-style: italic;}
 caption {background: #fff; margin-bottom:2em; text-align:left;}
 thead {display: table-header-group;}
 tr {page-break-inside: avoid;}
-
-/*********************************************\
- *         header                            *
-\*********************************************/
-
-header {
-	display: flex;
-	align-items: center;
-	padding: 2em 0;
-}
-
-header img {
-	margin: 0;
-	width: 90px;
-	height: 90px;
-	border-radius: 50px;
-	margin-right: 1.3em;
-}
-
-header h1,
-header a {
-	margin: 0;
-	padding: 0;
-}

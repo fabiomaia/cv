@@ -1,7 +1,18 @@
-<link rel="stylesheet" href="/sakura.css">
-<title>Reverse OpenSSL libcrypto HMAC by dynamic analysis</title>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+		<link rel="stylesheet" href="/sakura.css" media="screen">
+		<script defer data-domain="fabiomaia.eu" src="/js/script.js"></script>
+	</head>
+
+	<body>
+		<a class="logo" href="/"><div>fabiomaia.eu</div></a>
+<time datetime="2021-12-30">December 30, 2021</time>
 <h1>Reverse OpenSSL libcrypto HMAC by dynamic analysis</h1>
-<date>December 30, 2021</date>
+<script defer data-domain="fabiomaia.eu" src="/js/script.js"></script>
 
 <p>You are given <a href="./a.out">an executable <code>a.out</code></a> that takes a single command line argument, a string, and then computes a 32 byte HMAC on the input and prints it to stdout using base64 encoding. Can you retrieve the secret key used to compute the HMAC?</p>
 
@@ -12,36 +23,38 @@ $ ./a.out foo
 A283gk/gcX/JA5yo6zNznSNHumIn91RxfCtyfR2rcXQ
 </pre>
 
-<p>You start to inspect the executable and see that it's a 64 bit executable compiled for aarch64, stripped of debug symbols.</p>
+<p>You start to inspect the executable and see that it's a 64 bit ELF compiled for aarch64, stripped of debug symbols.</p>
 
 <pre>
 $ file a.out
 main: ELF 64-bit LSB shared object, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-musl-aarch64.so.1, stripped
 </pre>
 
-
-<p>The binary dynamically links to some common, unimportant shared libraries. Additionally we are told that it statically links <a href="https://wiki.openssl.org/index.php/Libcrypto_API">OpenSSL libcrypto</a>. In a real world scenario we don't usually have this information, and instead our first step would be to <strong>recognize</strong>, from the obfuscated code, which library is being used - a rather significant endeavour in itself.</p> 
+<p>The binary dynamically links to some common, unimportant shared libraries. In particular you can see it dynamically links <a href="https://wiki.openssl.org/index.php/Libcrypto_API">OpenSSL libcrypto</a>, perhaps for computing the HMAC?</p>
 
 <pre>
 $ ldd a.out 
-linux-vdso.so.1 (0x0000f06f34466000)
-libcrypto.so.1.1 => /lib/aarch64-linux-gnu/libcrypto.so.1.1 (0x0000f06f34193000)
-libc.musl-aarch64.so.1 => not found
-libdl.so.2 => /lib/aarch64-linux-gnu/libdl.so.2 (0x0000f06f3417f000)
-libpthread.so.0 => /lib/aarch64-linux-gnu/libpthread.so.0 (0x0000f06f3414e000)
-libc.so.6 => /lib/aarch64-linux-gnu/libc.so.6 (0x0000f06f33fdb000)
-/lib/ld-musl-aarch64.so.1 => /lib/ld-linux-aarch64.so.1 (0x0000f06f34436000)
+        linux-vdso.so.1 (0x0000f06f34466000)
+        libcrypto.so.1.1 => /lib/aarch64-linux-gnu/libcrypto.so.1.1 (0x0000f06f34193000)
+        libc.musl-aarch64.so.1 => not found
+        libdl.so.2 => /lib/aarch64-linux-gnu/libdl.so.2 (0x0000f06f3417f000)
+        libpthread.so.0 => /lib/aarch64-linux-gnu/libpthread.so.0 (0x0000f06f3414e000)
+        libc.so.6 => /lib/aarch64-linux-gnu/libc.so.6 (0x0000f06f33fdb000)
+        /lib/ld-musl-aarch64.so.1 => /lib/ld-linux-aarch64.so.1 (0x0000f06f34436000)
 </pre>
 
-<p>After some reconnaissance work in Ghidra I quickly realized that I was interested in the libcrypto HMAC function with signature <a href="https://www.openssl.org/docs/man1.1.1/man3/HMAC.html"><code>HMAC(hash_function, &key, 10, src, src_len, out, &out_len)</code></a>. The function takes a secret key by pointer (together with its integer length), as well as the source and output and their lengths.</p>
+<p>If the crypto stack is statically linked (which it usually is in well protected executables) rather than dynamically linked to the system's, you cannot really make educated guesses like that. Instead our first step would be to <strong>recognize</strong> which cryptography stack is being used - a rather significant endeavour in itself.</p>
+
+<p>Nonetheless I crossed my fingers and hoped that it was dynamically linking OpenSSL libcrypto for the HMAC computation. After some reconnaissance static analysis in Ghidra, I realized that indeed we were interested in the libcrypto HMAC function with signature <a href="https://www.openssl.org/docs/man1.1.1/man3/HMAC.html"><code>HMAC(hash_function, &key, 10, src, src_len, out, &out_len)</code></a> - whose symbol name didn't appear to have been stripped.</p>
+
+<p>When an executable is stripped of debug symbols, the resulting binary may not contain variable names, function names, line numbers, data types, etc. In this case the executable was stripped of <em>some</em> debug symbols but apparently not the <code>HMAC</code> function name. Usually an executable will be completely stripped of all debug symbols, in which case we would additionally need to recognize the HMAC function and make note of its obfuscated name.</p>
 
 <img src="ghidra.png">
 
-<p>The key is supplied shortly before the function is called, of course, however it is highly obfuscated because that is the entire point of this challenge. Since I was short on time I intuitively took a dynamic analysis approach as I thought it would take me too long to reverse the key by static analysis.</p>
+<p>The function takes a secret key by pointer (together with its integer length), as well as the source and output and their lengths. The key is naturally supplied before the function is called, but it is highly obfuscated (maybe some LLVM-based obfuscation) because reversing the key is the entire point of this challenge. Unfortunately I was short on time and I didn't think I could reverse that scary-looking routine by static analysis.</p>
 
-<p>When an executable is stripped of debug symbols, the resulting binary may not contain variable names, function names, line numbers, data types, etc. In this case the executable was stripped of <em>some</em> debug symbols but apparently not the <code>HMAC</code> function name. Once again, in a real world scenario we may not have this information because a well protected executable will be completely stripped of all debug symbols. In such a case we would first need to recognize the HMAC function and make note of its obfuscated name.</p>
+<p>However I could see the light at the end of the tunnel with a dynamic analysis approach, since the crypto stack was so conveniently dynamically linked and pretty much unstripped. I rushed to load the binary in gdb, set a breakpoint at this HMAC function, and ran the program supplying "foo" as a command line argument.</p>
 
-<p>I was excited because I could see the light at the end of the tunnel and rushed to load the binary in gdb, set a breakpoint at this HMAC function, and ran the program supplying "foo" as a command line argument.</p>
 
 <pre>
 $ gdb ./a.out
@@ -49,14 +62,14 @@ $ gdb ./a.out
 (gdb) run foo
 </pre>
 
-Unfortunately gdb could not provide information about the arguments of the HMAC function because the symbol table is missing.
+<p>Unfortunately gdb could not provide information about the arguments of the HMAC function because the symbol table is missing.</p>
 
 <pre>
 (gdb) info args
 No symbol table info available.
 </pre>
 
-However, one can <strong>always</strong> try to meaningfully print the contents of the CPU registers at a function breakpoint, in this case keeping in mind the 64-bit ARM (AArch64) calling convention. In gdb run:
+<p>However, one can <strong>always</strong> try to meaningfully print the contents of the CPU registers at a function breakpoint, in this case keeping in mind the 64-bit ARM (AArch64) calling convention. In gdb run:</p>
 
 <pre>
 (gdb) info registers
@@ -79,6 +92,8 @@ x9             0xf5                245
 	The 64-bit ARM (AArch64) calling convention allocates the 31 general-purpose registers as:
 
 	<ul>
+		<li>x31 (SP): Stack pointer or a zero register, depending on context.</li>
+		<li>x30 (LR): Procedure link register, used to return from subroutines.</li>
 		<li>...</li>
 		<li>x9 to x15: Local variables, caller saved.</li>
 		<li>x8 (XR): Indirect return value address.</li>
@@ -86,18 +101,18 @@ x9             0xf5                245
 	</ul>
 </blockquote>
 
-<p>At this point everything was clear:</p>
+<p>Basically x0 will hold the first argument to a function, x1 the second argument, and so on and so forth. When a function has more arguments than the number of general-purpose registers, the remaining arguments are typically passed on the stack. If we focus on gdb again everything should be clear now:</p>
 
 <ul>
-	<li>A pointer to the hash function should be in register x0 We don't really care about this right now.</li>
+	<li>A pointer to the hash function should be in register x0 but we don't really care about the first argument.</li>
 	<li>A pointer to the key should be in register x1. If we try to print the value pointed to as a string:
 <pre>(gdb) p (char*) 0xffffd886e430
 $2 = 0xffffd886e430 "1234567890"
 </pre>
-	Well, this is anticlimatic, it seems that the key is just the string "1234567890". But let me finish my line of thought and we'll verify that in a moment. 
+	Well, actually this is it, it seems that the key is the string "1234567890". But we've come all this way so let's check the rest.
 	</li>
 	<li>The length of the key is in register x2, with value 10. Indeed the presumed string "1234567890" is 10 characters long.</li>
-	<li>The pointer to the supplied argument ("foo") should be in register x3. Again if we try to print the value pointed to as a string:
+	<li>The pointer to the supplied argument should be in register x3. Again if we try to print the value pointed to as a string:
 <pre>
 (gdb) p (char*) 0xffffd886ef5d
 $1 = 0xffffd886ef5d "foo"
@@ -107,49 +122,42 @@ $1 = 0xffffd886ef5d "foo"
 	<li>The input string's length is in register x4. Indeed "foo" is 3 characters long</li>
 </ul>
 
-<p>Nice! Everything is consistent. You could stop here and go home. But for brownie points we can write an equivalent program (using the same <code>HMAC</code> routine) using the key we found and double check that we get the same result. I just guessed by trial and error that the underlying hash function was SHA256.</p>
+<p>Nice! Everything is consistent. We could stop here and go home. But for completeness let's write an equivalent program (using the same <code>HMAC</code> routine) that supplies the same key we reversed and double check that we get the same result. I just guessed by trial and error that the underlying hash function used in the <code>HMAC</code> routine was SHA256.</p>
 
 <pre>
-#include <openssl/hmac.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <openssl/bio.h>
-#include <openssl/evp.h>
+#include &lt;openssl/hmac.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;openssl/bio.h&gt;
+#include &lt;openssl/evp.h&gt;
 
 int main(int argc, char *argv[]) {
-	if (argc < 2) {
-		fprintf(stderr, "Usage: %s <input string>\n", argv[0]);
-		return 1;
-	}
+        char key[] = &quot;1234567890&quot;;
+        unsigned char result[32];
+        unsigned int len;
+        HMAC(EVP_sha256(), key, strlen(key), (unsigned char*) argv[1], strlen(argv[1]), result, &amp;len);
 
-	char key[] = "1234567890";
-	unsigned char result[32];
-	unsigned int result_len;
+        // Print as base64 with no line breaks
+        BIO *b64 = BIO_new(BIO_f_base64());
+        BIO_set_flags(b64, BIO_FLAGS_BASE64_NO_NL);
+        BIO *bio = BIO_new_fp(stdout, BIO_NOCLOSE);
 
-	HMAC(EVP_sha256(), key, strlen(key), (unsigned char*) argv[1], strlen(argv[1]), result, &result_len);
+        // Print
+        BIO_push(b64, bio);
+        BIO_write(b64, result, len);
+        BIO_flush(b64);
+        BIO_free_all(bio);
 
-	// print as base64
-	BIO *b64 = BIO_new(BIO_f_base64());
-	BIO *bio = BIO_new_fp(stdout, BIO_NOCLOSE);
-
-	// Disable line breaks
-	BIO_set_flags(b64, BIO_FLAGS_BASE64_NO_NL);
-
-	BIO_push(b64, bio);
-	BIO_write(b64, result, result_len);
-	BIO_flush(b64);
-
-	BIO_free_all(bio);
-
-	return 0;
+        return 0;
 }
 </pre>
 
 <p>Sure enough we get the same result as the mysterious binary:</p>
 
 <pre>
-$ gcc hmac.c
+$ sudo apt install -y build-essential libssl-dev
+$ gcc hmac.c -lcrypto
 $ ./a.out foo
 A283gk/gcX/JA5yo6zNznSNHumIn91RxfCtyfR2rcXQ=
 </pre>

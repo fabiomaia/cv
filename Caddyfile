@@ -1,20 +1,22 @@
-# Unless the file starts with a global options block, the first
-# uncommented line is always the address of your site.
-fabiomaia.eu {
-	log access.log
+fabiomaia.eu
 
-	# Enable the static file server.
-	file_server
+root * /srv
 
-	# Configure the logging
+# Enable the static file server.
+file_server
 
-	# Auth on special pages
-	basicauth /cv/* {
-		db4d5697edb8da8739043b96 JDJhJDE0JGpKZEVoWmZZdzJmeG50bi5jbXpWWmVZNXF0SUZpU3ZNSk9VOS9UQVl5QVZNY2t0YU9YemFD
-	}
+log
 
-	basicauth /notes/* {
-		read JDJhJDE0JEFxTkcxRnFlRmNQVlZ4dkpVbXhDaE82RVBtNGhtdC56akttR3FvUHl3d0tVcGhSWDN1b1Rp
+# Another common task is to set up a reverse proxy:
+# Reverse proxy
+# reverse_proxy localhost:8080
+
+@plausible path /js/script.js /api/event
+handle @plausible {
+	# Change this if you use a different variant of the script
+	# e.g. rewrite /js/script.js /js/script.outbound-links.js
+	rewrite /js/script.js /js/script.js
+	reverse_proxy http://fabiomaia.eu:8000 {
+		header_up Host {http.reverse_proxy.upstream.hostport}
 	}
 }
-

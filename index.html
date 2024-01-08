@@ -6,19 +6,24 @@
 		<title>Fábio Maia</title>
 		<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 		<link rel="stylesheet" href="/sakura.css" media="screen">
+		<link rel="stylesheet" href="/print.css" media="print">
+		<script defer data-domain="fabiomaia.eu" src="/js/script.js"></script>
 <style>
-
+body { text-align: center; }
+header, header p{ margin: 0; }
+header nav { padding: 0; list-style-type: none; }
+header nav .button { text-decoration: none; color: #fff; margin: 0.7rem auto; display: block; width: 10rem; }
 </style>
 	</head>
 
 	<body>
 		<header>
-			<h1>Fábio Maia</h1>
-			<p>Software Engineer</p>
+			<h1 class="logo">fabiomaia.eu</h1>
+			<p>Computer Engineer</p>
 			<nav>
-				<a href="/notes">📖 Notes</a>
-				<a href="/quotes">💬 Quotes</a>
-				<a href="/sunsets">🌞 Sunsets</a>
+				<a disabled class="button">📃 Resume</a>
+				<a class="button" href="/notes">📖 Notes</a>
+				<a class="button" href="/ethos">🌞 Ethos</a>
 			</nav>
 		</header>
 	</body>

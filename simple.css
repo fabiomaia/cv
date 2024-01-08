@@ -4,7 +4,6 @@
         max-width: 70ch;
         padding: calc(1vmin + .5rem);
         margin-inline: auto;
-        font-size: clamp(1em, 0.909em + 0.45vmin, 1.25em);
         font-family: system-ui;
         color: #444;
       }

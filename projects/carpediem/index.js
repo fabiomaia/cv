@@ -10,7 +10,7 @@ function compute(age, expectancy) {
 	const arr = []
 	for(const e of _EVENTS ) {
 		console.log(e)
-		const times = (expectancy - age) / e.period 
+		const times = (expectancy - age) / e.period
 		arr.push({ "name": e.name, "times": times })
 	}
 	console.log(arr)

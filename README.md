@@ -19,13 +19,11 @@ My résumé as a document for the webFuck LaTeX.
 ## Deployment
 
 ```
-sudo apt-get update
-sudo apt-get install \
-    ca-certificates \
-    curl \
-    vim \
-    git \
-    gnupg
+apt update
+apt install ca-certificates curl vim git gnupg tmux
+
+adduser fabio
+usermod -aG sudo fabio
 
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -49,10 +47,4 @@ sudo systemctl enable containerd.service
 reboot
 
 docker run -d -p 80:80 -p 443:443 -v "$PWD:/srv" -v "$PWD/Caddyfile:/etc/caddy/Caddyfile" caddy caddy run
-```
-
-## Logs
-
-```
-cat access.log | docker run --rm -i -e LANG=$LANG allinurl/goaccess -a -o html --log-format CADDY - > report.html
 ```
