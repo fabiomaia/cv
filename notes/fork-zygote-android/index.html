@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/simple.css">
+
+<h1>Forking in Android</h1>
+
+<p>What does it mean to start an application under an operating system? In a classic Unix, the kernel will start the first user space program with pid=1 which is typically the init program. The next process with pid=2 will fork from pid=1. The next process with pid=3 will fork from pid=2, and so on an so forth. All processes are children of a parent process.</p> 
+
+<p>What does it actually mean to be a child of a parent? First let's observe what happens with a simple GNU/Linux program such as <code>yes</code> when ran through strace, a debugger that prints the syscalls happening inside that process. You would normally launch this application from a shell so the parent process you need to search for is <code>bash</code>. You may filter to a couple of relevant syscalls to</p>
+
+<pre>
+ps aux | grep -i bash
+strace -Tfe trace=fork,clone,clone3,execve -o zzz -p 31187
+</pre>
+
+
+<p>But "forking" a process does not have to be like that in any operating systems. In Android, apps are basically all just JVM instances. In Android we should see a model of process creation purely based on a fork() syscall. You can see this very clearly if you strace the Zygote process, </p>
+
+<pre>
+$ ps -Af | grep -i zygote
+$ strace -Tfe trace=fork,clone,clone3,execve -o zzz -p 31187
+</pre>
+
+<p>Why so? Why doesn't it additionally call exec? This design stems from the need to optimize loading JVM applications fast.</p>
+
+<p>As threads are in the same address space, a thread context switch is inexpensive and fast. Also creation and destruction is quick. Unlike fork(), no new copy of the parent process is made. In fact, creation of a thread uses the same system call as fork() does, only with different flags:</p>
+
+<pre>
+clone(CLONE_VM | CLONE_FS | CLONE_FILES | CLONE_SIGHAND, 0);
+</pre>
+
+<p>The code above does basically the same as a normal process creation would do, with the exception that the address space (VM), file system information (FS), open files (FILES) and signal handlers along with blocked signals (SIGHAND) will be shared. That is exactly the definition of a thread compared to a process. Whereas a more basic fork goes like this:</p>
+
+<pre>
+clone(SIGCHLD, 0);
+</pre>

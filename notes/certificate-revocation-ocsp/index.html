@@ -4,34 +4,31 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" href="data:;base64,iVBORw0KGgo=">
-		<link rel="stylesheet" href="/sakura.css" media="screen">
-		<script defer data-domain="fabiomaia.eu" src="/js/script.js"></script>
+		<link rel="stylesheet" href="/simple.css" media="screen">
 	</head>
 
 	<body>
 		<a class="logo" href="/"><div>fabiomaia.eu</div></a>
-		<time datetime="2017-07-24">May 31, 2017</time>
-		<h1>Certificate Revocation Status via OCSP</h1>
+		<time datetime="2017-05-24">May 24, 2017</time>
+		<h1>Certificate Revocation via OCSP</h1>
 
-		<p>TLS is fundamentally based on trust. Operating systems will ship with a trusted set of certificates known as the root <strong>certificate authorities</strong> (CA for short) which are controlled by some companies. In turn, these are responsible for signing leaf certificates that are actually presented in TLS communications.</p>
+		<p>TLS is fundamentally based on trust. Operating systems will ship with a trusted set of certificates known as the root <strong>certificate authorities</strong> (CA for short) which are controlled by companies that common operating systems trust. These certificates are self-signed, they are cryptographically signed by themselves, so your trust them is essentially political. In turn, these are responsible for signing certificates in what becomes a chain of certificates going from intermediate CA all the way down to leaf certificates.</p>
+		<p>When a party A opens up a TLS communication channel with a party B, then party A should offer you their certificate. Usually it is party A's responsibility to check it and decide whether or not to trust.</p>
 
 		<ul>
-		- TLS clients can contact the CA's OCSP servers to verify the validity of the certificate of the destination server, which can leave a trace of a MITM certificate. **However our certificate is self-signed so there is no CA to contact so nothing happens in the first place.**
-		- Much like the previous status-checking method, [OCSP stapling](https://www.thesslstore.com/blog/ocsp-stapling-best-method-checking-certificate-validity/)
-		 is a process that also uses the online certificate status protocol. However, it’s a more advanced way of doing so. Instead of relying on the client to perform certificate revocation status checks, it places that responsibility on the web server instead.
-		    - In a stapling scenario, the certificate holder itself queries the OCSP server at regular intervals, obtaining a [signed](https://en.wikipedia.org/wiki/Cryptographic_signature) time-stamped OCSP response. When the site's visitors attempt to connect to the site, this response is included ("stapled") with the [TLS/SSL handshake](https://en.wikipedia.org/wiki/Transport_Layer_Security)
-		     via the Certificate Status Request extension response (note: the TLS client must explicitly include a Certificate Status Request extension in its ClientHello TLS/SSL handshake message)
+			<li>TLS clients can contact the CA's OCSP servers to verify the validity of the certificate of the destination server, which can leave a trace of a MITM certificate. **However our certificate is self-signed so there is no CA to contact so nothing happens in the first place.**</li>
+			<li>Much like the previous status-checking method, [OCSP stapling](https://www.thesslstore.com/blog/ocsp-stapling-best-method-checking-certificate-validity/) is a process that also uses the online certificate status protocol. However, it’s a more advanced way of doing so. Instead of relying on the client to perform certificate revocation status checks, it places that responsibility on the web server instead.</li>
+			<li>In a stapling scenario, the certificate holder itself queries the OCSP server at regular intervals, obtaining a [signed](https://en.wikipedia.org/wiki/Cryptographic_signature) time-stamped OCSP response. When the site's visitors attempt to connect to the site, this response is included ("stapled") with the [TLS/SSL handshake](https://en.wikipedia.org/wiki/Transport_Layer_Security)</li>
+			<li>via the Certificate Status Request extension response (note: the TLS client must explicitly include a Certificate Status Request extension in its ClientHello TLS/SSL handshake message)</li>
 		</ul>
 
-		<p>But how would you actually validate certificates appropriately? There are essentially two steps:</p>
+		<p>Deciding whether or not to trust a certificate is two fold:</p>
 		<ul>
-		<li>Chain of trust validation</li>
-		<li>Certification status validation</li>
+			<li>Certification status validation: check if the leaf-most certificate has not been revoked</li>
+			<li>Chain of trust validation: check if the chain (tree) of trust is valid all the way from the leaf up to a root in the operating system's trust store</li>
 		</ul>
 
-		Let's see how this could be done on a Python server leveraging a few libraries. For simplicity I'll inline the imports along with the code snippets.
-
-		Essentially we want to implement a high level function: 
+		<p>Let's see how this could be done on a Python server leveraging a few libraries. For brevity I'll inline the imports along the way with the code snippets. Essentially we want to implement some high level function like this:</p>
 
 		<pre>
 def validate(cert: bytes):

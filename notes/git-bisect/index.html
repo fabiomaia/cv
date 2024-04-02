@@ -4,15 +4,13 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" href="data:;base64,iVBORw0KGgo=">
-		<link rel="stylesheet" href="/sakura.css" media="screen">
-		<script defer data-domain="fabiomaia.eu" src="/js/script.js"></script>
+		<link rel="stylesheet" href="/simple.css" media="screen">
 	</head>
 
 	<body>
 		<a class="logo" href="/"><div>fabiomaia.eu</div></a>
 		<time datetime="2021-08-05">August 5, 2021</time>
 		<h1>Find regressions with git bisect</h1>
-		<script defer data-domain="fabiomaia.eu" src="/js/script.js"></script>
 
 		<p>I just learned that with git bisect you can give git (1) a bad commit/branch, (2) a known good previous commit/branch, (3) a command to test said "goodness" (e.g. passing unit tests, passing linting, etc) and git will do a binary search between those commits, narrowing down the window at every step trying to find the commit that introduced the problem.</p>
 
